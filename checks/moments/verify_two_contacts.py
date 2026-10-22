@@ -116,13 +116,13 @@ def one_case(p,m,q,L):
     edges = []
     for i,(ui,wi) in enumerate(zip(u,w)):
         bank = 'F' if i%2==0 else 'G'
-        ref = Q(L+1 if bank=='F' else L)
-        ae = ref-1/ui
+        lev0 = Q(L+1 if bank=='F' else L)
+        ae = lev0-1/ui
         be = 1/(ui*wi**p)
         require(ae>0 and be>0,'positive physical cost coefficients')
-        require(ae+be*wi**p==ref,'reference physical delay')
+        require(ae+be*wi**p==lev0,'reference physical delay')
         z2 = wi*n[i]
-        require(ae+be*z2**p==ref+1,'second-boundary physical delay')
+        require(ae+be*z2**p==lev0+1,'second-boundary physical delay')
         edges.append({'index':i,'bank':bank,'reference_load':wi,'second_boundary_load':z2,'inverse_node':ui,'free_flow':ae,'congestion_coefficient':be,'power':p})
     edges.append({'index':2*m+1,'bank':'connector','reference_load':Q(0),'second_boundary_load':Q(0),'free_flow':Q(1),'congestion_coefficient':Q(1),'power':p})
     return {'p':p,'m':m,'q':q,'bank_reference_G_delay':L,'bank_reference_F_delay':L+1,'polynomial_root_exponents':exponents,'polynomial_coefficients':v,'normalising_mass':M,'physical_edges':edges,'contacts':contacts,'maximal_zero_budget':2*m,'used_zero_multiplicity':2*m,'row_rank':2*m,'all_checks_passed':True}

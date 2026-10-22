@@ -103,7 +103,7 @@ def direct_social_optimum(t):
     # optimum. The residual check remains numerical, not a certificate.
     value=float(np.sum(z*(A+B*z**4)))
     marginal=A+5*B*z**4
-    derivative=4*float(marginal[0]+marginal[2])
+    derivative=float(marginal[0]+marginal[2])*4
     return z,value,derivative,residual
 
 

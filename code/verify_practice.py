@@ -31,7 +31,7 @@ def main():
     args = ap.parse_args()
     out = {}
     N = Network(FIVE_DIRECT, FIVE_SHARED)
-    E = lambda t, eps=0: N.eq_cost_formula(4 * t, eps=eps)
+    E = lambda t, eps=0: N.eq_cost_formula(t * 4, eps=eps)
     E0 = lambda t: N.eq_cost_formula(4 * t, x=mp.mpf(0))
     K = mp.mpf(84672) / 78125
     # exact series (reference coefficients)
@@ -81,7 +81,7 @@ def main():
         dx, de = largest(fx, T), largest(fe, T)
         thr.append({"tau": tau, "largest_delta_x_over_4t_below_tau": fmt(dx, 10),
                     "largest_delta_relcost_below_tau": fmt(de, 10),
-                    "leading_order_estimate_x": fmt((4 * T * 125 / 84) ** (mp.mpf(1) / 3), 10),
+                    "leading_order_estimate_x": fmt((T * 4 * 125 / 84) ** (mp.mpf(1) / 3), 10),
                     "leading_order_estimate_cost": fmt((20 * T / K) ** (mp.mpf(1) / 5), 10)})
     out["b_hidden_activation_vs_tolerance"] = num({"monotonicity_checked_on_grid": "delta=0.02..4.00 step 0.02",
                                                    "note": "bisection, 60 halvings of [1e-6,4]", "rows": thr})
@@ -161,8 +161,8 @@ def main():
         asym = beta / 2 * m ** 2 * a3 ** (mp.mpf(2) / m) * abs(eps) ** (2 - mp.mpf(2) / m)
         h = mp.mpf("1e-12")
         Ee = lambda t: E(t, eps)
-        right = (-3 * Ee(te) + 4 * Ee(te + h) - Ee(te + 2 * h)) / (2 * h)
-        left = (3 * Ee(te) - 4 * Ee(te - h) + Ee(te - 2 * h)) / (2 * h)
+        right = (-3 * Ee(te) + 4 * Ee(te + h) - Ee(te + h * 2)) / (h * 2)
+        left = (3 * Ee(te) - 4 * Ee(te - h) + Ee(te - h * 2)) / (h * 2)
         fd = right - left
         need(abs(fd + JE) < mp.mpf(10) ** -9 * max(1, JE), f"FD jump matches formula eps={es}")
         if abs(eps) <= mp.mpf("1e-9"):
@@ -225,8 +225,8 @@ def main():
         "aggregate": "E-E0 = -K delta^5: E is C^4 not C^5 while every link load and both commodity costs are only C^2"}
     # E'(1) numerical
     hh = mp.mpf("1e-15")
-    out["E_derivative_check"] = num({"E(1)": fmt(E(1), 20), "E'(1)_central_diff": fmt((E(1 + hh) - E(1 - hh)) / (2 * hh), 15), "expected": "164/5"})
-    need(abs((E(1 + hh) - E(1 - hh)) / (2 * hh) - mp.mpf(164) / 5) < 1e-10, "E'(1)")
+    out["E_derivative_check"] = num({"E(1)": fmt(E(1), 20), "E'(1)_central_diff": fmt((E(1 + hh) - E(1 - hh)) / (hh * 2), 15), "expected": "164/5"})
+    need(abs((E(1 + hh) - E(1 - hh)) / (hh * 2) - mp.mpf(164) / 5) < 1e-10, "E'(1)")
     out["status"] = "PASS" if not FAILS else "FAIL"; out["failures"] = FAILS
     args.output.write_text(json.dumps(out, sort_keys=True, indent=2) + "\n")
     print(("PASS" if not FAILS else "FAIL: " + "; ".join(FAILS)) + f" verify_practice -> {args.output}")

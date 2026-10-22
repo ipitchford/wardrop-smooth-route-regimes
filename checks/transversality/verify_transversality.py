@@ -142,7 +142,7 @@ def transverse_case(m, v, w):
     check(correction[2] == -chi*(v-w)**2, "Transverse cost quadratic coefficient")
     return {"m": m, "path_v": str(v), "path_w": str(w),
             "chi": str(chi), "connector_active_derivative": str(x[1]),
-            "cost_active_minus_inactive_second_derivative": str(2*correction[2]),
+            "cost_active_minus_inactive_second_derivative": str(correction[2]*2),
             "active_side": "right" if v>w else "left"}
 
 
