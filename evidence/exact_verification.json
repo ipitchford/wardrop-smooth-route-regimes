@@ -1,0 +1,289 @@
+{
+  "status": "passed",
+  "arithmetic": "fractions.Fraction; exact integers",
+  "coverage": "Finite certificates m=1,3,5,7; not a substitute for the all-odd-m proof",
+  "cases": [
+    {
+      "m": 1,
+      "physical_edge_count_including_connector": 3,
+      "demand_each": "1",
+      "moment_sign_convention": "inverse-throughput G minus F; signs (-1)^(m-j)",
+      "moments_through_m": [
+        0,
+        1
+      ],
+      "fourth_root_derivative_factors": [
+        1
+      ],
+      "gap_coefficient": "2",
+      "connector_coefficient": "1/3",
+      "equilibrium_cost_difference_coefficient": "-2/3",
+      "E_at_1": "5",
+      "E_left_derivative_at_1": "11",
+      "E_right_derivative_at_1": "31/3",
+      "physical_edges": [
+        {
+          "j": 0,
+          "group": "F",
+          "a": "2",
+          "b": "1",
+          "baseline_load": "1"
+        },
+        {
+          "j": 1,
+          "group": "G",
+          "a": "3/2",
+          "b": "1/2",
+          "baseline_load": "1"
+        }
+      ]
+    },
+    {
+      "m": 3,
+      "physical_edge_count_including_connector": 5,
+      "demand_each": "4",
+      "moment_sign_convention": "inverse-throughput G minus F; signs (-1)^(m-j)",
+      "moments_through_m": [
+        0,
+        0,
+        0,
+        6
+      ],
+      "fourth_root_derivative_factors": [
+        1,
+        -3,
+        -7
+      ],
+      "gap_coefficient": "336/625",
+      "connector_coefficient": "84/125",
+      "equilibrium_cost_difference_coefficient": "-84672/78125",
+      "E_at_1": "20",
+      "E_left_derivative_at_1": "164/5",
+      "E_right_derivative_at_1": "164/5",
+      "physical_edges": [
+        {
+          "j": 0,
+          "group": "F",
+          "a": "2",
+          "b": "1",
+          "baseline_load": "1"
+        },
+        {
+          "j": 1,
+          "group": "G",
+          "a": "3/2",
+          "b": "1/162",
+          "baseline_load": "3"
+        },
+        {
+          "j": 2,
+          "group": "F",
+          "a": "8/3",
+          "b": "1/243",
+          "baseline_load": "3"
+        },
+        {
+          "j": 3,
+          "group": "G",
+          "a": "7/4",
+          "b": "1/4",
+          "baseline_load": "1"
+        }
+      ],
+      "jets": {
+        "F": {
+          "inverse_first": "5/2",
+          "inverse_second": "-21/4",
+          "inverse_third": "861/32",
+          "latency_first": "2/5",
+          "latency_second": "42/125",
+          "latency_third": "987/6250"
+        },
+        "G": {
+          "inverse_first": "5/2",
+          "inverse_second": "-21/4",
+          "inverse_third": "231/8",
+          "latency_first": "2/5",
+          "latency_second": "42/125",
+          "latency_third": "336/3125"
+        }
+      },
+      "equilibrium_cost_fifth_derivative_jump": "-2032128/15625"
+    },
+    {
+      "m": 5,
+      "physical_edge_count_including_connector": 7,
+      "demand_each": "16",
+      "moment_sign_convention": "inverse-throughput G minus F; signs (-1)^(m-j)",
+      "moments_through_m": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        120
+      ],
+      "fourth_root_derivative_factors": [
+        1,
+        -3,
+        -7,
+        -11,
+        -15
+      ],
+      "gap_coefficient": "7920/16807",
+      "connector_coefficient": "7920/2401",
+      "equilibrium_cost_difference_coefficient": "-313632000/40353607",
+      "E_at_1": "80",
+      "E_left_derivative_at_1": "816/7",
+      "E_right_derivative_at_1": "816/7",
+      "physical_edges": [
+        {
+          "j": 0,
+          "group": "F",
+          "a": "2",
+          "b": "1",
+          "baseline_load": "1"
+        },
+        {
+          "j": 1,
+          "group": "G",
+          "a": "3/2",
+          "b": "1/1250",
+          "baseline_load": "5"
+        },
+        {
+          "j": 2,
+          "group": "F",
+          "a": "8/3",
+          "b": "1/30000",
+          "baseline_load": "10"
+        },
+        {
+          "j": 3,
+          "group": "G",
+          "a": "7/4",
+          "b": "1/40000",
+          "baseline_load": "10"
+        },
+        {
+          "j": 4,
+          "group": "F",
+          "a": "14/5",
+          "b": "1/3125",
+          "baseline_load": "5"
+        },
+        {
+          "j": 5,
+          "group": "G",
+          "a": "11/6",
+          "b": "1/6",
+          "baseline_load": "1"
+        }
+      ]
+    },
+    {
+      "m": 7,
+      "physical_edge_count_including_connector": 9,
+      "demand_each": "64",
+      "moment_sign_convention": "inverse-throughput G minus F; signs (-1)^(m-j)",
+      "moments_through_m": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        5040
+      ],
+      "fourth_root_derivative_factors": [
+        1,
+        -3,
+        -7,
+        -11,
+        -15,
+        -19,
+        -23
+      ],
+      "gap_coefficient": "2691920/4782969",
+      "connector_coefficient": "10767680/531441",
+      "equilibrium_cost_difference_coefficient": "-202900132019200/2541865828329",
+      "E_at_1": "320",
+      "E_left_derivative_at_1": "3904/9",
+      "E_right_derivative_at_1": "3904/9",
+      "physical_edges": [
+        {
+          "j": 0,
+          "group": "F",
+          "a": "2",
+          "b": "1",
+          "baseline_load": "1"
+        },
+        {
+          "j": 1,
+          "group": "G",
+          "a": "3/2",
+          "b": "1/4802",
+          "baseline_load": "7"
+        },
+        {
+          "j": 2,
+          "group": "F",
+          "a": "8/3",
+          "b": "1/583443",
+          "baseline_load": "21"
+        },
+        {
+          "j": 3,
+          "group": "G",
+          "a": "7/4",
+          "b": "1/6002500",
+          "baseline_load": "35"
+        },
+        {
+          "j": 4,
+          "group": "F",
+          "a": "14/5",
+          "b": "1/7503125",
+          "baseline_load": "35"
+        },
+        {
+          "j": 5,
+          "group": "G",
+          "a": "11/6",
+          "b": "1/1166886",
+          "baseline_load": "21"
+        },
+        {
+          "j": 6,
+          "group": "F",
+          "a": "20/7",
+          "b": "1/16807",
+          "baseline_load": "7"
+        },
+        {
+          "j": 7,
+          "group": "G",
+          "a": "15/8",
+          "b": "1/8",
+          "baseline_load": "1"
+        }
+      ]
+    }
+  ],
+  "transverse_perturbation": {
+    "f1_a": "19/10",
+    "f1_b": "11/10",
+    "gap_first_derivative": "8/545",
+    "connector_first_derivative": "4/219",
+    "equilibrium_cost_first_derivative_jump": "-32/119355"
+  },
+  "checks": [
+    "Physical link positivity and exact baseline latencies",
+    "Formal inversion reproduces physical throughput series",
+    "Connector implicit residual vanishes to retained order",
+    "First nonzero cost difference occurs at the stated order",
+    "Independent integer binomial moments and derivative-factor signs",
+    "Transverse m=1 and perturbed m=3 first-derivative controls"
+  ]
+}

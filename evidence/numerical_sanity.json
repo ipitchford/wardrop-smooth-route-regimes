@@ -1,0 +1,110 @@
+{
+  "status": "passed",
+  "evidence_type": "floating-point sanity checks only",
+  "exact_proof_dependency": false,
+  "kappa": 1.4953487812212205,
+  "wardrop_at_kappa_loads": [
+    1.2776558116212988,
+    4.694124928878715,
+    4.327433384831167,
+    1.663576124438582,
+    0.009614384384867503
+  ],
+  "direct_social_at_1_loads": [
+    0.854419937118555,
+    3.1391505365358086,
+    2.8939291215371843,
+    1.112500404808452,
+    0.006429526345636623
+  ],
+  "max_load_difference_direct_vs_scaling": 9.969802761133906e-14,
+  "direct_social_KKT_max_residual": 8.029132914089132e-13,
+  "C_at_1": 19.762875963175002,
+  "Cprime_at_1": 33.31795226094828,
+  "E_at_1": 20.0,
+  "Eprime_at_1": 32.8,
+  "PoA_at_1": 1.0119984579808547,
+  "PoA_common_first_derivative_at_1": -0.04643637458785937,
+  "PoA_fifth_derivative_jump": -6.580833287743099,
+  "fixed_breakpoint_direct_edge_perturbation": {
+    "experiment": "Preserve f1(1)=3 while changing its physical slope",
+    "changed_edge": "f1",
+    "free_flow_constant": 1.9,
+    "quartic_coefficient": 1.1,
+    "fixed_breakpoint": 1.0,
+    "samples": [
+      {
+        "t": 0.9999,
+        "connector": 0.0,
+        "cost": 19.996714474335782
+      },
+      {
+        "t": 1.0001,
+        "connector": 1.8265831998043325e-06,
+        "cost": 20.003286190690176
+      }
+    ]
+  },
+  "connector_free_flow_sensitivity": [
+    {
+      "connector_constant_change": -0.0001,
+      "breakpoint": 0.9456666056880636,
+      "breakpoint_shift": -0.0543333943119364,
+      "leading_shift": -0.05708389254953679,
+      "shift_ratio": 0.9518165612968048,
+      "positive_cost_derivative_drop": 4.8328845464967915e-05,
+      "leading_derivative_drop": 3.4524338213959867e-05,
+      "drop_ratio": 1.3998485695933258
+    },
+    {
+      "connector_constant_change": -1e-06,
+      "breakpoint": 0.9878320228538542,
+      "breakpoint_shift": -0.012167977146145814,
+      "leading_shift": -0.012298351835077466,
+      "shift_ratio": 0.9893990112919199,
+      "positive_cost_derivative_drop": 7.992030017537846e-08,
+      "leading_derivative_drop": 7.438043189854857e-08,
+      "drop_ratio": 1.0744801843095775
+    },
+    {
+      "connector_constant_change": -1e-08,
+      "breakpoint": 0.9973564777138364,
+      "breakpoint_shift": -0.002643522286163602,
+      "leading_shift": -0.0026495995823708172,
+      "shift_ratio": 0.9977063341013297,
+      "positive_cost_derivative_drop": 1.6274229717787697e-10,
+      "leading_derivative_drop": 1.602477827417872e-10,
+      "drop_ratio": 1.0155666081203087
+    },
+    {
+      "connector_constant_change": 1e-08,
+      "breakpoint": 1.002655690957741,
+      "breakpoint_shift": 0.002655690957741097,
+      "leading_shift": 0.0026495995823708172,
+      "shift_ratio": 1.0022989795932973,
+      "positive_cost_derivative_drop": 1.577941583982171e-10,
+      "leading_derivative_drop": 1.602477827417872e-10,
+      "drop_ratio": 0.984688559794155
+    },
+    {
+      "connector_constant_change": 1e-06,
+      "breakpoint": 1.0124301271821907,
+      "breakpoint_shift": 0.01243012718219072,
+      "leading_shift": 0.012298351835077466,
+      "shift_ratio": 1.0107148786179139,
+      "positive_cost_derivative_drop": 6.92495134809301e-08,
+      "leading_derivative_drop": 7.438043189854857e-08,
+      "drop_ratio": 0.9310178996457453
+    },
+    {
+      "connector_constant_change": 0.0001,
+      "breakpoint": 1.0599741848914883,
+      "breakpoint_shift": 0.059974184891488314,
+      "leading_shift": 0.05708389254953679,
+      "shift_ratio": 1.0506323625257923,
+      "positive_cost_derivative_drop": 2.485667343882551e-05,
+      "leading_derivative_drop": 3.4524338213959867e-05,
+      "drop_ratio": 0.7199753775084602
+    }
+  ]
+}

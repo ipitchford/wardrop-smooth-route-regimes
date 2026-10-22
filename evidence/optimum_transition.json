@@ -1,0 +1,106 @@
+{
+  "claims": {
+    "S in C^5 not C^6 at 1/gamma; P in C^5 not C^6 with P6 jump +E 5! K gamma^5/S^2": "requires E analytic near 1/gamma: proved in ii",
+    "S(t)=V(gamma t)/gamma": "checked numerically (direct KKT vs scaling) in iii",
+    "S-S0 = -(K gamma^5/6)(t-1/gamma)^6": "follows from V-V0=-(K/6)(T-1)^6 (exact, i) with T=gamma t; checked numerically in iii"
+  },
+  "failures": [],
+  "i_series_m3": {
+    "E(1)": "20",
+    "E_minus_E0_leading": {
+      "coefficient": "-84672/78125",
+      "order": 5
+    },
+    "K": "84672/78125",
+    "V(1)": "17",
+    "V_minus_V0_leading": {
+      "coefficient": "-14112/78125",
+      "equals_-K/(2m)": "-14112/78125",
+      "order": 6
+    },
+    "V_minus_V0_next": "3019968/1953125",
+    "demand_each": 4,
+    "envelope_identity_(1+delta)V'=E": "verified coefficientwise through delta^8 (active and inactive branches)",
+    "label": "exact",
+    "m": 3,
+    "p": 4,
+    "series_order": 9,
+    "x_leading": "84/125"
+  },
+  "i_series_m5": {
+    "E(1)": "80",
+    "E_minus_E0_leading": {
+      "coefficient": "-313632000/40353607",
+      "order": 9
+    },
+    "K": "313632000/40353607",
+    "V(1)": "358/5",
+    "V_minus_V0_leading": {
+      "coefficient": "-31363200/40353607",
+      "equals_-K/(2m)": "-31363200/40353607",
+      "order": 10
+    },
+    "V_minus_V0_next": "27913248000/1977326743",
+    "demand_each": 16,
+    "envelope_identity_(1+delta)V'=E": "verified coefficientwise through delta^11 (active and inactive branches)",
+    "label": "exact",
+    "m": 5,
+    "p": 4,
+    "series_order": 12,
+    "x_leading": "7920/2401"
+  },
+  "ii_inactive_interval_proof": {
+    "T_lo=4 t_lo": "2.634961219905688",
+    "caveat": "the connector IS active in the separate low-demand window t in (0.2105, 0.5839) (see verify_practice.json global scan); this lies below 1/gamma-0.01=0.6587",
+    "conclusion": "for all t in [1/gamma-1/100, 1): x_eq(t)=0 strictly and F0,F2,G1,G3 all carry positive load; E analytic there (incl. a neighbourhood of 1/gamma)",
+    "label": "exact",
+    "method": "rational interval arithmetic (Fractions, fourth-root bounds with 2^-60 resolution) + finite-difference sign lemma",
+    "min_interval_lower_bound_of_h": "0.240981668868",
+    "q_G(-1/4)=3*2^(-1/4)": "2.522689245761144",
+    "sigma_lower_bound_s_F(T_lo)": "-0.297365674584095",
+    "steps": [
+      "T_lo^4 > 81/2 => q_G(-1/4)=3*2^(-1/4) < T_lo => s_G(T) > -1/4: G3 (and G1, threshold -1/2) loaded",
+      "T_lo^4 > 2/3 => q_F(-1/3)=(2/3)^(1/4) < T_lo => s_F(T) > -1/3: F2 (and F0, threshold -1) loaded",
+      "q_F(sigma) <= T_lo (upper root bounds) => s_F(T) >= sigma for T >= T_lo",
+      "h(s)=q_F(s)-q_G(s) > 0 on [sigma,-1/4]: 400 subintervals, monotone bounds h >= q_F_lo(l) - q_G_hi(r) (G3 inactive there)",
+      "h(s) > 0 on (-1/4,0): h = -Delta^3 g(0) with g(y)=(1+(y+1)s)^(1/4); Delta^3 g(0)=g'''(xi)=(21/64) s^3 (1+(xi+1)s)^(-11/4) < 0 for s<0",
+      "s_F(T) in [sigma,0) for T in [T_lo,4) and h(s_F)>0 means q_G(s_F) < T = q_G(s_G), so s_F < s_G, i.e. F(T) < G(T)+1+0^4: connector strictly unused; unique Wardrop costs => E(t)=E0(t)=4t[5+s_F(4t)+s_G(4t)] on [t_lo,1), analytic (inverse function theorem, q' > 0 with all four edges active)"
+    ],
+    "subintervals": 400,
+    "t_lo_rational_lower_bound_of_1/gamma-1/100": "0.658740304976422"
+  },
+  "iii_numerics": {
+    "1/gamma": "0.6687403049764220240032331",
+    "E(1/gamma)": "11.91998848542359078147324",
+    "P(1/gamma)": "1.0485023678734793562",
+    "P6_jump_+E*5!*K*gamma^5/S^2": "89.682258058735794196",
+    "S(1/gamma)": "11.36858518459917440805496",
+    "S(1/gamma)_exact_form": "V(1)/gamma = 17/5^(1/4)",
+    "S6_jump_-(K gamma^5/6)*720": "-972.39684098736526637",
+    "S_expansion_crosscheck": [
+      {
+        "P_minus_P0": "1.07669571123211e-13",
+        "P_ratio_to_E K gamma^5 delta^6/(6 S0^2)": "0.881300197836",
+        "S_minus_S0_direct_KKT": "-1.19024101157961e-12",
+        "delta=t-1/gamma": "1e-2",
+        "optimal_connector_load": "1.3760900416e-6",
+        "prediction_-(K gamma^5/6) delta^6": "-1.35055116803801e-12",
+        "ratio": "0.881300197836"
+      },
+      {
+        "P_minus_P0": "1.22738034153933e-19",
+        "P_ratio_to_E K gamma^5 delta^6/(6 S0^2)": "0.987297895794",
+        "S_minus_S0_direct_KKT": "-1.33339632636576e-18",
+        "delta=t-1/gamma": "1e-3",
+        "optimal_connector_load": "1.48932266915e-9",
+        "prediction_-(K gamma^5/6) delta^6": "-1.35055116803801e-18",
+        "ratio": "0.987297895794"
+      }
+    ],
+    "gamma": "1.495348781221220541911899",
+    "label": "numerical",
+    "mp_dps": 60,
+    "note": "S computed two ways: direct KKT optimisation of sum z c(z) and V(gamma t)/gamma; S0 = connector forbidden"
+  },
+  "status": "PASS"
+}

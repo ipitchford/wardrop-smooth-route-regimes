@@ -1,0 +1,34 @@
+cff-version: 1.2.0
+message: "Please cite this versioned research candidate by its DOI."
+title: "Smoothness within and across Wardrop route regimes"
+type: software
+authors:
+  - name: Anonymous
+version: 1.0.0-candidate
+doi: 10.5281/zenodo.23552630
+date-released: 2026-10-22
+repository-code: "https://github.com/ipitchford/wardrop-smooth-route-regimes"
+url: "https://evidencepress.org/releases/wardrop-smooth-route-regimes/"
+license: CC0-1.0
+keywords:
+  - Wardrop equilibrium
+  - price of anarchy
+  - traffic assignment
+  - BPR cost functions
+  - sensitivity analysis
+  - selfish routing
+abstract: "Cominetti, Dose and Scarsini (Transportation Research Part B 182, 102922, 2024) asked two questions about how Wardrop equilibria and the price of anarchy change as demand grows. (1) While the set of cheapest routes is fixed, equilibrium link flows are continuously differentiable for costs whose slope vanishes only at zero load, such as BPR costs, at every interior demand level on any network (proof); a general endpoint extension fails and the BPR endpoint case is open. (2) A new route can become cheapest without a slope jump: a five-link network with common quartic BPR costs has total cost and price of anarchy in C^4 but not C^5 at a genuine expansion (proof; exact), five links are minimal for a common exponent (proof), and m+2 links hide 2m-2 derivatives. The slope never jumps the wrong way for BPR costs, and jumps strictly for almost every free-flow vector at nondegenerate breakpoints (proof). Practice-oriented numerics and an exploratory Sioux Falls scan are included. Unrefereed candidate. Original code is MIT-licensed; see LICENSES.md."
+references:
+  - type: article
+    title: "Phase transitions of the price-of-anarchy function in multi-commodity routing games"
+    authors:
+      - family-names: Cominetti
+        given-names: Roberto
+      - family-names: Dose
+        given-names: Valerio
+      - family-names: Scarsini
+        given-names: Marco
+    journal: "Transportation Research Part B: Methodological"
+    volume: 182
+    year: 2024
+    doi: 10.1016/j.trb.2024.102922

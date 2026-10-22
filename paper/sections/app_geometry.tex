@@ -1,0 +1,64 @@
+\section{Codimension and an infinitely smooth example}\label{app:geometry}
+
+The exact examples impose finitely many matching conditions. This appendix counts them in a fixed chart of physical parameters, and then gives a three-edge example in which every derivative is continuous. These statements concern specified parameter families. They do not estimate how often high contact occurs in measured networks. In the language of parametric optimisation, the transition is a loss of strict complementarity, which in generic one-parameter families is a codimension-one event producing a kink \cite{JongenJonkerTwilt1986}. The count below gives the exact codimension of the higher-order coincidences in a physical chart.
+
+\subsection{Codimension in a fixed physical parameter chart}
+
+Fix $p>1$, $t_0,r_F,r_G>0$, distinct nodes $u_1,\ldots,u_r>0$, and a partition $I_F,I_G$ into two nonempty banks. Fix reference delays $\ell_F,\ell_G$ with $\ell_F-\ell_G=h_0>0$ and $\ell_{\mathrm{bank}(j)}>1/u_j$. Vary only the positive operating loads in the costs
+\begin{equation}\label{eq:physicalchart}
+ c_j(z)=\ell_{\mathrm{bank}(j)}-\frac1{u_j}+
+         \frac{z^p}{u_j w_j^p},\qquad
+ w\in\mathcal P:=\left\{w>0:
+ \sum_{I_F}w_j=r_Ft_0,\ \sum_{I_G}w_j=r_Gt_0\right\}.
+\end{equation}
+The relatively open chart $\mathcal P$ has dimension $r-2$. Free-flow costs, reference delays, nodes and bank totals are fixed; positive congestion coefficients vary through the invertible change $b_j=1/(u_jw_j^p)$. The connector is tied at zero flow at $t_0$ throughout the chart.
+
+\begin{proposition}[Codimension of a pinned contact]\label{prop:codimension}
+At every positive parameter point where the inactive route gap has contact of order at least $m$, that contact locus has codimension $m-1$ in $\mathcal P$. It is the intersection of $\mathcal P$ with an affine subspace. Exact order $m$ is a relatively open condition in this locus. With the minimal $r=m+1$ bank edges there is at most one matching point in the specified chart.
+\end{proposition}
+\begin{proof}
+The normalised inverse difference has moments
+\begin{equation}
+ M_k(w)=\sum_{I_F}\frac{w_j}{r_F}u_j^k-
+        \sum_{I_G}\frac{w_j}{r_G}u_j^k.
+\end{equation}
+Here $M_0=0$ throughout $\mathcal P$. Analytic inversion and the nonzero coefficients $\binom{1/p}{k}$ show that contact at least $m$ is exactly $M_1=\cdots=M_{m-1}=0$, and exact order adds $M_m\ne0$.
+
+Suppose a linear combination of $dM_1,\ldots,dM_{m-1}$ vanishes on the tangent space of $\mathcal P$ at a matching point $w_*$. Its row is $\alpha\mathbf1_F+\beta\mathbf1_G$. Taking the scalar product with $w_*$ gives $\alpha r_F+\beta r_G=0$, so this row equals $c\,dM_0$. The signed, scaled Vandermonde rows of degrees $0,\ldots,m-1$ are independent. Thus the initial combination was zero and the restricted moment map has rank $m-1$. The contact equations are linear, proving the codimension and uniqueness assertions. Existence of a nonzero match itself forces $r\ge m+1$ by the Vandermonde argument.
+\end{proof}
+
+Successive inversion coefficients are related by nonzero triangular factors. Consequently the first $m-1$ route-gap jets are local coordinates transverse to this locus: small specified perturbations of these jets can be realised by small changes of positive physical congestion coefficients. In particular, away from a codimension-one subset of this pinned-tie chart, the first derivative of the gap is nonzero and the tie becomes transverse. This local statement complements Theorem~\ref{thm:generic}: it gives the codimension of the exact match in a chart of congestion coefficients.
+
+
+\subsection{A \texorpdfstring{$C^\infty$}{C-infinity} transition with every derivative continuous}
+
+\begin{proposition}\label{prop:flat}
+There is a three-edge, two-commodity example with positive $C^\infty$ costs satisfying $c'_e\ge1$ and $c''_e\ge2$ on $[0,\infty)$, in which the active regime strictly expands at $t=1$ and every equilibrium edge load, $E$, $S$ and $P$ is $C^\infty$ there.
+\end{proposition}
+\begin{proof}
+Define
+\begin{equation}
+ \psi(r)=\begin{cases}\sgn(r)e^{-1/r^2},&r\ne0,\\0,&r=0.\end{cases}
+\end{equation}
+The function is $C^\infty$, flat at zero and strictly increasing. With $q=r^{-2}$,
+\begin{equation}
+ |\psi''(r)|\le(4q^3+6q^2)e^{-q}
+ \le\frac{108}{e^3}+\frac{24}{e^2}<20.
+\end{equation}
+The last inequality follows already from $e>2$. Set
+\begin{equation}\label{eq:flatcosts}
+ g(z)=11z^2+z+2,\qquad
+ f(z)=g(z)+1+\psi(z-1),\qquad
+ h(z)=1+z+z^2.
+\end{equation}
+These are positive; their first derivatives are at least one and their second derivatives at least two. The inactive gap is $\psi(t-1)$, with the required sign change. The connector equation has partial derivative $-47$ in $x$ at $(1,0)$. The smooth implicit-function theorem gives a signed branch $\widetilde x(t)$, with the sign of $\psi(t-1)$, flat at $1$. One can see flatness either by differentiating the equation or by writing it as $\psi(t-1)=\widetilde x\,L(t,\widetilde x)$ with $L(1,0)=47$. The actual flow is zero on the left and $\widetilde x$ on the right, hence is $C^\infty$ through the active-route expansion. The other edge loads and $E$ are smooth compositions.
+
+For the physical social objective $J(t,y)$, defined as in Example~\ref{ex:cubic} with the present costs,
+\begin{equation}
+ J_y(t,0)=-\psi(t-1)-t\psi'(t-1).
+\end{equation}
+This is negative for all sufficiently small nonzero $t-1$ on either side. On the left the opposite of it is $e^{-1/\delta^2}(-1+2t/|\delta|^3)>0$; on the right it is positive directly. Since $J_{yy}>0$, the smooth unconstrained critical branch is positive off $1$, zero and flat at $1$, and feasible locally. It is therefore the actual unique optimum. Its value $S$ is smooth and positive, so $P=E/S$ is smooth too. At $1$, $S=E=29$ and $P-1$ is flat.
+\end{proof}
+
+The last example uses smooth, nonanalytic costs. The quartic family gives arbitrarily high finite regularity on different finite networks. Proposition~\ref{prop:flat} gives infinite regularity on one network with smooth but nonanalytic costs.
+

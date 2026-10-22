@@ -1,0 +1,400 @@
+{
+  "E_derivative_check": {
+    "E'(1)_central_diff": "32.8",
+    "E(1)": "20.0",
+    "expected": "164/5",
+    "label": "numerical",
+    "mp_dps": 60
+  },
+  "a_activation_table": {
+    "label": "numerical",
+    "mp_dps": 60,
+    "rows": [
+      {
+        "(E-E0)_over_delta5": "-0.991480981807",
+        "E": "20.331463419496792085",
+        "E0": "20.331463419595940183",
+        "E_minus_E0": "-9.91480981806534e-11",
+        "delta": "0.01",
+        "rel_cost_change_(E-E0)/E0": "-4.87658444129e-12",
+        "x": "6.33446081718704e-7",
+        "x_over_delta3": "0.633446081719",
+        "x_percent_of_A_demand": "1.56793584584e-5"
+      },
+      {
+        "(E-E0)_over_delta5": "-0.705441058047",
+        "E": "21.729981875715025142",
+        "E0": "21.729982096165355782",
+        "E_minus_E0": "-2.20450330639765e-7",
+        "delta": "0.05",
+        "rel_cost_change_(E-E0)/E0": "-1.01449844581e-8",
+        "x": "6.31208021839093e-5",
+        "x_over_delta3": "0.504966417471",
+        "x_percent_of_A_demand": "0.00150287624247"
+      },
+      {
+        "(E-E0)_over_delta5": "-0.475840651068",
+        "E": "23.657754905367581331",
+        "E0": "23.657759663774092015",
+        "E_minus_E0": "-4.75840651068429e-6",
+        "delta": "0.10",
+        "rel_cost_change_(E-E0)/E0": "-2.01135127684e-7",
+        "x": "0.000387735810494092",
+        "x_over_delta3": "0.387735810494",
+        "x_percent_of_A_demand": "0.00881217751123"
+      },
+      {
+        "(E-E0)_over_delta5": "-0.236607990177",
+        "E": "28.224989861551248439",
+        "E0": "28.225065576108105218",
+        "E_minus_E0": "-7.57145568567788e-5",
+        "delta": "0.20",
+        "rel_cost_change_(E-E0)/E0": "-2.68252899724e-6",
+        "x": "0.00192735053529857",
+        "x_over_delta3": "0.240918816912",
+        "x_percent_of_A_demand": "0.0401531361521"
+      }
+    ]
+  },
+  "b_hidden_activation_vs_tolerance": {
+    "label": "numerical",
+    "monotonicity_checked_on_grid": "delta=0.02..4.00 step 0.02",
+    "mp_dps": 60,
+    "note": "bisection, 60 halvings of [1e-6,4]",
+    "rows": [
+      {
+        "largest_delta_relcost_below_tau": "1.606156119",
+        "largest_delta_x_over_4t_below_tau": "0.1054425314",
+        "leading_order_estimate_cost": "0.2839331114",
+        "leading_order_estimate_x": "0.08411954329",
+        "tau": "1e-4"
+      },
+      {
+        "largest_delta_relcost_below_tau": "0.308205633",
+        "largest_delta_x_over_4t_below_tau": "0.04299655745",
+        "leading_order_estimate_cost": "0.179149682",
+        "leading_order_estimate_x": "0.03904483328",
+        "tau": "1e-5"
+      },
+      {
+        "largest_delta_relcost_below_tau": "0.1510850484",
+        "largest_delta_x_over_4t_below_tau": "0.01892374441",
+        "leading_order_estimate_cost": "0.1130358076",
+        "leading_order_estimate_x": "0.01812300622",
+        "tau": "1e-6"
+      }
+    ]
+  },
+  "c_social_optimum_t1": {
+    "KKT_residual": "1.09e-60",
+    "P1=E(1)/S(1)": "1.01199845798085",
+    "S1_direct": "19.76287596317500609069478",
+    "S1_scaling_V(gamma)/gamma": "19.76287596317500609069478",
+    "S1_scipy_SLSQP_double": "19.762875963175",
+    "abs_diff": "2.49e-60",
+    "label": "numerical",
+    "max|z_opt - z_eq(gamma)/gamma|": "1.56e-61",
+    "method_direct": "KKT of min sum z c(z): bank marginal costs a+5bz^4 equalised, connector marginal 1+5y^4; convex so KKT sufficient",
+    "mp_dps": 60,
+    "optimal_connector_load_t1": "0.00642952634569685",
+    "optimal_loads_F0_F2_G1_G3": [
+      "0.854419937119",
+      "3.13915053654",
+      "2.89392912154",
+      "1.11250040481"
+    ],
+    "path_marginal_costs": {
+      "A_direct": "4.66474403689054",
+      "A_via_connector": "4.66474403689054",
+      "B": "3.66474402834605"
+    }
+  },
+  "d_P5_jump_t1": {
+    "E5_jump_exact": "-2032128/15625",
+    "formula": "P^(5)(1+)-P^(5)(1-) = -5! K / S(1) (S analytic at 1 since optimum connector active on both sides; E jump -5!K)",
+    "label": "numerical",
+    "mp_dps": 60,
+    "value": "-6.5808332877431"
+  },
+  "e_near_match_kink": {
+    "definition": "connector cost 1+eps+x^4; J_E = t D'(t)^2/(F'(4t)+G'(4t)) at D(t_eps)=eps; E' drops by J_E",
+    "label": "numerical",
+    "mp_dps": 60,
+    "rows": [
+      {
+        "J_E_formula": "7.38494718516164e-12",
+        "J_E_over_E'(1)=32.8": "2.25150828816e-13",
+        "active_bank_edges_at_t_eps": {
+          "direct": 2,
+          "shared": 2
+        },
+        "asymptotic_(beta/2)m^2a^(2/m)|eps|^(2-2/m)": "7.43804318985485e-12",
+        "eps": "1e-9",
+        "eps_percent_of_connector_freeflow": "1.0e-7",
+        "fd_h": "1e-12 (second-order one-sided)",
+        "finite_difference_slope_jump_E'(t+)-E'(t-)": "-7.38494718516164e-12",
+        "formula_over_asymptotic": "0.992861562734",
+        "t_eps": "1.00123114671175"
+      },
+      {
+        "J_E_formula": "7.49154791684649e-12",
+        "J_E_over_E'(1)=32.8": "2.28400851123e-13",
+        "active_bank_edges_at_t_eps": {
+          "direct": 2,
+          "shared": 2
+        },
+        "asymptotic_(beta/2)m^2a^(2/m)|eps|^(2-2/m)": "7.43804318985485e-12",
+        "eps": "-1e-9",
+        "eps_percent_of_connector_freeflow": "-1.0e-7",
+        "fd_h": "1e-12 (second-order one-sided)",
+        "finite_difference_slope_jump_E'(t+)-E'(t-)": "-7.49154791684649e-12",
+        "formula_over_asymptotic": "1.00719338751",
+        "t_eps": "0.998771474943947"
+      },
+      {
+        "J_E_formula": "6.92495135059108e-8",
+        "J_E_over_E'(1)=32.8": "2.11126565567e-9",
+        "active_bank_edges_at_t_eps": {
+          "direct": 2,
+          "shared": 2
+        },
+        "asymptotic_(beta/2)m^2a^(2/m)|eps|^(2-2/m)": "7.43804318985485e-8",
+        "eps": "1e-6",
+        "eps_percent_of_connector_freeflow": "0.0001",
+        "fd_h": "1e-12 (second-order one-sided)",
+        "finite_difference_slope_jump_E'(t+)-E'(t-)": "-6.92495135059108e-8",
+        "formula_over_asymptotic": "0.931017899982",
+        "t_eps": "1.01243012718332"
+      },
+      {
+        "J_E_formula": "7.99203001620243e-8",
+        "J_E_over_E'(1)=32.8": "2.43659451713e-9",
+        "active_bank_edges_at_t_eps": {
+          "direct": 2,
+          "shared": 2
+        },
+        "asymptotic_(beta/2)m^2a^(2/m)|eps|^(2-2/m)": "7.43804318985485e-8",
+        "eps": "-1e-6",
+        "eps_percent_of_connector_freeflow": "-0.0001",
+        "fd_h": "1e-12 (second-order one-sided)",
+        "finite_difference_slope_jump_E'(t+)-E'(t-)": "-7.99203001620243e-8",
+        "formula_over_asymptotic": "1.07448018413",
+        "t_eps": "0.987832022854291"
+      },
+      {
+        "J_E_formula": "2.48566734388521e-5",
+        "J_E_over_E'(1)=32.8": "7.57825409721e-7",
+        "active_bank_edges_at_t_eps": {
+          "direct": 2,
+          "shared": 2
+        },
+        "asymptotic_(beta/2)m^2a^(2/m)|eps|^(2-2/m)": "3.45243382139598e-5",
+        "eps": "1e-4",
+        "eps_percent_of_connector_freeflow": "0.01",
+        "fd_h": "1e-12 (second-order one-sided)",
+        "finite_difference_slope_jump_E'(t+)-E'(t-)": "-2.48566734388521e-5",
+        "formula_over_asymptotic": "0.719975377509",
+        "t_eps": "1.05997418489151"
+      },
+      {
+        "J_E_formula": "4.83288454651917e-5",
+        "J_E_over_E'(1)=32.8": "1.47344041052e-6",
+        "active_bank_edges_at_t_eps": {
+          "direct": 2,
+          "shared": 2
+        },
+        "asymptotic_(beta/2)m^2a^(2/m)|eps|^(2-2/m)": "3.45243382139598e-5",
+        "eps": "-1e-4",
+        "eps_percent_of_connector_freeflow": "-0.01",
+        "fd_h": "1e-12 (second-order one-sided)",
+        "finite_difference_slope_jump_E'(t+)-E'(t-)": "-4.83288454651917e-5",
+        "formula_over_asymptotic": "1.3998485696",
+        "t_eps": "0.945666605688013"
+      },
+      {
+        "J_E_formula": "0.00385790083690697",
+        "J_E_over_E'(1)=32.8": "0.000117618927954",
+        "active_bank_edges_at_t_eps": {
+          "direct": 2,
+          "shared": 2
+        },
+        "asymptotic_(beta/2)m^2a^(2/m)|eps|^(2-2/m)": "0.0160247782741787",
+        "eps": "0.01",
+        "eps_percent_of_connector_freeflow": "1.0",
+        "fd_h": "1e-12 (second-order one-sided)",
+        "finite_difference_slope_jump_E'(t+)-E'(t-)": "-0.00385790083690697",
+        "formula_over_asymptotic": "0.240745972949",
+        "t_eps": "1.33036472407753"
+      },
+      {
+        "J_E_formula": "0.079210306548502",
+        "J_E_over_E'(1)=32.8": "0.00241494837038",
+        "active_bank_edges_at_t_eps": {
+          "direct": 2,
+          "shared": 2
+        },
+        "asymptotic_(beta/2)m^2a^(2/m)|eps|^(2-2/m)": "0.0160247782741787",
+        "eps": "-0.01",
+        "eps_percent_of_connector_freeflow": "-1.0",
+        "fd_h": "1e-12 (second-order one-sided)",
+        "finite_difference_slope_jump_E'(t+)-E'(t-)": "-0.079210306548502",
+        "formula_over_asymptotic": "4.94298923787",
+        "t_eps": "0.786759164989968"
+      },
+      {
+        "J_E_formula": "0.0275910022232437",
+        "J_E_over_E'(1)=32.8": "0.000841189092172",
+        "active_bank_edges_at_t_eps": {
+          "direct": 2,
+          "shared": 2
+        },
+        "asymptotic_(beta/2)m^2a^(2/m)|eps|^(2-2/m)": "0.345243382139598",
+        "eps": "0.1",
+        "eps_percent_of_connector_freeflow": "10.0",
+        "fd_h": "1e-12 (second-order one-sided)",
+        "finite_difference_slope_jump_E'(t+)-E'(t-)": "-0.0275910022232437",
+        "formula_over_asymptotic": "0.0799175412205",
+        "t_eps": "1.85445694039486"
+      },
+      {
+        "J_E_formula": "6.32147239263804",
+        "J_E_over_E'(1)=32.8": "0.192727816849",
+        "active_bank_edges_at_t_eps": {
+          "direct": 1,
+          "shared": 1
+        },
+        "asymptotic_(beta/2)m^2a^(2/m)|eps|^(2-2/m)": "0.345243382139598",
+        "eps": "-0.1",
+        "eps_percent_of_connector_freeflow": "-10.0",
+        "fd_h": "1e-12 (second-order one-sided)",
+        "finite_difference_slope_jump_E'(t+)-E'(t-)": "-6.32147239263804",
+        "formula_over_asymptotic": "18.3101913597",
+        "t_eps": "0.199125688819464"
+      }
+    ]
+  },
+  "exact_reference": {
+    "E'(1)": "164/5",
+    "E(1)": "20",
+    "E_minus_E0_series_delta^5..^6": [
+      "-84672/78125",
+      "19022976/1953125"
+    ],
+    "beta=q_F'(0)": "5/2",
+    "gap_a": "336/625",
+    "label": "exact",
+    "x_series_delta^3..^5": [
+      "84/125",
+      "-12516/3125",
+      "1207584/78125"
+    ]
+  },
+  "f_BPR": {
+    "convention": "c = a(1+0.15 (z/C)^4), C=(0.15 a/b)^(1/4)",
+    "label": "numerical",
+    "mp_dps": 60,
+    "rows": [
+      {
+        "capacity_C": "0.7400828045",
+        "congested_over_freeflow_t1": "1.5",
+        "edge": "F0",
+        "volume_over_capacity_t1": "1.351200155"
+      },
+      {
+        "capacity_C": "3.139905418",
+        "congested_over_freeflow_t1": "1.125",
+        "edge": "F2",
+        "volume_over_capacity_t1": "0.9554427922"
+      },
+      {
+        "capacity_C": "2.457108776",
+        "congested_over_freeflow_t1": "1.333333333",
+        "edge": "G1",
+        "volume_over_capacity_t1": "1.220947167"
+      },
+      {
+        "capacity_C": "1.012272234",
+        "congested_over_freeflow_t1": "1.142857143",
+        "edge": "G3",
+        "volume_over_capacity_t1": "0.9878765474"
+      },
+      {
+        "capacity_C": "0.6223329773",
+        "congested_over_freeflow_t1": "1.0",
+        "edge": "h",
+        "volume_over_capacity_t1": "0.0"
+      }
+    ]
+  },
+  "failures": [],
+  "g_per_commodity_costs": {
+    "A_cost_minus_inactive_continuation_leading": {
+      "coefficient_exact": "-168/625",
+      "numerical_ratio_delta=1e-3": "-0.2681027648",
+      "order": 3
+    },
+    "A_minus_B_cost_series_delta^0..3": [
+      "1",
+      "0",
+      "0",
+      "0"
+    ],
+    "B_cost_minus_inactive_continuation_leading": {
+      "coefficient_exact": "168/625",
+      "numerical_ratio_delta=1e-3": "0.2681024965",
+      "order": 3
+    },
+    "label": "exact+numerical",
+    "mp_dps": 60,
+    "smoothness": "per-commodity costs are C^2 but not C^3 at t=1 (jump in third derivative 6*coef)"
+  },
+  "global_connector_activity_scan": {
+    "D_min_on_[r2,1]": "-0.0556925858858552",
+    "G3_activation_t=3*2^(-1/4)/4": "0.630672311440286",
+    "argmin_t": "0.63067231144",
+    "consequence_for_eps<0": "for eps < D_min the near-1 activation point does not exist; the eps=-0.1 row is the low-demand activation at t~0.199, not a near-match kink",
+    "finding": "equilibrium connector is ALSO active for t in (r1, r2) (low-demand window): free-flow 1+3/2 < F-bank delay once F0 congests; x=0 only on [0,r1] and [r2,1]",
+    "label": "numerical",
+    "mp_dps": 60,
+    "r1": "0.21054978117050943937",
+    "r2": "0.583908879028685402",
+    "sample_t0.3_x_over_4t": "0.2830128169"
+  },
+  "h_link_flows_vs_aggregate": {
+    "aggregate": "E-E0 = -K delta^5: E is C^4 not C^5 while every link load and both commodity costs are only C^2",
+    "label": "exact+numerical",
+    "loads": {
+      "F0": {
+        "class": "C^2 not C^3",
+        "coefficient_exact": "-42/625",
+        "numerical_ratio_delta=1e-3": "-0.06694523799",
+        "order": 3
+      },
+      "F2": {
+        "class": "C^2 not C^3",
+        "coefficient_exact": "-378/625",
+        "numerical_ratio_delta=1e-3": "-0.6010650494",
+        "order": 3
+      },
+      "G1": {
+        "class": "C^2 not C^3",
+        "coefficient_exact": "252/625",
+        "numerical_ratio_delta=1e-3": "0.4011896572",
+        "order": 3
+      },
+      "G3": {
+        "class": "C^2 not C^3",
+        "coefficient_exact": "168/625",
+        "numerical_ratio_delta=1e-3": "0.2668206302",
+        "order": 3
+      },
+      "connector": {
+        "class": "C^2 not C^3",
+        "coefficient_exact": "84/125",
+        "order": 3
+      }
+    },
+    "mp_dps": 60
+  },
+  "status": "PASS"
+}

@@ -1,0 +1,72 @@
+{
+  "evidence_type": "Floating-point numerical illustration, not a proof",
+  "cost_evaluation": "Independent macro Wardrop solutions with and without connector; no asymptotic formula used for computed costs",
+  "dimensions_inches": [
+    12.8,
+    7.2
+  ],
+  "png_dpi": 200,
+  "png_pixels": [
+    2560,
+    1440
+  ],
+  "flow_samples": 251,
+  "cost_samples": 65,
+  "flow_range_t": [
+    0.8,
+    1.3
+  ],
+  "cost_range_delta": [
+    0.02,
+    0.15
+  ],
+  "physical_edge_order": [
+    "f1",
+    "f2",
+    "g1",
+    "g2",
+    "h"
+  ],
+  "edge_free_flow_constants": [
+    2.0,
+    2.6666666666666665,
+    1.5,
+    1.75,
+    1.0
+  ],
+  "edge_quartic_coefficients": [
+    1.0,
+    0.00411522633744856,
+    0.006172839506172839,
+    0.25,
+    1.0
+  ],
+  "activation_threshold": 1.0,
+  "connector_cubic_coefficient_exact": "84/125",
+  "cost_fifth_power_coefficient_exact": "84672/78125",
+  "cost_fifth_power_coefficient_float": 1.0838016,
+  "minimum_computed_cost_reduction": 2.9072140250718803e-09,
+  "endpoint_reduction_over_reference": [
+    0.8382570969031256,
+    0.30541099738197997
+  ],
+  "plotted_data_files": [
+    "smooth_transition_flow.csv",
+    "smooth_transition_cost.csv"
+  ],
+  "figure_files": [
+    "smooth_transition.png",
+    "smooth_transition.pdf"
+  ],
+  "colours": {
+    "plum": "#6C3569",
+    "teal": "#367E78",
+    "ochre": "#AE8238",
+    "coral": "#C7654D"
+  },
+  "versions": {
+    "numpy": "2.4.4",
+    "scipy": "1.17.1",
+    "matplotlib": "3.10.8"
+  }
+}

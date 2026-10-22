@@ -1,0 +1,105 @@
+\section{Question 1: smoothness inside a fixed regime}\label{fr:section}
+
+This section shows that the zero slope of BPR costs at zero load does no harm while the regime is fixed. The difficulty is a link with zero load and zero cost slope. Nothing in its cost prevents its load from starting to move at first order, so we must show that it does not.
+
+\begin{theorem}[Fixed-regime regularity]\label{fr:theorem}
+Consider a network with finite prescribed route sets and an open parameter interval $I$. Let every demand $\mu_k:I\to[0,\infty)$ be $C^1$. Suppose every edge cost $c_e:[0,\infty)\to[0,\infty)$ is $C^1$ and
+\[
+ c'_e(z)>0\quad(z>0),
+\]
+while $c'_e(0)$ may vanish. If the complete minimum-route regime (Definition~\ref{def:regime}), including the cheapest routes of commodities with zero demand, is constant on $I$, then the equilibrium edge-load map is $C^1$ on $I$. Consequently the edge costs, the commodity costs and $E$ are $C^1$ on $I$. If moreover each $z\mapsto zc_e(z)$ is strictly convex, then $S$ is $C^1$ on $I$, and $P$ is $C^1$ wherever $S>0$.
+\end{theorem}
+
+The theorem covers $c_e(z)=a_e+b_ez^{p_e}$ with $a_e\ge0$, $b_e>0$ and edge-specific real $p_e>1$. It needs neither proportional demand, nor a common power, nor analyticity, and it allows the zero-load edges to contain undirected cycles.
+
+\emph{Relation to earlier results.} CDS Theorem~3.2 assumes $c_e'>0$ everywhere. Their Remark~3.5(b) allows zero slopes on edges that contain no undirected cycle. Theorem~\ref{fr:theorem} drops that condition when the zero slopes occur at zero load. Classical sensitivity analysis \cite{TobinFriesz1988,QiuMagnanti1989,Patriksson2004,Lu2008} gives directional derivatives at a fixed demand under strict monotonicity, but it does not give continuity of the derivative when the cost slopes on the path tend to zero. Wang, Shao and Wu \cite{WSW2026} obtain $C^1$ regularity of $E$ and $P$ on interiors of regions with fixed positive support, through the Beckmann value function, with no slope condition. Their cellwise result for edge costs and loads (their Theorem~3) assumes that every cost has positive slope everywhere or is constant, which excludes BPR costs with $c'(0)=0$. Their results are also stated on full-dimensional interiors of demand regions, so they do not cover the boundary-sliding curves of CDS Remark~3.5(a) or vanishing demands. Theorem~\ref{fr:theorem} covers all three.
+
+\emph{Idea of the proof.} All routes in the regime cost the same at every $t$, so every equilibrium cost vector is orthogonal to the space of demand-preserving load changes. Summing finitely many of these vectors gives a fixed vector that is strictly positive on every edge that is ever used. Pairing it with the load change shows that zero-load edges cannot move at first order, because their loads cannot become negative from either side. A uniform bound for weighted least-squares problems then controls the derivative as the cost slopes tend to zero.
+
+\begin{lemma}[A bound independent of diagonal weights]\label{fr:weighted}
+For a fixed real matrix $M$ there is $C_M<\infty$ such that, for every positive diagonal matrix $W_D$ and every $r\in\operatorname{range}(M)$, the unique minimiser of $\min\{u^TW_Du:\ Mu=r\}$ satisfies $\|u\|\le C_M\|r\|$. One constant serves simultaneously for every column restriction of $M$.
+\end{lemma}
+This bound goes back to Stewart \cite{Stewart1989}. Forsgren \cite{Forsgren1996} reviews it, and we give the short proof for completeness.
+\begin{proof}
+Suppose first that $M$ has full row rank $k$, and put $W=W_D^{-1}$. For each $k$-column set $J$ with $\det M_J\ne0$, let $u^J$ be supported on $J$ with $u^J_J=M_J^{-1}r$. Cramer's rule and the Cauchy--Binet formula give
+\begin{equation}\label{fr:basis_average}
+ u=WM^T(MWM^T)^{-1}r=\sum_J\pi_Ju^J,
+ \qquad
+ \pi_J=\frac{\det(M_J)^2\prod_{j\in J}W_{jj}}{\sum_L\det(M_L)^2\prod_{l\in L}W_{ll}}.
+\end{equation}
+The coefficients form a convex combination, so $C_M=\max_J\|M_J^{-1}\|$ works. If $M$ has dependent rows, keep an independent subset of rows. Since $r$ lies in the range, the reduced equations are equivalent, and the restricted right-hand side has no larger norm. If the rank is zero, the minimiser is zero. There are finitely many column restrictions, so the maximum of their constants proves the final assertion.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{fr:theorem}]
+Let $R$ be the constant regime and $\Kc=\Kc_R$. Choose a full-row-rank matrix $\Theta$ with $\ker\Theta=\Kc$. For each commodity $k$ choose one route $P_k\in R_k$, and let column $k$ of a matrix $\Theta_\mu$ be $\Theta1_{P_k}$. Every other route in $R_k$ has the same image under $\Theta$. Equilibrium loads are supported on routes of $R$, so
+\begin{equation}\label{fr:affine}
+ \Theta z(t)=\Theta_\mu\mu(t)=:b(t),\qquad c(z(t))\perp\Kc.
+\end{equation}
+
+\emph{Continuity.} Strictly increasing costs give unique equilibrium edge loads. Write each commodity's route flows as its demand times a vector in a fixed simplex, choosing an arbitrary vector when the demand is zero. Every limit point of equilibrium minimisers minimises the limiting Beckmann problem, and uniqueness identifies the limit. Hence $z$ is continuous.
+
+\emph{A positive annihilator.} Let $\mathcal U=\bigcup_{t\in I}\{e:z_e(t)>0\}$ be the set of edges that are ever used. If $\mathcal U$ is empty the loads vanish identically. Otherwise choose, for each $e\in\mathcal U$, a time $t_e\in I$ with $z_e(t_e)>0$, and put
+\begin{equation}\label{fr:positive_annihilator}
+ \bar c=\sum_{e\in\mathcal U}c(z(t_e)).
+\end{equation}
+Every summand annihilates $\Kc$. Since costs are nonnegative and strictly increasing, $\bar c_e\ge c_e(z_e(t_e))>c_e(0)\ge0$ for $e\in\mathcal U$. Edges outside $\mathcal U$ have zero load throughout.
+
+\emph{Pointwise differentiability.} Fix $s\in I$ and put $z_0=z(s)$, $c_0=c(z_0)$, $J_+=\{e:z_{0,e}>0\}$ and $J_0=\mathcal U\setminus J_+$. Choose an equilibrium route flow at $s$. For a commodity with $\mu_k(s)>0$, keep its route proportions from this flow. For a commodity with $\mu_k(s)=0$ that is positive somewhere on $I$, keep the route proportions of an equilibrium at one such time. A commodity with identically zero demand contributes nothing. Multiplying these fixed proportions by $\mu_k(t)$ gives a feasible $C^1$ comparison load $y(t)$ on $R$, supported on $\mathcal U$. A nonnegative $C^1$ function has zero derivative wherever it vanishes at an interior point, so $\mu_k'(s)=0$ when $\mu_k(s)=0$. Therefore
+\[
+ y(s)=z_0,\qquad y_{J_0}(t)=o(|t-s|),\qquad y_e(t)=0\ (e\notin\mathcal U).
+\]
+For $\delta=t-s$, $w=z(t)-z_0$ and $u=y(t)-z_0$ we have $w-u\in\Kc$, so
+\begin{equation}\label{fr:comparison}
+ [c(z(t))-c_0]^Tw=[c(z(t))-c_0]^Tu,
+ \qquad \bar c^Tw=\bar c^Tu.
+\end{equation}
+Write $X=\|w_{J_+}\|$ and $Y=\|w_{J_0}\|$. Since $\bar c$ is strictly positive on $\mathcal U$, $w_{J_0}\ge0$ and $u=O(|\delta|)$, the second identity gives $Y\le C(X+|\delta|)$. On $J_+$ the cost slopes are bounded below by some $c_*>0$ near $z_0$. Costs are monotone on $J_0$ and locally Lipschitz everywhere, so the first identity gives
+\[
+ c_*X^2\le C|\delta|X+o(|\delta|)\,Y\le C'|\delta|X+o(\delta^2).
+\]
+Thus $X=O(|\delta|)$, and then $Y=O(|\delta|)$. If $J_+$ is empty, the second identity alone bounds $Y$. Hence $w=O(|\delta|)$ in all cases.
+
+Put $D=\diag(c'_e(z_{0,e}))$ and $q=y'(s)$. Every limit point $v$ of $w/\delta$ lies in $q+\Kc$ and satisfies $Dv\perp\Kc$. These are the optimality conditions for minimising the semidefinite form $v^TDv$ over $q+\Kc$, so $Dv$, and hence $v_{J_+}$, has a unique value $v^0_{J_+}$. The second identity in \eqref{fr:comparison} gives
+\begin{equation}\label{fr:zero_sign}
+ \sum_{e\in J_0}\bar c_e\frac{w_e}{\delta}\longrightarrow \bar c^Tq-\bar c_{J_+}^Tv^0_{J_+}.
+\end{equation}
+The left side is nonnegative for $\delta>0$ and nonpositive for $\delta<0$. The two one-sided limits are equal, so both are zero. Positivity of $\bar c$ on $J_0$ then gives $w_{J_0}/|\delta|\to0$. All limit velocities therefore coincide, $z$ is differentiable at $s$, and its derivative $v(s)$ satisfies
+\begin{equation}\label{fr:derivative}
+ v_e(s)=0\ \text{if }z_e(s)=0,
+ \qquad \Theta v(s)=b'(s),\qquad D(s)v(s)\perp\Kc.
+\end{equation}
+
+\emph{Continuity of the derivative.} For each $t$ let $\mathcal J(t)=\{e:z_e(t)>0\}$. The derivative vanishes outside $\mathcal J(t)$. On $\mathcal J(t)$ the matrix $D_{\mathcal J(t)}(t)$ is positive definite, and \eqref{fr:derivative}, tested against vectors of $\Kc$ supported on $\mathcal J(t)$, shows that $v_{\mathcal J(t)}(t)$ minimises $u^TD_{\mathcal J(t)}(t)u$ subject to $\Theta_{\mathcal J(t)}u=b'(t)$. Lemma~\ref{fr:weighted}, applied uniformly over the finitely many possible sets $\mathcal J(t)$, gives $\|v(t)\|\le C\|b'(t)\|$.
+
+Fix $s$ and the sets $J_+$, $J_0$ again. Every limit point $v^*$ of $v(t)$ as $t\to s$ satisfies $\Theta v^*=b'(s)$ and $D(s)v^*\perp\Kc$, and so does $v(s)$. Their difference has zero $D(s)$-seminorm. Since $D(s)$ is positive on $J_+$,
+\begin{equation}\label{fr:positive_limit}
+ v_{J_+}(t)\longrightarrow v_{J_+}(s).
+\end{equation}
+Next, $r(t):=b'(t)-\Theta_{J_+}v_{J_+}(t)=\Theta_{J_0}v_{J_0}(t)\to0$, by \eqref{fr:positive_limit}, continuity of $b'$ and $v_{J_0}(s)=0$. Put $J=\mathcal J(t)\cap J_0$. The derivative vanishes on $J_0\setminus J$, and the same restricted stationarity shows that $v_J(t)$ is the weighted minimum-norm solution of $\Theta_Jv_J=r(t)$. A second application of Lemma~\ref{fr:weighted}, now to the finitely many subsets of $J_0$, gives $\|v_{J_0}(t)\|\le C\|r(t)\|\to0$. With \eqref{fr:positive_limit} this proves continuity of $v=z'$.
+
+\emph{Consequences.} Edge costs are $C^1$ compositions. One fixed route in $R_k$ gives the cost of commodity $k$ throughout $I$, so commodity costs and $E=\sum_e z_ec_e(z_e)$ are $C^1$. Under the strict convexity assumption, Proposition~\ref{prop:Sregular} with $g_e(z)=zc_e(z)$ shows that $S$ is $C^1$ on $I$. This uses the same route sets as the equilibrium and needs no assumption on the regime. The quotient rule gives the claim for $P$.
+\end{proof}
+
+The two uses of Lemma~\ref{fr:weighted} play different roles. The first bounds the derivative even as positive cost slopes tend to zero. The second forces the derivatives on edges with vanishing load to tend to zero. Pointwise differentiability and bounded derivatives alone would not give $C^1$ regularity.
+
+\subsection{The endpoint}
+
+CDS Theorem~3.2 allows the reference point $t_0=0$, with a one-sided neighbourhood. At that endpoint the extension fails in general. The example adapts the logarithmically oscillating parallel-edge construction of \cite[Section~3.2]{CB2020}.
+
+\begin{proposition}[Endpoint obstruction]\label{fr:endpoint}
+The conclusion of Theorem~\ref{fr:theorem} can fail at a one-sided endpoint of the parameter interval, even with positive free-flow costs and a regime that is constant up to that endpoint.
+\end{proposition}
+\begin{proof}
+Take two parallel edges with demand $\mu(t)=t$, $t\ge0$, and costs
+\[
+ c_1(x)=1+x^2(2+\sin(\log x)),\qquad c_2(x)=1+x^2\quad(x>0),
+ \qquad c_1(0)=c_2(0)=1.
+\]
+Both costs are $C^1$ at zero with zero derivative there. For $x>0$,
+\[
+ c_1'(x)=x(4+2\sin(\log x)+\cos(\log x))\ge(4-\sqrt5)x>0,\qquad c_2'(x)=2x>0.
+\]
+Both edges carry flow for $t>0$, and both routes are cheapest at $t=0$, so the regime is constant. Writing $x=z_1(t)$, equal costs give $z_2(t)=x\sqrt{2+\sin(\log x)}$. For any phase $\theta$ put $x_n=\exp(\theta-2\pi n)$ and $t_n=x_n(1+\sqrt{2+\sin\theta})$. Then $t_n\downarrow0$ and $z_1(t_n)/t_n=(1+\sqrt{2+\sin\theta})^{-1}$. Different phases give different limits, so $z_1$ has no right derivative at $0$.
+\end{proof}
+
+Subtracting $1$ from both costs gives the same conclusion with zero free-flow costs. Adding a separate commodity with constant demand one on its own edge of cost $1+x^2$ keeps the irregular loads while making total demand and optimal cost positive at the endpoint. The costs here oscillate and are not of BPR form. \emph{Whether CDS Theorem~3.2 extends to BPR costs at the endpoint $t_0=0$ remains open.}

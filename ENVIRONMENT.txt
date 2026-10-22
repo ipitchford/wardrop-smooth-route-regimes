@@ -1,0 +1,7 @@
+Authoring and replay environment (22 October 2026)
+OS: macOS (Apple silicon)
+Python 3.13; tested numerical package versions in requirements-numerics.txt (mpmath, numpy, scipy, matplotlib); sympy for the two symbolic programs
+LaTeX: pdfLaTeX (TeX Live), two passes; bibliography pre-generated as paper/bibliography.tex by tools/make_bibliography.py (no BibTeX run)
+verify_all.py copies the package (without paper/) to a temporary directory, reruns every program there and compares every generated record byte for byte with the supplied copy.
+The Sioux Falls step needs the third-party data, fetched by `python3 tools/fetch_siouxfalls.py` (SHA-256 checked); it is skipped by `verify_all.py --quick`.
+Byte identity of outputs was confirmed on the authoring machine and in a separate clean replay; other library versions may change the last rounded digit of floating-point outputs and figure bytes. The exact checks do not depend on floating-point details.

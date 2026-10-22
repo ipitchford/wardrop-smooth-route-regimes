@@ -1,0 +1,29 @@
+\section{Verification code}\label{app:verification}
+
+The proofs in this paper are analytic. The accompanying code confirms constants and guards against implementation errors; it does not replace any proof. Table~\ref{tab:verifiers} lists the programs. ``Exact'' programs use only Python's \texttt{fractions} module (and, where stated, \texttt{sympy} with rational arithmetic). ``Numerical'' programs use \texttt{mpmath} at 50--60 significant digits, or double precision where stated, and their output is not a certificate. Every program writes a deterministic JSON record. The script \texttt{verify\_all.py} reruns all of them and compares each record byte for byte with the supplied copy.
+
+\begin{table}[htbp]
+\centering\small
+\begin{tabularx}{\linewidth}{@{}l>{\raggedright\arraybackslash}Xl@{}}
+\toprule
+Program & What it checks & Type\\
+\midrule
+\texttt{verify\_exact.py} & series of the family for $m=1,3,5,7$, $p=4$; constants $a$, $k_x$, $k_E$; transverse and perturbed controls & exact\\
+\texttt{verify\_small\_examples.py} & cubic triangle; mixed-exponent contraction; bank-swapped five-link contraction & exact\\
+\texttt{verify\_optimum\_transition.py} & $V-V_0=-k_E\delta^{2m}/(2m)$ for $m=3,5$; interval proof that $E$ is analytic near $1/\gamma$; constants of Theorem~\ref{thm:optimumtransition} & exact; numerical\\
+\texttt{verify\_practice.py} & Section~\ref{sec:practice} tables; $S(1)$ by direct optimisation; near-match kinks; capacities & numerical\\
+\texttt{verify\_two\_contacts.py} & eight-link double contact and two further networks; confluent moment identities & exact\\
+\texttt{verify\_multicontact\_reconstruction.py} & independent reconstruction of the six contact expansions & exact\\
+\texttt{verify\_transversality.py} & asymmetric demand rays; codimension matrices; transverse paths; demand-ratio prefactor & exact\\
+\texttt{verify\_small\_network\_identities.py} & bank curvature identity; enumeration of three-vertex four-edge graphs & exact\\
+\texttt{verify\_minimality.py} & route-space classification of Lemma~\ref{lem:routespaces}; curvature identity; reversal symmetry & exact\\
+\texttt{verify\_weighted\_basis.py} & the convex-combination identity \eqref{fr:basis_average} & exact\\
+\texttt{numerical\_demo.py}, \texttt{plot\_results.py} & five-link curves and the scaling formula for $S$ & numerical\\
+\texttt{sioux\_falls.py} & Sioux Falls scan of Section~\ref{sec:sioux} & exploratory\\
+\bottomrule
+\end{tabularx}
+\caption{Verification programs.}
+\label{tab:verifiers}
+\end{table}
+
+The finite graph enumerations check steps of the classification in Appendix~\ref{app:minimality}; they are not a substitute for it. Numerical estimates of high derivatives near a transition are unreliable because of cancellation, which is why the derivative jumps are identified from exact series.

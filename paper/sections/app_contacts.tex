@@ -1,0 +1,298 @@
+\section{Several contacts in the two-bank architecture}\label{app:contacts}\label{mc:section}
+
+This appendix counts how many high-order contacts two banks can have and constructs networks with any prescribed finite pattern of them. All statements concern the two-bank architecture. The analytic ingredients are classical Chebyshev systems and Hermite interpolation; the contribution of this section is their physical routing realisation, including positive edge costs, unrestricted directed paths, global bank activity and regularity of the physical optimum. The demand coefficients need not be equal.
+
+\subsection{The local contact law}
+
+The cancellation \eqref{eq:Ecancel} does not need equal commodity demands. The following local statement is used for the contraction of Section~\ref{sec:fiveedge}, for the demand-ratio unfolding and for the repeated transitions below.
+
+\begin{proposition}[Local contact law]\label{prop:localcontact}
+Let two fully active parallel banks have analytic effective delays $F,G$ near reference totals $r_Ft_0,r_Gt_0$, where $r_F,r_G,t_0>0$. Give the connector either an analytic nondecreasing cost near zero, or $h(x)=h_0+c x^p$ with $c>0,p>1$. Put
+\begin{equation}\label{eq:generalcontact}
+ \Delta(t)=F(r_Ft)-G(r_Gt)-h(0),\qquad
+ L_0=F'(r_Ft_0)+G'(r_Gt_0)+h'(0)>0.
+\end{equation}
+Suppose $\Delta(t)=d(t-t_0)^m+O((t-t_0)^{m+1})$, where $d\ne0$ and $m$ is odd. Write $\sigma=\sgn d$, $\delta=t-t_0$, and $\tau=\sigma\delta$. The connector is positive exactly on the side $\tau>0$, and there
+\begin{align}
+ x(t)&=\frac{|d|}{L_0}\tau^m+o(\tau^m),\label{eq:generalflow}\\
+ E(t)-E_0(t)&=-\sigma\frac{t_0m d^2}{L_0}\tau^{2m-1}+o(\tau^{2m-1}),\label{eq:generalcost}\\
+ E_0(t)&=r_FtF(r_Ft)+r_GtG(r_Gt).\nonumber
+\end{align}
+On the other side $x=0$ and $E=E_0$. The remainders have derivative control, so $x\in C^{m-1}\setminus C^m$ and $E\in C^{2m-2}\setminus C^{2m-1}$. The right-minus-left aggregate derivative jump of order $2m-1$ is
+\begin{equation}\label{eq:generaljump}
+ -\sigma(2m-1)!\frac{t_0m d^2}{L_0}.
+\end{equation}
+If the physical optimal cost is positive and $C^{2m-1}$ near $t_0$, the same regularity holds for $P$, with this jump divided by $S(t_0)$.
+\end{proposition}
+\begin{proof}
+The connector residual is $F(r_Ft-x)-G(r_Gt+x)-h(x)$, with derivative $-L_0$ at $(t_0,0)$. Its positive root has the first term in \eqref{eq:generalflow}; the sign of $\Delta$ decides whether the root is feasible. At an active equilibrium,
+\begin{equation}
+ E(t)=r_FtF(r_Ft-x)+r_GtG(r_Gt+x).
+\end{equation}
+Taylor expansion gives
+\begin{equation}\label{eq:raycancellation}
+ E-E_0=-t\{r_FF'(r_Ft)-r_GG'(r_Gt)\}x+O(x^2)
+       =-t\Delta'(t)x+O(x^2).
+\end{equation}
+This proves the coefficient in \eqref{eq:generalcost}. For analytic $h$, the signed branch and remainders are analytic. For $h=h_0+cx^p$, divide the residual by $\tau^m$ and write
+\begin{equation}
+ x=\tau^m U(\tau,\tau^{m(p-1)}),\qquad
+ E-E_0=\tau^{2m-1}V(\tau,\tau^{m(p-1)}),
+\end{equation}
+with $U,V$ analytic and the displayed nonzero leading constants. The implicit-function derivative in $U$ is $-L_0$. Lemma~\ref{lem:remainder} proves the asserted differentiability, including the noninteger-power case. The quotient rule at order $2m-1$ gives the statement for $P$.
+\end{proof}
+
+\begin{corollary}[Every positive demand proportion]\label{prop:unequal}
+For every $r_F,r_G>0$, the conclusions of Theorem~\ref{thm:main} hold with demands $(r_Ft,r_Gt)$ on the same $m+2$-edge topology, after replacing the original branch operating loads $w_j$ by $r_Fw_j/N$ in $F$ and $r_Gw_j/N$ in $G$. The gap coefficient $a$ is unchanged, and
+\begin{equation}
+ k_{x;r_F,r_G}=\frac{r_Fr_G\beta}{N(r_F+r_G)}a,
+ \qquad k_{E;r_F,r_G}=m a\,k_{x;r_F,r_G}.
+\end{equation}
+\end{corollary}
+\begin{proof}
+The scaled bank delays are $F_{r_F}(T)=F(NT/r_F)$ and $G_{r_G}(T)=G(NT/r_G)$, so their inactive gap on this ray is the original $\Delta(t)$. Their total curvature is $L_0=(N/\beta)(1/r_F+1/r_G)$. The residual at $x=0$ is positive for $t>1$, whereas at $x=r_F(t-1)$ the direct delay is $3$ and the shared delay is greater than $2$. Thus $0<x<r_F(t-1)$; both banks stay above their reference loads for all $t>1$. Proposition~\ref{prop:localcontact} and the physical scaling \eqref{eq:optflow} now give every assertion, including analytic $S$.
+\end{proof}
+
+
+\subsection{A zero budget and its equality cases}
+
+Suppose the two fully active banks have demands $r_Ft,r_Gt$, with $r_F,r_G>0$, and tie at $t=1$. Write their reference delays as $\ell_F=\ell_G+h_0$. An edge with reference load $w>0$ and congestion contribution $b_ew^p=1/u$ contributes $w(1+us)^{1/p}$ to its bank throughput at an additional delay $s$. With $\alpha=1/p$, normalise the inverse bank curves by their demand coefficients:
+\begin{equation}\label{mc:normalise}
+ Q_F(s)=q_F(s)/r_F,\quad Q_G(s)=q_G(s)/r_G,\quad
+ \mathcal H(s)=Q_F(s)-Q_G(s)=\sum_{i=0}^{r-1}v_i(1+u_is)^\alpha.
+\end{equation}
+Let $U$ be the largest physical node before cancellation, so the common fully active latency interval is $I_{\rm phys}=(-1/U,\infty)$. Merge equal nodes and cancel zero net coefficients. If no node remains, $\mathcal H\equiv0$ and there is no isolated contact in this chart. Otherwise $0<u_0<\cdots<u_{r-1}$ and every $v_i\ne0$. The difference $\mathcal H$ extends to $I=(-1/u_{r-1},\infty)\supseteq I_{\rm phys}$; its correspondence with the physical inverse curves is used only on $I_{\rm phys}$.
+
+\begin{lemma}[Classical fractional-power zero bound]\label{mc:chebyshev}
+Every nonzero linear combination of $r$ functions $(1+u_is)^\alpha$, with distinct positive $u_i$ and $0<\alpha<1$, has at most $r-1$ zeros on $I$, counted with multiplicity.
+\end{lemma}
+\begin{proof}
+The initial Wronskians have the explicit factorisation
+\begin{equation}\label{mc:wronskian}
+ W(\phi_0,\ldots,\phi_{n-1})(s)
+ =\left(\prod_{k=0}^{n-1}(\alpha)_{\underline{k}}\right)
+ \left(\prod_{i<j<n}(u_j-u_i)\right)
+ \prod_{i=0}^{n-1}(1+u_is)^{\alpha-n+1}\ne0,
+\end{equation}
+where $(\alpha)_{\underline{k}}=\alpha(\alpha-1)\cdots(\alpha-k+1)$ and the empty product is one. Indeed, factor $(1+u_is)^\alpha$ from column $i$ and $(\alpha)_{\underline{k}}$ from row $k$, leaving a Vandermonde determinant in $u_i/(1+u_is)$. The standard extended-Chebyshev criterion gives the zero bound; see \cite[Theorem 2.1]{GLT2012}.
+
+For a direct proof of this special case, allow any noninteger exponent $\beta$ and divide $f(s)=\sum_{i=1}^n c_i(1+u_is)^\beta$ by its first basis function. Then
+\begin{equation}
+ \left(\frac{f}{(1+u_1s)^\beta}\right)'
+ =\beta(1+u_1s)^{-\beta-1}
+ \sum_{i=2}^n c_i(u_i-u_1)(1+u_is)^{\beta-1}.
+\end{equation}
+Induction on $n$, followed by Rolle's theorem with multiplicities on a compact interval containing any proposed zeros, gives at most $n-1$ zeros. The exponent remains noninteger at every step and the one-term base case has no zero.
+\end{proof}
+
+\begin{proposition}[Contact budget and maximal-contact classification]\label{mc:budget}
+Unless $\mathcal H\equiv0$, the isolated zeros of
+\begin{equation}
+ \Delta(t)=F(r_Ft)-G(r_Gt)-h_0
+\end{equation}
+for which both inactive bank equilibria are fully active have total multiplicity at most $r-1$. Consequently, contacts of orders $m_1,\ldots,m_\ell$ require at least $1+\sum_jm_j$ physical bank edges, or $2+\sum_jm_j$ edges including the connector.
+
+A nonzero $r$-node difference has contact order $r-1$ at $s=0$ if and only if
+\begin{equation}\label{mc:barycentric}
+ v_i=\frac{C}{\prod_{k\ne i}(u_i-u_k)},\qquad C\ne0.
+\end{equation}
+This is its only zero on $I$. If exactly $r$ physical bank edges attain that contact order, their nodes are distinct and their bank assignments alternate in increasing node order; their reference loads divided by the corresponding demand coefficients are proportional to the absolute weights in \eqref{mc:barycentric}.
+\end{proposition}
+\begin{proof}
+A tie corresponds exactly to $t=Q_F(s)=Q_G(s)$. To check its multiplicity, put $d(s)=\Delta(Q_G(s))$. Near a tie,
+\begin{equation}\label{mc:unit}
+ -\mathcal H(s)=Q_F(s+d(s))-Q_F(s)
+ =d(s)\int_0^1Q_F'(s+\theta d(s))\dd\theta.
+\end{equation}
+The integral is a positive analytic unit, and $Q_G'>0$. Thus the zero orders agree. Lemma~\ref{mc:chebyshev} proves the budget, and the number of surviving nodes cannot exceed the number of physical edges.
+
+Contact order $r-1$ means $\sum_i v_iu_i^k=0$ for $0\le k<r-1$, because the binomial coefficients are nonzero. The $(r-1)\times r$ Vandermonde matrix has a one-dimensional nullspace. Its standard barycentric null vector is \eqref{mc:barycentric}: compare the leading coefficient in the Lagrange interpolant of $u^k$. Its degree-$(r-1)$ moment equals $C\ne0$, so the contact is exact. The zero bound excludes any further zero. Ordered real barycentric weights alternate in sign. With exactly $r$ physical edges there can be no duplicate or cancelled node, proving the equality classification.
+\end{proof}
+
+The weights in \eqref{mc:barycentric} and their moment identities are classical interpolation formulas \cite{BT2004,deBoor2005}. The statement is a routing equality classification, not a new barycentric identity. The count concerns fully active banks and does not assert a global lower bound over arbitrary graph topologies. An isolated sign-changing analytic contact is odd, so the five-link example is the first nontransverse case of Proposition~\ref{mc:budget}.
+
+\subsection{Synthesis of any finite pattern of high-order contacts}
+
+\begin{theorem}[Sharp synthesis of prescribed latency contacts]\label{mc:synthesis}
+Fix $p>1$, positive $r_F,r_G$, and odd integers $m_1,\ldots,m_\ell\ge3$. Put $M=\sum_jm_j$ and choose any $M+1$ distinct positive nodes $u_0<\cdots<u_M$ and offsets
+\begin{equation}
+ 0=s_1<s_2<\cdots<s_\ell.
+\end{equation}
+There is an explicit three-vertex, two-commodity network with $M+2$ edges of positive costs $a_e+b_ez^p$ and demands $r_Ft,r_Gt$ such that:
+\begin{enumerate}[label=(\roman*),nosep]
+\item Its bank edges remain positively loaded for all $t\ge1$. The connector transitions for $t\ge1$ occur exactly at $1=t_1<\cdots<t_\ell$, with $t_j=Q_F(s_j)=Q_G(s_j)$, alternating between contraction and expansion. The final transition may be prescribed as either type.
+\item At $t_j$, connector flow lies in $C^{m_j-1}\setminus C^{m_j}$ and equilibrium total cost in $C^{2m_j-2}\setminus C^{2m_j-1}$.
+\item If $t_\ell<\gamma=(p+1)^{1/p}$, the physical optimal cost is positive analytic near every $t_j$, and the price of anarchy has the same exact regularity as equilibrium total cost. The explicit sufficient condition $u_Ms_\ell<p$ guarantees this inequality.
+\end{enumerate}
+The edge count is minimal within the two-bank architecture for the prescribed full-bank contact multiplicities.
+\end{theorem}
+\begin{proof}
+Form the $M\times(M+1)$ confluent matrix
+\begin{equation}\label{mc:matrix}
+ A_{(j,k),i}=\left.\frac{\mathrm d^k}{\mathrm ds^k}(1+u_is)^\alpha\right|_{s=s_j},
+ \qquad 0\le k<m_j,
+\end{equation}
+with rows ordered by $j$ and then $k$. Every maximal minor is nonzero: a dependence among its $M$ columns would give a nonzero combination with $M$ zeros counted with multiplicity, contradicting Lemma~\ref{mc:chebyshev}.
+
+All these minors have the same sign. Fix an ordered set $I$ of $M$ columns and regard $\det A_I$ as a function of the ordered offsets $s_1<\cdots<s_\ell$ in $I$. It never vanishes, by the zero bound, and the set of ordered offsets is connected, so its sign is constant. To find the sign, let the offsets coalesce: put $s_j=s_*+\epsilon\sigma_j$ with fixed $\sigma_1<\cdots<\sigma_\ell$ and let $\epsilon\downarrow0$. Taylor expansion of each row about $s_*$ gives
+\[
+ \det A_I=\epsilon^{e}\,\mathcal V(\sigma)\,W_I(s_*)\,(1+o(1)),\qquad e=\binom M2-\sum_j\binom{m_j}2,
+\]
+where $W_I$ is the Wronskian of $\{\phi_i\}_{i\in I}$ and $\mathcal V(\sigma)=c_{\mathbf m}\prod_{j<k}(\sigma_k-\sigma_j)^{m_jm_k}$ is the confluent Vandermonde determinant, with a constant $c_{\mathbf m}>0$ that depends only on the multiplicities; it is positive for increasing $\sigma$ \cite[Ch.~2]{Karlin1968}. By \eqref{mc:wronskian}, $\sgn W_I=\sgn\prod_{k<M}(\alpha)_{\underline k}$, the same for every $I$ of size $M$. Hence every maximal minor has this sign, without any total positivity assumption beyond \eqref{mc:wronskian}.
+
+Thus the null vector $v_i=(-1)^i\det A_{\widehat i}$ has strictly alternating nonzero entries. Choose its overall sign so that $\widetilde{\mathcal H}(s)=\sum_i v_i(1+u_is)^\alpha$ is negative after the final root for a final expansion, or positive there for a final contraction. The prescribed roots already use the whole $M$-zero budget, so each has exact order $m_j$ and there are no others on $I$. Because $s_1=0$,
+\begin{equation}\label{mc:weights}
+ C=\sum_{v_i>0}v_i=-\sum_{v_i<0}v_i>0,\qquad
+ \lambda_i=|v_i|/C.
+\end{equation}
+The positive entries specify bank $F$ and the negative entries bank $G$; the $\lambda_i$ in each bank sum to one.
+
+Choose $h_0>0$ and $L>1/u_0$. Set $w_i=r_F\lambda_i$ in $F$ and $w_i=r_G\lambda_i$ in $G$, and give their physical edges the costs
+\begin{align}\label{mc:physical}
+ c_i^F(z)&=L+h_0-\frac1{u_i}+\frac{z^p}{u_iw_i^p},&&v_i>0,\nonumber\\
+ c_i^G(z)&=L-\frac1{u_i}+\frac{z^p}{u_iw_i^p},&&v_i<0,\\
+ h(z)&=h_0+z^p.\nonumber
+\end{align}
+Use the same three-vertex graph as before and permit every directed path. All physical coefficients are positive. The normalised inverse curves are $Q_F=\sum_{v_i>0}\lambda_i\phi_i$ and $Q_G=\sum_{v_i<0}\lambda_i\phi_i$, so the demand thresholds are exactly $t_j=Q_G(s_j)$ and strictly increase from $t_1=1$.
+
+For $t>1$, if $\Delta(t)\le0$ the connector is unused and both banks exceed their reference loads. If $\Delta(t)>0$, its strictly decreasing residual
+\begin{equation}\label{mc:residual}
+ R(t,x)=F(r_Ft-x)-G(r_Gt+x)-h_0-x^p
+\end{equation}
+is positive at zero and negative at $x=r_F(t-1)$, since $F(r_F)=L+h_0$, $G(r_G)=L$ and the shared-bank argument has increased. Therefore
+\begin{equation}\label{mc:globalbank}
+ 0<x(t)<r_F(t-1).
+\end{equation}
+All bank loads remain above their positive reference levels through every interval. The shared loads have the same feasible proportional commodity decomposition as in the original construction. Since $\mathcal H$ and $\Delta$ have opposite signs and all contacts are odd, the connector states alternate with the chosen final orientation. No other bank or connector transition occurs for $t>1$. Bank loads are also positive on a sufficiently small left neighbourhood of $1$.
+
+For the local calculation put $\delta=t-t_j$ and
+\begin{equation}\label{mc:localconstants}
+ a_j=\frac{\Delta^{(m_j)}(t_j)}{m_j!},\quad
+ B_j=Q_F'(s_j)=Q_G'(s_j)>0,\quad
+ d_j=\frac1{r_FB_j}+\frac1{r_GB_j}.
+\end{equation}
+The slopes agree because $m_j\ge3$, and analytic inversion gives
+\begin{equation}
+ a_j=-\frac{\mathcal H^{(m_j)}(s_j)/m_j!}{B_j^{m_j+1}}\ne0.
+\end{equation}
+The active side is $a_j\delta>0$. In its positive coordinate $\eta=\sgn(a_j)\delta$, the same two-variable implicit-function argument as in \eqref{eq:twovar} gives
+\begin{equation}
+ x=\eta^{m_j}U_j(\eta,\eta^{m_j(p-1)}),\qquad
+ U_j(0,0)=|a_j|/d_j>0.
+\end{equation}
+Thus Lemma~\ref{lem:remainder} gives the connector regularity, including real noninteger $p$.
+
+Now $E=t[r_FF(r_Ft-x)+r_GG(r_Gt+x)]$, with analytic inactive continuation $E_0=t[r_FF(r_Ft)+r_GG(r_Gt)]$. Expansion in $x$ yields
+\begin{equation}
+ E-E_0=-t\Delta'(t)x+O(x^2).
+\end{equation}
+On the active side its first nonzero term is $-C_j\delta^{2m_j-1}$, where
+\begin{equation}\label{mc:costcoefficient}
+ C_j=\frac{t_jm_ja_j^2}{d_j}>0.
+\end{equation}
+The remainder again has the derivative-controlled two-variable form. Hence $E$ has the stated regularity and the exact right-minus-left jump
+\begin{equation}\label{mc:costjump}
+ E^{(2m_j-1)}(t_j^+)-E^{(2m_j-1)}(t_j^-)
+ =-\sgn(a_j)(2m_j-1)!C_j.
+\end{equation}
+
+For $t>t_\ell$, the equilibrium load vector is analytic. After a final expansion this follows from positivity of every edge and the scalar analytic implicit-function theorem. After a final contraction the connector is identically zero and both positive banks are analytic. If $t_\ell<\gamma$, all scaled demands $\gamma t_j$ lie in this fixed regime. The physical common-power scaling \eqref{eq:optflow} therefore makes $S$ positive analytic near every transition. Division by $S$ preserves the regularity and divides \eqref{mc:costjump} by $S(t_j)$. Finally,
+\begin{equation}
+ t_\ell=Q_G(s_\ell)\le(1+u_Ms_\ell)^{1/p}<\gamma
+\end{equation}
+under the stated sufficient condition. Proposition~\ref{mc:budget} supplies the matching edge lower bound.
+\end{proof}
+
+Even contact orders would give isolated tangencies without a change between opposite-side connector regimes. The theorem deliberately prescribes odd orders. Its general construction uses real coefficients; rationality is established separately for the explicit family below.
+
+\subsection{Prescribing demand thresholds locally}
+
+\begin{corollary}\label{mc:prescribeddemand}
+Fix the exponent, demand coefficients, nodes and odd contact orders of Theorem~\ref{mc:synthesis}. There is $\varepsilon>0$ such that every ordered demand pattern
+\begin{equation}
+ 1=t_1<t_2<\cdots<t_\ell<1+\varepsilon
+\end{equation}
+is realised with exactly $2+\sum_jm_j$ positive-cost physical edges and all conclusions of that theorem, including analytic optimal cost at every transition. The cost parameters admit a real-analytic choice near the coincident-threshold limit.
+\end{corollary}
+\begin{proof}
+Use the classical extension of divided differences to repeated nodes \cite{deBoor2005}. For an analytic $\phi(s)=\sum_na_ns^n$,
+\begin{equation}\label{mc:divdiffanalytic}
+ [z_0,\ldots,z_k]\phi
+ =\sum_{n\ge k}a_n h_{n-k}(z_0,\ldots,z_k),
+\end{equation}
+where $h_d$ is the complete homogeneous symmetric polynomial. The series converges near zero, proving real analyticity in all node arguments, including coincidences. At coincident zero arguments its value is $\phi^{(k)}(0)/k!$.
+
+Replace the rows in \eqref{mc:matrix} by Newton divided-difference rows on successive prefixes of the multiset containing $m_1$ copies of $s_1=0$, then $m_2$ copies of $s_2$, and so on. Their vanishing is equivalent to vanishing of the prescribed Hermite data. The new matrix is analytic even when all $s_j=0$, where its rows become the Taylor rows of orders $0,\ldots,M-1$. Its maximal minors are nonzero there by the Vandermonde formula. Thus its normalised cofactor weights $\lambda_i(s_2,\ldots,s_\ell)$ extend analytically and retain their alternating signs. Their positive and negative masses agree because the first row is $\phi_i(0)=1$.
+
+Choose the overall orientation at the coincident limit so that the sign of $\mathcal H(s)$ for $s>0$ agrees with the prescribed final transition: negative for an expansion and positive for a contraction. This orientation persists for nearby separated contacts: evaluate at a fixed positive point beyond them and use the zero budget. The bank assignments therefore remain fixed. Set
+\begin{equation}
+ T_j(s)=\sum_{i\in G}\lambda_i(s)(1+u_is_j)^\alpha,\qquad j\ge2.
+\end{equation}
+At $s=0$ all $T_j=1$. Since $\sum_{i\in G}\lambda_i(s)=1$ identically, the weight-derivative terms vanish there, giving
+\begin{equation}
+ \frac{\partial T_j}{\partial s_k}(0)=B_0\delta_{jk},\qquad
+ B_0=\alpha\sum_{i\in G}\lambda_i(0)u_i>0.
+\end{equation}
+The analytic inverse-function theorem therefore prescribes any nearby demand vector. Its ordered values imply ordered positive offsets, since each resulting vector uses one strictly increasing function $Q_G$ and $Q_G(0)=1$. Shrink the neighbourhood so that $t_\ell<\gamma$ and all coefficients remain positive. Theorem~\ref{mc:synthesis} applies.
+\end{proof}
+
+This is a local existence and analytic parameterisation result. It does not assert a universal explicit radius or rational coefficients for arbitrary target thresholds.
+
+\subsection{Two equal contacts from a factored polynomial}
+
+\begin{theorem}[Closed-form double-contact family]\label{mc:double}
+Let $p>1$, let $m\ge3$ be odd, and choose $q>1$ with $q^{p(m+1)}<p+1$. Define
+\begin{align}
+ n_i&=q^{i+1},\quad u_i=n_i^p-1 &&(0\le i\le2m),\nonumber\\
+ V(z)&=\prod_{k=0}^{m-1}(z-q^{pk})(z-q^{1-pk})
+       =\sum_{i=0}^{2m}v_iz^i,\label{mc:polynomial}\\
+ C&=V(-1)/2,\qquad w_i=|v_i|/C.\nonumber
+\end{align}
+Put the even-indexed edges in $F$ and the odd-indexed edges in $G$, and use \eqref{mc:physical} with unit demand coefficients. The resulting $2m+2$-edge network has exactly two connector transitions for $t\ge1$: a contraction at $t_1=1$ and an expansion at
+\begin{equation}\label{mc:doublethreshold}
+ t_2=q^{m+1}.
+\end{equation}
+Both have contact order $m$. The functions $E$ and $P$ are $C^{2m-2}$ but not $C^{2m-1}$ at both, and $S$ is analytic there. The edge count attains the two-contact lower bound. If $p$ is an integer and $q,L,h_0$ are rational, all physical coefficients are rational.
+\end{theorem}
+\begin{proof}
+The two exponent sets in \eqref{mc:polynomial} are disjoint, since equality would imply $p(k+l)=1$ for nonnegative integers $k,l$. All $2m$ roots are distinct and positive, so $v_i$ has sign $(-1)^i$. The roots include $1$ and $q$; hence $V(1)=V(q)=0$, and the two bank masses both equal $C>0$.
+
+For $\mathcal H(s)=C^{-1}\sum_iv_i(1+u_is)^\alpha$, differentiation at zero through order $m-1$ and expansion of $(n_i^p-1)^k$ give only sums $q^{p l}V(q^{p l})=0$ with $l<m$. At $s=1$,
+\begin{equation}
+ \phi_i^{(k)}(1)=(\alpha)_{\underline{k}}(n_i^p-1)^kn_i^{1-pk}.
+\end{equation}
+Expansion gives only sums $q^{1-p l}V(q^{1-p l})=0$ with $l<m$. Thus $0$ and $1$ are contacts of order at least $m$. The $2m$-zero budget makes both orders exact and excludes all other zeros on $I$.
+
+Their orientation is explicit:
+\begin{align}
+ \mathcal H^{(m)}(0)&=C^{-1}(\alpha)_{\underline m}q^{pm}V(q^{pm})>0,\nonumber\\
+ \mathcal H^{(m)}(1)&=-C^{-1}(\alpha)_{\underline m}q^{1-pm}V(q^{1-pm})<0.\label{mc:doublesigns}
+\end{align}
+The falling factorial is positive for odd $m$; the two evaluations lie respectively above and below all roots of the even-degree polynomial $V$, where $V>0$. Hence $\mathcal H$ is negative below zero, positive between zero and one, and negative above one. The route gap has the opposite sign.
+
+Each paired pair of roots has product $q$, giving
+\begin{equation}
+ V(q/z)=q^mz^{-2m}V(z),\qquad V(-q)=q^mV(-1).
+\end{equation}
+The shared bank's normalised throughput at $s=1$ is therefore
+\begin{equation}
+ t_2=\frac{-q\sum_{i\text{ odd}}v_iq^i}{C}
+ =\frac{q[V(-q)-V(q)]}{2C}=q^{m+1}.
+\end{equation}
+The hypothesis ensures $t_2<\gamma$, and the proof of Theorem~\ref{mc:synthesis} supplies global bank activity and all regularity conclusions. Rationality follows directly from \eqref{mc:polynomial} and \eqref{mc:physical}.
+\end{proof}
+
+The factored polynomial is a standard annihilator of geometric moment constraints. Here it gives a compact exact physical example. Choose
+\begin{equation}\label{mc:explicitdouble}
+ p=4,\quad m=3,\quad q=11/10,\quad L=3,\quad h_0=1.
+\end{equation}
+Then
+\begin{equation}
+ V(z)=(z-1)(z-q^4)(z-q^8)(z-q)(z-q^{-3})(z-q^{-7}),
+\end{equation}
+and the bank costs are $4-u_i^{-1}+z^4/(u_iw_i^4)$ on the four even edges and $3-u_i^{-1}+z^4/(u_iw_i^4)$ on the three odd edges, with connector $1+z^4$. The smallest node is $4641/10000$, so every intercept is positive. The two demand thresholds and boundary costs are
+\begin{equation}
+ t_1=1,\quad t_2=14641/10000,\qquad
+ E(t_1)=7,\quad E(t_2)=131769/10000.
+\end{equation}
+The integer inequality $11^{16}<5\cdot10^{16}$ certifies $t_2<5^{1/4}$. The exact verifier (Appendix~\ref{app:verification}) reconstructs the physical coefficients, the two cubic contact jets, the rank-six confluent constraints and both nonzero fifth-derivative jumps. The fifth-derivative jumps of $E$, rounded only for display, are $+6.28132652270$ at the contraction and $-0.00155303283209$ at the expansion. The second is about $4{,}000$ times smaller than the first, so after the second contact the hidden transition is even fainter. One eight-edge quartic network thus loses and regains its connector while both aggregate functions remain $C^4$ at both changes.

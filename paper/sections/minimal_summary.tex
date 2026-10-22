@@ -1,0 +1,38 @@
+\section{How few links are needed}\label{sec:minimal}
+
+How small can a network be and still hide a regime change in this way? The answer depends on the cost class and on the type of breakpoint. Table~\ref{tab:minimaledges} collects what is proved. Throughout, demands are proportional with every $r_k>0$, every simple path is a route, and ``equal slopes'' means $E'(t_0^-)=E'(t_0^+)$ at a nested breakpoint $t_0>0$.
+
+\begin{theorem}[Minimal link counts]\label{thm:minimal}
+Consider networks with costs $a_e+b_ez^p$, $a_e,b_e>0$, and one common real exponent $p>1$. Every network with at most four edges has strict slope jumps of $E$ and of $P$ at every nested breakpoint, in the direction of Theorem~\ref{thm:weakcomparison}. Hence five is the minimum number of edges permitting equal slopes, both at nested expansions and at nested contractions.
+\end{theorem}
+
+The lower bound is Theorem~\ref{thm:fouredge}, proved in Appendix~\ref{app:minimality}. The five-link expansion and contraction of Section~\ref{sec:fiveedge} attain it. The proof is a finite case analysis with an explicit inequality closing each case (Table~\ref{tab:minimality}). Its outline is as follows.
+\begin{itemize}[nosep]
+\item By Lemma~\ref{lem:tangencycomparison}, equal slopes force a tangency of the gap of a new route.
+\item If the smaller regime has no demand-preserving load changes ($\Kc_{R_s}=\{0\}$), the common-power identity $Dq=p(c_0-a)/t_0$ makes the gap a function $\alpha+\beta t^p$, which cannot be tangent to zero without vanishing identically. This disposes of every connected graph with at least four vertices or at most three edges.
+\item Networks whose cycles are all parallel banks have no contractions, and their expansions are strict because a joining branch lowers the derivative of the bank delay to zero.
+\item The remaining graph is a transitive triangle with one side doubled. There, a curvature inequality for parallel banks, $\ell''-(p-1)\ell'/t>0$ unless all free-flow costs in the bank are equal, rules out every tangency.
+\end{itemize}
+
+\begin{table}[htbp]
+\centering\small
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{4.3cm}>{\raggedright\arraybackslash}p{2.3cm}>{\raggedright\arraybackslash}p{2.6cm}X@{}}
+\toprule
+Cost class & Breakpoint & Minimum edges & Evidence\\
+\midrule
+Strictly convex polynomials & expansion & $3$ & Example~\ref{ex:cubic}; two edges never suffice (Remark~\ref{rem:twoedges})\\
+BPR, edge-specific exponents & contraction & $3$ & Example~\ref{ex:hetero}; Remark~\ref{rem:twoedges}\\
+BPR, edge-specific exponents & expansion & $4$ or $5$ (open) & three edges excluded (Proposition~\ref{prop:hetero}, Remark~\ref{rem:hetero}); five-link example\\
+BPR, common exponent & expansion & $5$ & Theorems~\ref{thm:main} and~\ref{thm:fouredge}\\
+BPR, common exponent & contraction & $5$ & bank-swapped example; Theorem~\ref{thm:fouredge}\\
+\bottomrule
+\end{tabularx}
+\caption{Minimum numbers of edges for equal one-sided slopes at nested breakpoints. Positive free-flow and congestion coefficients throughout.}
+\label{tab:minimaledges}
+\end{table}
+
+\begin{remark}[Two edges never suffice]\label{rem:twoedges}
+Let every cost be $C^1$ with $c_e'(z)>0$ for $z>0$. If a network with at most two edges has a breakpoint, some commodity has two routes, so the two edges are parallel, say $s\to v$, and carry a total demand $Qt$ with $Q>0$. Their common delay $\ell(Qt)$ is strictly increasing in $t$, so an edge can only join: there are no contractions. Suppose edge $2$ joins at $t_0$, so $c_2(0)=\ell(Qt_0)$. To the left only edge $1$ is used, with positive load, and $\ell'(Qt_0^-)=c_1'(Qt_0)>0$. To the right the loads satisfy $c_1(y_1)=c_2(y_2)$ with $y_1+y_2=Qt$. Hence $y_2/(Qt-Qt_0)\to c_1'/(c_1'+c_2'(0))$, which is read as $1$ if $c_2'(0)=0$, and $\ell'(Qt_0^+)=c_1'c_2'(0)/(c_1'+c_2'(0))<c_1'$. Since $E=Qt\,\ell(Qt)$, the slope of $E$ drops strictly, by $Q^2t_0[\ell'(Qt_0^-)-\ell'(Qt_0^+)]>0$.
+\end{remark}
+
+These minima concern the stated classes only. In the two-bank architecture a sharper, order-dependent count holds: contacts of orders $m_1,\dots,m_\ell$ need exactly $2+\sum_jm_j$ edges (Appendix~\ref{app:contacts}). That count is specific to the architecture and is not a lower bound for arbitrary graphs.

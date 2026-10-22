@@ -1,0 +1,189 @@
+{
+  "claims": [
+    {
+      "claim": "Along any nonnegative C1 demand curve on an open interval with constant complete minimum-route regime, equilibrium edge loads are C1; E is C1; S and P are C1 if z c_e(z) strictly convex.",
+      "evidence": [
+        "checks/small_networks/weighted_basis_verification.json (classical identity only)"
+      ],
+      "hypotheses": "C1 nonnegative nondecreasing costs with c'_e(z)>0 for z>0; finite route sets (restricted allowed); demands may vanish; interior points only.",
+      "id": "fixed_regime_c1",
+      "location": "Thm 3.1",
+      "status": "proof"
+    },
+    {
+      "claim": "S and the Beckmann value are C1 along C1 demand curves with the same feasible set as the equilibrium; E=tV' on rays.",
+      "evidence": [],
+      "hypotheses": "convex C1 edge objectives with strictly increasing derivative (for S: z c_e(z) strictly convex; convexity alone does not give a unique optimum).",
+      "id": "value_function_envelope",
+      "location": "Prop 2.3",
+      "status": "proof"
+    },
+    {
+      "claim": "The one-sided endpoint version at t0=0 fails in general.",
+      "evidence": [],
+      "hypotheses": "oscillating C1 costs, not BPR; BPR endpoint case open.",
+      "id": "endpoint_obstruction",
+      "location": "Prop 3.3",
+      "status": "proof; open"
+    },
+    {
+      "claim": "Weak slope inequalities of CDS Thm 4.4(i) hold at nested breakpoints (expansions and contractions) for costs with zero slope only at zero load, including BPR with a_e>=0 and edge-specific exponents.",
+      "evidence": [],
+      "hypotheses": "proportional demand t r, t0>0, nested regimes. PoA statement needs z c_e(z) strictly convex (true for BPR).",
+      "id": "weak_comparison_bpr",
+      "location": "Thm 4.1, Cor 4.2",
+      "status": "proof"
+    },
+    {
+      "claim": "For almost every free-flow vector a, every nondegenerate nested breakpoint has a strict slope jump.",
+      "evidence": [],
+      "hypotheses": "c_e=a_e+phi_e, phi_e C1 with phi'>0 on (0,inf); r>0; nondegenerate = all edges on routes of the smaller regime loaded at t0; degenerate case open. PoA statement needs z c_e(z) strictly convex.",
+      "id": "generic_strictness",
+      "location": "Thm 4.5",
+      "status": "proof"
+    },
+    {
+      "claim": "Three-link strictly convex example with E,P in C4\\C5 at an expansion.",
+      "evidence": [
+        "evidence/small_examples.json"
+      ],
+      "hypotheses": "c'>=1, c''>=2.",
+      "id": "cubic_triangle",
+      "location": "Example 5.1",
+      "status": "proof; exact"
+    },
+    {
+      "claim": "Three-link BPR-type contraction with edge-specific exponents (4,2,6), E,P in C4\\C5.",
+      "evidence": [
+        "evidence/small_examples.json"
+      ],
+      "hypotheses": "demand t on three commodities.",
+      "id": "hetero_triangle_contraction",
+      "location": "Example 5.2",
+      "status": "proof; exact"
+    },
+    {
+      "claim": "Five-link common-quartic expansion with E,P in C4\\C5; x=(84/125)delta^3; E-E0=-(84672/78125)delta^5; bank-swapped contraction likewise.",
+      "evidence": [
+        "evidence/exact_verification.json",
+        "evidence/small_examples.json"
+      ],
+      "hypotheses": "positive BPR coefficients, all simple paths, proportional demand.",
+      "id": "five_edge_quartic",
+      "location": "Section 5.2",
+      "status": "proof; exact"
+    },
+    {
+      "claim": "m+2 links give x in C^{m-1}\\C^m and E,P in C^{2m-2}\\C^{2m-1} for every real p>1 and odd m>=3.",
+      "evidence": [
+        "evidence/exact_verification.json"
+      ],
+      "hypotheses": "positive common-power costs.",
+      "id": "family_any_order",
+      "location": "Thm 5.3",
+      "status": "proof; exact for m=3,5,7, p=4"
+    },
+    {
+      "claim": "At most four edges: strict slope jumps at every nested breakpoint; five links minimal for expansions and contractions.",
+      "evidence": [
+        "evidence/minimality_checks.json",
+        "checks/small_networks/small_network_verification.json"
+      ],
+      "hypotheses": "a_e,b_e>0, common p>1, all simple paths, r_k>0, nested breakpoints.",
+      "id": "minimal_common_power",
+      "location": "Thm 6.1, App. B",
+      "status": "proof"
+    },
+    {
+      "claim": "Mixed BPR exponents: contractions need exactly 3 links; expansions need 4 or 5.",
+      "evidence": [],
+      "hypotheses": "positive coefficients.",
+      "id": "minimal_mixed_exponents",
+      "location": "Table 3, Prop B.21, Remark B.22",
+      "status": "proof; open (4 vs 5)"
+    },
+    {
+      "claim": "S and P are C^{2m-1}\\C^{2m} at t=1/gamma; P^(6) jump about +89.68 in the five-link example.",
+      "evidence": [
+        "evidence/optimum_transition.json"
+      ],
+      "hypotheses": "family of Thm 5.3; P statement needs E C^{2m} near 1/gamma, verified for the five-link example by exact interval arithmetic.",
+      "id": "optimum_side_transition",
+      "location": "Thm 7.4",
+      "status": "proof (S); proof for P conditional on E being C^{2m} near 1/gamma, checked exactly for the quartic example; numerical jump value"
+    },
+    {
+      "claim": "Kinks return at size |eps|^{2-2/m} under free-flow or demand-ratio perturbation; transverse demand directions give C1\\C2.",
+      "evidence": [
+        "checks/transversality/exact_checks.json"
+      ],
+      "hypotheses": "family of Thm 5.3, small perturbations.",
+      "id": "perturbation_and_unfolding",
+      "location": "Props 7.1-7.3",
+      "status": "proof"
+    },
+    {
+      "claim": "Hidden activation table, tolerance windows, near-match kinks, S(1)=19.762875963175, P(1)=1.0120, P^(5) jump -6.58.",
+      "evidence": [
+        "evidence/practice.json"
+      ],
+      "hypotheses": "five-link example.",
+      "id": "practice_numbers",
+      "location": "Section 8",
+      "status": "numerical"
+    },
+    {
+      "claim": "Sioux Falls: no link activation for theta in [0.5,1.5]; two transverse activations near theta=0.259-0.260 with linear growth and 3.3-3.4% slope drops; loose tolerances misreport link usage.",
+      "evidence": [
+        "evidence/sioux_falls_results.json"
+      ],
+      "hypotheses": "one test network, uniform demand scaling, link-level only.",
+      "id": "sioux_falls",
+      "location": "Section 8.5",
+      "status": "exploratory"
+    },
+    {
+      "claim": "Contact budget r-1, synthesis of any finite odd pattern with exactly 2+sum m_j edges, local threshold prescription, eight-link double contact.",
+      "evidence": [
+        "checks/moments/two_contacts_exact.json",
+        "checks/transversality/multicontact_reconstruction.json"
+      ],
+      "hypotheses": "two-bank architecture only.",
+      "id": "contact_budget_synthesis",
+      "location": "App. A",
+      "status": "proof; exact"
+    },
+    {
+      "claim": "Pinned contact of order m has codimension m-1 in a congestion-coefficient chart; a three-link C-infinity example.",
+      "evidence": [
+        "checks/transversality/exact_checks.json"
+      ],
+      "hypotheses": "specified charts; smooth nonanalytic costs for the flat example.",
+      "id": "codimension_and_flat",
+      "location": "App. C",
+      "status": "proof"
+    }
+  ],
+  "date": "2026-10-22",
+  "paper": "Smoothness within and across Wardrop route regimes",
+  "schema_version": 3,
+  "source_questions": [
+    {
+      "answer": "yes at interior points (Thm 3.1)",
+      "locator": "paragraph after Remark 3.5 (introducing Examples 3.6-3.7)",
+      "source": "Cominetti, Dose and Scarsini (2024), TR-B 182, 102922; arXiv:2305.03459v2"
+    },
+    {
+      "answer": "no (Sections 5-6)",
+      "locator": "paragraph preceding Example 4.9 (one sentence intervenes)",
+      "source": "same"
+    }
+  ],
+  "status_vocabulary": {
+    "exact": "rational-arithmetic computation confirming constants",
+    "exploratory": "illustration without a general claim",
+    "numerical": "floating-point computation, not a certificate",
+    "open": "not settled",
+    "proof": "complete analytic proof in the paper"
+  }
+}

@@ -1,0 +1,89 @@
+{
+ "schemaVersion": "1.0",
+ "provenance": "Compiled 22 October 2026 at publication from the dated per-target novelty reports of the research bundle (searches entered 19 October 2026; kept privately because they contain working notes), the reference verification of 22 October 2026 and the retained internal review records. It documents the scrutiny performed, not historical priority.",
+ "contributionMap": [
+  {
+   "claim": "Fixed-regime C1 equilibrium link flows for C1 costs with c'(z) > 0 for z > 0, at interior demands, on any network (Theorem 3.1); general endpoint extension fails (Proposition 3.3)",
+   "unit": "statement",
+   "paperLocation": "Section 3; Theorem 3.1; Proposition 3.3",
+   "searches": [
+    {"date": "2026-10-19", "query": "\"Wardrop\" \"zero derivative only\" origin; \"BPR\" \"constant\" \"regime\" \"differentiability\"; \"Wardrop\" \"fixed regime\" zero differentiability costs; \"traffic equilibrium\" \"continuous differentiability\" nonnegative costs zero; \"Phase transitions of the price-of-anarchy function\" \"BPR\"", "corpus": "live web search, arXiv, publisher full texts"},
+    {"date": "2026-10-22", "query": "citing works of doi 10.1016/j.trb.2024.102922 and arXiv 2305.03459; price of anarchy regularity demand 2026", "corpus": "Crossref, arXiv listings (found and read Wang-Shao-Wu arXiv:2610.16185 and D'Ambrosio arXiv:2609.26179)"}
+   ],
+   "closestPriorWork": "CDS Theorem 3.2 (positive slopes) and Remark 3.5(b) (zero-slope links without undirected cycles); classical sensitivity analysis under strict monotonicity or nondegeneracy (Hall 1978; Dafermos-Nagurney; Tobin-Friesz; Qiu-Magnanti; Patriksson 2004; Lu 2008); Wang-Shao-Wu (2026) give C1 of the Beckmann value, total cost and PoA inside fixed-support regions but not C1 link flows",
+   "verdict": "partially-known-cited"
+  },
+  {
+   "claim": "Weighted least-squares uniform bound used to replace nondegeneracy (diagonally weighted pseudoinverse as a convex combination of basic solutions)",
+   "unit": "method",
+   "paperLocation": "Section 3 proof",
+   "searches": [
+    {"date": "2026-10-19", "query": "\"weighted\" \"pseudoinverse\" \"convex combination\" bases; \"generalized Cramer\" \"weighted\" \"least squares\"; \"least squares\" \"diagonal\" \"convex combination\" Forsgren; \"separable\" \"fixed active\" \"degenerate Hessian\" differentiability", "corpus": "live web search; Stewart 1989 and Forsgren 1996 full texts"}
+   ],
+   "closestPriorWork": "Stewart (1989) and Forsgren (1996): the bound is classical and credited; its use for degenerate Wardrop sensitivity is the application",
+   "verdict": "known-cited"
+  },
+  {
+   "claim": "Smooth route-set changes: five-link common-quartic BPR expansion with E, P in C4 but not C5; m+2 links give C^(2m-2) but not C^(2m-1); three-link convex and mixed-exponent examples",
+   "unit": "statement",
+   "paperLocation": "Section 5; Theorem 5.3",
+   "searches": [
+    {"date": "2026-10-19", "query": "price of anarchy breakpoint slope equality BPR; Wardrop regime change smooth total cost; strict complementarity loss traffic assignment kink; nested regimes O'Hare conjecture strict", "corpus": "live web search, arXiv, publisher full texts"}
+   ],
+   "closestPriorWork": "CDS Theorem 4.4(ii) (strict for affine costs) and Example 4.8 (non-nested); O'Hare, Connors and Watling (2016); Jongen, Jonker and Twilt (1986) on generic kinks in parametric optimisation",
+   "verdict": "new-in-bounded-search"
+  },
+  {
+   "claim": "Five links are minimal for a common BPR exponent, for expansions and contractions (Theorem 6.1, Appendix B)",
+   "unit": "proof",
+   "paperLocation": "Section 6; Appendix B",
+   "searches": [
+    {"date": "2026-10-19", "query": "minimal network size price of anarchy slope equality; four edge Wardrop network breakpoint classification; incidence kernel route space minimal", "corpus": "live web search, arXiv"}
+   ],
+   "closestPriorWork": "No equivalent theorem found; incidence-kernel counting, Cauchy-Schwarz and quadratic sensitivity are classical tools",
+   "verdict": "new-in-bounded-search"
+  },
+  {
+   "claim": "Weak slope comparison for BPR costs at expansions and contractions with zero free-flow allowed (Theorem 4.1, Corollary 4.2) and genericity of strict jumps at nondegenerate breakpoints (Theorem 4.5)",
+   "unit": "statement",
+   "paperLocation": "Section 4",
+   "searches": [
+    {"date": "2026-10-19", "query": "\"Phase transitions of the price-of-anarchy function\" \"BPR\"; price of anarchy derivative jump generic free-flow; Sard transversality traffic equilibrium breakpoint", "corpus": "live web search, arXiv"},
+    {"date": "2026-10-22", "query": "Wang Shao Wu regularity price of anarchy multivariate demand measure zero", "corpus": "arXiv:2610.16185 full text"}
+   ],
+   "closestPriorWork": "CDS Section 5 quadratic method and Remark 4.6; Wang-Shao-Wu (2026) measure-zero nondifferentiability in demand space (a different statement); Jongen-Jonker-Twilt (1986)",
+   "verdict": "partially-known-cited"
+  },
+  {
+   "claim": "Contact budget, synthesis of prescribed transitions and repeated contacts in the two-bank architecture (Appendix A)",
+   "unit": "object",
+   "paperLocation": "Appendix A",
+   "searches": [
+    {"date": "2026-10-19", "query": "Chebyshev system zero count positive routing realisation; confluent Hermite interpolation divided differences q-shifted factorial; barycentric weights", "corpus": "live web search; Karlin 1968, de Boor 2005, Berrut-Trefethen 2004"}
+   ],
+   "closestPriorWork": "Chebyshev zero counts, barycentric weights, confluent interpolation and divided differences are classical and credited; the routing realisation and edge count are the contribution",
+   "verdict": "partially-known-cited"
+  }
+ ],
+ "sourcesReadInFull": [
+  {"citation": "Cominetti, Dose and Scarsini, arXiv:2305.03459v2 (Transportation Research Part B 182, 102922, 2024)", "usedFor": "Both questions (quoted verbatim), Theorems 3.2 and 4.4, Remarks 3.5 and 4.6, Examples 4.8-4.9, Section 5 method", "readWhat": "Full arXiv v2 text and source", "date": "2026-10-22", "evidenceLocator": "https://arxiv.org/abs/2305.03459v2; manuscript Sections 1-2"},
+  {"citation": "Wang, Shao and Wu, arXiv:2610.16185 (2026)", "usedFor": "Overlap on C1 total cost and PoA; distinction from C1 link flows and genericity", "readWhat": "Main theorems, corollaries and Sioux Falls illustration", "date": "2026-10-22", "evidenceLocator": "https://arxiv.org/abs/2610.16185; manuscript Section 1.5"},
+  {"citation": "D'Ambrosio, arXiv:2609.26179 (2026)", "usedFor": "Distinguishing PoA shape results from slope equality at breakpoints", "readWhat": "Abstract and main example", "date": "2026-10-22", "evidenceLocator": "https://arxiv.org/abs/2609.26179; manuscript Section 1.5"},
+  {"citation": "O'Hare, Connors and Watling, Transportation Research Part B 84 (2016) 55-80", "usedFor": "Slope conjecture and equilibrium-optimum scaling for common-power costs", "readWhat": "Relevant sections", "date": "2026-10-19", "evidenceLocator": "https://doi.org/10.1016/j.trb.2015.12.005"}
+ ],
+ "limitationTriage": [
+  {"limitation": "Fixed-regime theorem at the endpoint t0 = 0 for BPR costs", "closingQuestion": "Does CDS Theorem 3.2 extend to BPR costs at zero demand?", "triedOrSearched": "General counterexample uses oscillating costs; BPR case not settled", "estimatedCost": "research project", "cheap": false, "decision": "OPEN", "reasonOpen": "Open problem 1 of the paper", "whyNotClosedNow": ""},
+  {"limitation": "Genericity only at nondegenerate nested breakpoints", "closingQuestion": "Is strictness generic when the smaller regime contains an unloaded edge?", "triedOrSearched": "Sard argument needs loaded edges", "estimatedCost": "research project", "cheap": false, "decision": "OPEN", "reasonOpen": "Open problem 2", "whyNotClosedNow": ""},
+  {"limitation": "Mixed exponents: four or five links for equal-slope expansions", "closingQuestion": "Do four edges suffice when BPR exponents differ?", "triedOrSearched": "Triangle excluded by a generalised Descartes argument; four-edge case unresolved", "estimatedCost": "days", "cheap": false, "decision": "OPEN", "reasonOpen": "Open problem 3", "whyNotClosedNow": ""},
+  {"limitation": "Non-nested breakpoints and prevalence in calibrated networks", "closingQuestion": "How smooth can non-nested breakpoints be; how often do near-tangent activations occur?", "triedOrSearched": "One exploratory Sioux Falls scan (transverse activations only)", "estimatedCost": "research project", "cheap": false, "decision": "OPEN", "reasonOpen": "Open problems 4-5", "whyNotClosedNow": ""},
+  {"limitation": "Minimality theorem limited to a + b z^p, common p, all simple paths, proportional positive demands, nested breakpoints", "closingQuestion": "Is the scope stated wherever the minimality is claimed?", "triedOrSearched": "Scope stated in abstract, Theorem 6.1, README and release records", "estimatedCost": "15 min", "cheap": true, "decision": "CLOSED", "reasonOpen": "", "whyNotClosedNow": "Closed by explicit scope statements"},
+  {"limitation": "Practice numbers are floating-point, not enclosures", "closingQuestion": "Are the quoted values stable?", "triedOrSearched": "50-60-digit mpmath agreeing with exact series; byte-identical replay", "estimatedCost": "1 h", "cheap": true, "decision": "CLOSED", "reasonOpen": "", "whyNotClosedNow": "Values are labelled numerical and are not used in any proof"},
+  {"limitation": "Sioux Falls data cannot be redistributed", "closingQuestion": "Can replay still use the exact data?", "triedOrSearched": "Fetch script with pinned commit and SHA-256 check", "estimatedCost": "30 min", "cheap": true, "decision": "CLOSED", "reasonOpen": "", "whyNotClosedNow": "Closed by tools/fetch_siouxfalls.py"}
+ ],
+ "extensionScout": {
+  "by": "internal AI-assisted first-round review (editor, methodology, domain, perspective and devil's-advocate roles) and AI-assisted adversarial review (OpenAI gpt-5.6-sol)",
+  "date": "2026-10-22",
+  "proposals": ["E1 generic strictness", "E2 common-power contractions and mixed exponents", "E3 optimum-side transition", "E4 Sioux Falls illustration", "E5 BPR weak comparison"],
+  "actions": ["E1 proved at nondegenerate breakpoints (Theorem 4.5); degenerate case open", "E2 five minimal for contractions too; mixed-exponent contractions need three, expansions four or five (open)", "E3 proved (Theorem 7.4)", "E4 exploratory scan reported", "E5 proved for expansions and contractions with zero free-flow allowed (Theorem 4.1, Corollary 4.2)"]
+ }
+}

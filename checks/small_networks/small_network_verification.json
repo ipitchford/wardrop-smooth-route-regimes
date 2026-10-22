@@ -1,0 +1,378 @@
+{
+  "status": "all finite exact checks passed",
+  "proof_boundary": "The parameter-uniform theorem is proved analytically in global_minimality_proof.md; these are independent finite fingerprints.",
+  "topology": {
+    "scope": "loopless directed multigraphs on three labelled vertices, four edges; no demand or cost enumeration",
+    "labelled_multigraphs": 126,
+    "weakly_connected": 111,
+    "connected_directed_acyclic": 54,
+    "isomorphism_classes_of_connected_dags": 10,
+    "classes": [
+      {
+        "edges": [
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            2
+          ]
+        ],
+        "type": "tree_of_parallel_banks"
+      },
+      {
+        "edges": [
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            2
+          ]
+        ],
+        "type": "tree_of_parallel_banks"
+      },
+      {
+        "edges": [
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            2,
+            0
+          ]
+        ],
+        "type": "tree_of_parallel_banks"
+      },
+      {
+        "edges": [
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            2,
+            1
+          ]
+        ],
+        "type": "tree_of_parallel_banks"
+      },
+      {
+        "edges": [
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            0,
+            2
+          ]
+        ],
+        "type": "tree_of_parallel_banks"
+      },
+      {
+        "edges": [
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            1,
+            2
+          ]
+        ],
+        "type": "transitive_triangle_with_one_duplicated_side"
+      },
+      {
+        "edges": [
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            2,
+            1
+          ]
+        ],
+        "type": "transitive_triangle_with_one_duplicated_side"
+      },
+      {
+        "edges": [
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            1,
+            2
+          ]
+        ],
+        "type": "tree_of_parallel_banks"
+      },
+      {
+        "edges": [
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            2,
+            1
+          ]
+        ],
+        "type": "transitive_triangle_with_one_duplicated_side"
+      },
+      {
+        "edges": [
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            2,
+            1
+          ],
+          [
+            2,
+            1
+          ]
+        ],
+        "type": "tree_of_parallel_banks"
+      }
+    ]
+  },
+  "algebra": [
+    {
+      "p": 2,
+      "parallel": {
+        "a": [
+          "19/2",
+          "17/2"
+        ],
+        "b": [
+          "1/2",
+          "1/6"
+        ],
+        "loads": [
+          "1",
+          "3"
+        ],
+        "latency": "10",
+        "L_prime": "1/2",
+        "L_second": "1/6",
+        "curvature_excess": "1/24",
+        "cauchy_residual": "4/3"
+      },
+      "triangle": {
+        "edge_order": [
+          "f_direct",
+          "h_connector",
+          "g_shared"
+        ],
+        "a": [
+          "43/2",
+          "10",
+          "10"
+        ],
+        "b": [
+          "1/2",
+          "1/2",
+          "1/6"
+        ],
+        "loads": [
+          "1",
+          "1",
+          "3"
+        ],
+        "demand_coefficients_R_A_B": [
+          "2",
+          "0",
+          "2"
+        ],
+        "H_prime": "0",
+        "H_second": "8/9"
+      }
+    },
+    {
+      "p": 3,
+      "parallel": {
+        "a": [
+          "29/3",
+          "9"
+        ],
+        "b": [
+          "1/3",
+          "1/27"
+        ],
+        "loads": [
+          "1",
+          "3"
+        ],
+        "latency": "10",
+        "L_prime": "1/2",
+        "L_second": "1/3",
+        "curvature_excess": "1/12",
+        "cauchy_residual": "4/3"
+      },
+      "triangle": {
+        "edge_order": [
+          "f_direct",
+          "h_connector",
+          "g_shared"
+        ],
+        "a": [
+          "21",
+          "10",
+          "10"
+        ],
+        "b": [
+          "1/3",
+          "1/3",
+          "1/27"
+        ],
+        "loads": [
+          "1",
+          "1",
+          "3"
+        ],
+        "demand_coefficients_R_A_B": [
+          "2",
+          "0",
+          "2"
+        ],
+        "H_prime": "0",
+        "H_second": "16/9"
+      }
+    },
+    {
+      "p": 4,
+      "parallel": {
+        "a": [
+          "39/4",
+          "37/4"
+        ],
+        "b": [
+          "1/4",
+          "1/108"
+        ],
+        "loads": [
+          "1",
+          "3"
+        ],
+        "latency": "10",
+        "L_prime": "1/2",
+        "L_second": "1/2",
+        "curvature_excess": "1/8",
+        "cauchy_residual": "4/3"
+      },
+      "triangle": {
+        "edge_order": [
+          "f_direct",
+          "h_connector",
+          "g_shared"
+        ],
+        "a": [
+          "83/4",
+          "10",
+          "10"
+        ],
+        "b": [
+          "1/4",
+          "1/4",
+          "1/108"
+        ],
+        "loads": [
+          "1",
+          "1",
+          "3"
+        ],
+        "demand_coefficients_R_A_B": [
+          "2",
+          "0",
+          "2"
+        ],
+        "H_prime": "0",
+        "H_second": "8/3"
+      }
+    }
+  ]
+}

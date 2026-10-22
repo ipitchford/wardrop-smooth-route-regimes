@@ -1,0 +1,100 @@
+\section{The slope comparison for BPR costs, and why strictness is generic}\label{sec:comparison}
+
+This section proves two positive results about breakpoints. They frame the counterexamples of Section~\ref{sec:transitions}. The first shows that at a nested breakpoint the slope of total cost never jumps in the wrong direction, also for BPR costs. The second shows that for almost every vector of free-flow times the jump is strict.
+
+\subsection{The weak comparison}
+
+\begin{theorem}[Weak slope comparison for costs with zero slope at zero load]\label{thm:weakcomparison}
+Let every edge cost be nonnegative, nondecreasing and $C^1$ on $[0,\infty)$ with $c'_e(z)>0$ for $z>0$. Let $\mu(t)=tr$ with $r\in[0,\infty)^K$, and let $t_0>0$ be a breakpoint with nested regimes $R_s\subsetneq R_l$. Put $z_0=z(t_0)$, $c_0=c(z_0)$, $q=z_0/t_0$ and $D=\diag(c'_e(z_{0,e}))$. On each punctured side, with regime $R$:
+\begin{enumerate}[label=(\alph*),nosep]
+\item $z(t)-z_0=O(|t-t_0|)$, and $c(z(t))$ has a one-sided derivative $Dv_R$ at $t_0$, where $v_R$ is any minimiser of
+\begin{equation}\label{eq:quadratic}
+ \min\{v^TDv:\ v\in q+\Kc_R\}.
+\end{equation}
+The vector $Dv_R$ does not depend on the choice of minimiser.
+\item $E$ has the one-sided derivative $E'_R(t_0)=c_0^Tq+t_0v_R^TDv_R$.
+\end{enumerate}
+Consequently, with $v_s=v_{R_s}$ and $v_l=v_{R_l}$,
+\begin{equation}\label{eq:distancejump}
+ E'_{R_s}(t_0)-E'_{R_l}(t_0)=t_0(v_s-v_l)^TD(v_s-v_l)\ge0,
+\end{equation}
+so $E'(t_0^-)\ge E'(t_0^+)$ at an expansion and $E'(t_0^-)\le E'(t_0^+)$ at a contraction. Equality holds if and only if $Dv_s=Dv_l$. If every $zc_e(z)$ is strictly convex, the same holds for $P$, with the jump \eqref{eq:distancejump} divided by $S(t_0)>0$. If $D$ is positive definite on $\Kc_{R_l}$, the edge loads themselves have one-sided derivatives $v_-$ and $v_+$.
+\end{theorem}
+
+\begin{corollary}[CDS Theorem~4.4(i) for BPR costs]\label{cor:bpr}
+For costs $c_e(z)=a_e+b_ez^{p_e}$ with $a_e\ge0$, $b_e>0$ and $p_e>1$, possibly different on different edges, the slope inequalities of the O'Hare et al.\ conjecture hold weakly, for $E$ and for $P$, at every nested breakpoint of a proportional demand path.
+\end{corollary}
+
+CDS Remark~4.6 notes that their Theorem~4.4(i) excludes BPR costs and would extend to them given the answer to Question~1. Corollary~\ref{cor:bpr} supplies that extension, for expansions and contractions, and it needs neither positive free-flow costs nor a common exponent. The proof does not go through Theorem~\ref{fr:theorem}. CDS's route (their Lemma~5.1) needs $C^1$ selections of equilibria that extend from each side up to the breakpoint, and the endpoint obstruction (Proposition~\ref{fr:endpoint}) shows that such one-sided statements can fail in the class of costs with zero slope at zero. That obstruction sits at zero total demand, however, where $q=z_0/t_0$ is undefined. At a breakpoint with $t_0>0$ only the one-sided derivative of the \emph{cost} vector is needed, and that derivative exists. The quadratic characterisation \eqref{eq:quadratic} is the method of CDS Section~5, and directional derivatives of equilibrium costs have antecedents in \cite{JP2007,Patriksson2004}. The new step is the positive annihilator \eqref{eq:sideannihilator}, which replaces both strict positivity of the slopes and positivity of the free-flow costs.
+
+\begin{proof}
+Fix one side, with regime $R$ and open side interval $I_\sigma$. Every equilibrium route flow on $I_\sigma$ uses only routes in $R$, so $z(t)/t$ lies in the compact set $\mathcal Z_R(r)$ of loads of nonnegative route flows on $R$ with demand $r$. Continuity of $z$ gives $q\in\mathcal Z_R(r)$. Hence $z(t)-tq\in\Kc_R$, and with $\delta=t-t_0$ and $w=z(t)-z_0$ we have $w-\delta q\in\Kc_R$. All routes of $R$ are cheapest on $I_\sigma$, and by continuity at $t_0$, so $c(z(t))\perp\Kc_R$ and $c_0\perp\Kc_R$. Therefore
+\begin{equation}\label{eq:lipschitz_identities}
+ [c(z(t))-c_0]^Tw=\delta\,[c(z(t))-c_0]^Tq.
+\end{equation}
+Let $\mathcal U_\sigma$ be the set of edges that carry flow somewhere on $I_\sigma$. For each $e\in\mathcal U_\sigma$ pick $t_e\in I_\sigma$ with $z_e(t_e)>0$ and set
+\begin{equation}\label{eq:sideannihilator}
+ \bar c=\sum_{e\in\mathcal U_\sigma}c(z(t_e)).
+\end{equation}
+Then $\bar c\perp\Kc_R$, and $\bar c_e>0$ on $\mathcal U_\sigma$ because costs are nonnegative and strictly increasing. Hence $\bar c^Tw=\delta\,\bar c^Tq$.
+
+Let $J_+=\{e:z_{0,e}>0\}$ and $J_0$ be the remaining edges. Edges outside $\mathcal U_\sigma$ have $w_e=0$ on $I_\sigma$, and $w_e=z_e(t)\ge0$ for $e\in J_0$. Near $z_0$ the slopes on $J_+$ are at least some $c_*>0$, and the $J_0$ terms on the left of \eqref{eq:lipschitz_identities} are nonnegative. Since $q_{J_0}=0$, the right side involves only $J_+$ and is at most $C|\delta|\,\|w_{J_+}\|$. Thus $c_*\|w_{J_+}\|^2\le C|\delta|\,\|w_{J_+}\|$, so $w_{J_+}=O(|\delta|)$. Then
+\[
+ \sum_{e\in J_0\cap\,\mathcal U_\sigma}\bar c_ew_e=\delta\,\bar c^Tq-\sum_{e\in J_+}\bar c_ew_e=O(|\delta|)
+\]
+gives $w_{J_0}=O(|\delta|)$.
+
+Every limit point $v$ of $w/\delta$ as $t\to t_0$ within $I_\sigma$ lies in the closed set $q+\Kc_R$. Since $c$ is $C^1$ and $w=O(|\delta|)$, along the same subsequence $[c(z(t))-c_0]/\delta\to Dv$, so $Dv\perp\Kc_R$. These are the optimality conditions of \eqref{eq:quadratic}. Two minimisers differ by some $\kappa\in\Kc_R$ with $\kappa^TD\kappa=0$, hence $D\kappa=0$, so $Dv=Dv_R$ is unique. Every sequence has a subsequence along which the bounded difference quotients of $c$ converge to $Dv_R$, which proves (a). For (b),
+\[
+ \frac{E(t)-E(t_0)}{\delta}=\frac{c(z(t))^Tw}{\delta}+z_0^T\frac{c(z(t))-c_0}{\delta}
+ =c(z(t))^Tq+t_0q^T\frac{c(z(t))-c_0}{\delta}\longrightarrow c_0^Tq+t_0q^TDv_R,
+\]
+using $c(z(t))\perp\Kc_R$. Finally $q^TDv_R=v_R^TDv_R$, because $q-v_R\in\Kc_R$ and $Dv_R\perp\Kc_R$.
+
+For \eqref{eq:distancejump}, note $v_s-v_l\in\Kc_{R_l}$ because $\Kc_{R_s}\subseteq\Kc_{R_l}$, and $Dv_l\perp\Kc_{R_l}$. Expanding $v_s^TDv_s$ around $v_l$ gives $v_s^TDv_s=v_l^TDv_l+(v_s-v_l)^TD(v_s-v_l)$. The equality case follows because $D$ is diagonal and nonnegative. For $P$, Proposition~\ref{prop:Sregular} shows that $S$ is $C^1$, and $S(t_0)>0$ because a breakpoint needs positive demand. The quotient rule gives the jump of $P$. If $D$ is positive definite on $\Kc_{R_l}$, the minimiser $v_R$ is unique on each side, so all limit points of $w/\delta$ coincide.
+\end{proof}
+
+\subsection{Generic strictness}
+
+The equality case of Theorem~\ref{thm:weakcomparison} is a tangency, as the next lemma shows. Tangencies are exceptional, and Theorem~\ref{thm:generic} makes this precise in the chart of free-flow costs.
+
+\begin{lemma}[Equality forces tangency]\label{lem:tangencycomparison}
+In Theorem~\ref{thm:weakcomparison}, let $P\in R_{l,k}\setminus R_{s,k}$ and $Q\in R_{s,k}$, and let $g(t)=c(z(t))^T(1_P-1_Q)$, which has a strict sign on the smaller side. If $E'(t_0^-)=E'(t_0^+)$, then $g(t_0)=0$, and the one-sided derivative of $g$ at $t_0$ from the smaller side is zero.
+\end{lemma}
+\begin{proof}
+Both routes are cheapest on the larger side, so $g\equiv0$ there, and $g(t_0)=0$ by continuity. By Theorem~\ref{thm:weakcomparison}(a), the one-sided derivatives of $g$ are $(Dv_s)^T(1_P-1_Q)$ and $(Dv_l)^T(1_P-1_Q)$. The second vanishes because $g\equiv0$ on the larger side. Equality of slopes gives $Dv_s=Dv_l$, so the first vanishes too.
+\end{proof}
+
+\begin{definition}\label{def:nondegenerate}
+A nested breakpoint is \emph{nondegenerate} if every edge on some route of the smaller regime $R_s$ has positive load at $t_0$.
+\end{definition}
+
+All the examples of Section~\ref{sec:transitions} are nondegenerate: there the smaller regime uses only the bank edges, and they are all loaded.
+
+\begin{theorem}[Strictness for almost every free-flow vector]\label{thm:generic}
+Fix a network with route sets $\mathcal P_k$, a demand direction $r\in(0,\infty)^K$, and functions $\phi_e:[0,\infty)\to[0,\infty)$ that are $C^1$ with $\phi_e'(z)>0$ for $z>0$. For free-flow costs $a\in(0,\infty)^{\mathcal E}$ put $c_e=a_e+\phi_e$. There is a Lebesgue-null set $\mathcal N\subset(0,\infty)^{\mathcal E}$ such that, for every $a\notin\mathcal N$, every nondegenerate nested breakpoint $t_0>0$ of the path $tr$ has $E'(t_0^-)\ne E'(t_0^+)$, with the strict sign of \eqref{eq:distancejump}. If every $zc_e(z)$ is strictly convex, the same holds for $P$.
+\end{theorem}
+
+For BPR costs, $\phi_e(z)=b_ez^{p_e}$, so the congestion coefficients and exponents may be fixed arbitrarily. Strictness then holds for almost every choice of free-flow times. The five-link example of Section~\ref{sec:fiveedge} therefore lies in an exceptional null set. Appendix~\ref{app:geometry} shows that in its own parameter chart the exceptional set has codimension $m-1$.
+
+\begin{proof}
+\emph{Restricted equalised loads.} Call a regime $R$ \emph{admissible} if $\Kc_R$ contains no nonzero nonnegative vector. Every regime that occurs at an equilibrium is admissible, since there the strictly positive cost vector is orthogonal to $\Kc_R$. Let $\mathcal U_R$ be the set of edges on routes of $R$, and fix a load $\bar q_R\ge0$ of a nonnegative route flow on $R$ with demand $r$. Put
+\[
+ \mathcal A_R(t)=\{z\in\R^{\mathcal E}_{\ge0}:\ z_e=0\ (e\notin\mathcal U_R),\ z-t\bar q_R\in\Kc_R\}=t\,\mathcal A_R(1),
+\]
+which is compact and convex for admissible $R$. Let $\hat z^R(t,a)$ be the unique minimiser over $\mathcal A_R(t)$ of the strictly convex function $\sum_{e\in\mathcal U_R}(a_ez_e+\int_0^{z_e}\phi_e)$. It is continuous in $(t,a)$. Let $\Omega_R$ be the open set of $(t,a)\in(0,\infty)\times(0,\infty)^{\mathcal E}$ with $\hat z^R_e(t,a)>0$ for all $e\in\mathcal U_R$. On $\Omega_R$ the minimiser lies in the relative interior of the orthant, so it is characterised by $c(\hat z^R;a)\perp\Kc_R$. Let $B$ be a matrix whose columns form a basis of $\Kc_R$, restricted to $\mathcal U_R$. The Jacobian of $\theta\mapsto B^Tc(t\bar q_R+B\theta;a)$ is $B^TDB$, with $D=\diag(\phi'_e(\hat z^R_e))$ positive on $\mathcal U_R$. By the implicit function theorem, $\hat z^R$ is $C^1$ on $\Omega_R$.
+
+\emph{The bad set.} For an admissible $R$, a commodity $k$, routes $P\in\mathcal P_k\setminus R_k$ and $Q\in R_k$ with $\kappa=1_P-1_Q\notin\Kc_R$, define on $\Omega_R$
+\[
+ \Psi(t,a)=c(\hat z^R(t,a);a)^T\kappa,
+\]
+where edges outside $\mathcal U_R$ have load zero. We claim $\nabla_a\Psi\ne0$ everywhere on $\Omega_R$. For a direction $\alpha\in\R^{\mathcal E}$, differentiating $B^Tc(\hat z^R;a)=0$ gives $\partial_\alpha\hat z^R=-M\alpha_{\mathcal U}$, with $M=B(B^TDB)^{-1}B^T$, so
+\[
+ \partial_\alpha\Psi=\alpha^T\kappa-\kappa_{\mathcal U}^TDM\alpha_{\mathcal U}.
+\]
+If this vanished for every $\alpha$, then $\kappa_e=0$ off $\mathcal U_R$, and $\kappa_{\mathcal U}=MD\kappa_{\mathcal U}$ would lie in the range of $B$. That would put $\kappa$ in $\Kc_R$, which is excluded. Hence $\Sigma=\Psi^{-1}(0)$ is a $C^1$ hypersurface of dimension $|\mathcal E|$. The projection $\pi(t,a)=a$ restricted to $\Sigma$ is singular exactly where the tangent space of $\Sigma$ contains $(1,0)$, that is, where $\partial_t\Psi=0$. By Sard's theorem \cite{Sard1942}, applied to this $C^1$ map between manifolds of equal dimension, its critical values form a null set. Let $\mathcal N$ be the finite union of these null sets over all admissible $(R,k,P,Q)$.
+
+\emph{Conclusion.} Let $a\notin\mathcal N$ and let $t_0$ be a nondegenerate nested breakpoint with equal slopes. On the smaller side, the equilibrium load lies in $\mathcal A_{R_s}(t)$ and satisfies $c(z)\perp\Kc_{R_s}$, so it minimises the convex objective there and equals $\hat z^{R_s}(t,a)$. By continuity this also holds at $t_0$, and nondegeneracy gives $(t_0,a)\in\Omega_{R_s}$. Pick $P\in R_{l,k}\setminus R_{s,k}$ and $Q\in R_{s,k}$. If $\kappa=1_P-1_Q$ were in $\Kc_{R_s}$, then $P$ would cost the same as $Q$ on the smaller side and would belong to $R_s$, so $\kappa\notin\Kc_{R_s}$. Lemma~\ref{lem:tangencycomparison} gives $\Psi(t_0,a)=0$ and $\partial_t\Psi(t_0,a)=0$, because $\Psi(\cdot,a)$ is $C^1$ and agrees with $g$ on the smaller side. So $a$ is a critical value, a contradiction. The statement for $P$ follows as in Theorem~\ref{thm:weakcomparison}.
+\end{proof}
+
+Theorem~\ref{thm:generic} says nothing about degenerate breakpoints, at which some cheapest route of the smaller regime runs through an unloaded edge. Whether strictness is generic there is open.

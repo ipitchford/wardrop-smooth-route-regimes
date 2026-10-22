@@ -1,0 +1,195 @@
+{
+  "a_devils_advocate_triangle": {
+    "E'(1)_both_sides": "12",
+    "E0(1)": "4",
+    "E5_jump_right_minus_left": "320",
+    "E_class": "C^4 not C^5, equal slopes",
+    "E_minus_E0_active_side": {
+      "coefficient": "-8/3",
+      "order": 5,
+      "series": "8*d**7/9 - 8*d**6/3 - 8*d**5/3"
+    },
+    "P": {
+      "P5_jump_right_minus_left": "80",
+      "class": "C^4 not C^5"
+    },
+    "active_side": "t<1 (delta<0): indirect route s->u->v used; inactive for t>1 (contraction)",
+    "gap_f-h-g": "-(t - 1)**3*(t + 1)**3/3",
+    "label": "exact",
+    "network": "f: s->v 1+z^4; h: s->u 1/3+z^2; g: u->v 1/3+z^6/3; demands t on s->v, s->u, u->v",
+    "note": "commodity-weighted and physical sum z c(z) costs agree on the branch",
+    "optimum": {
+      "conclusion": "formal branch y=-d^2/5<0 on BOTH sides => infeasible; optimal indirect flow 0 near t=1; S=E0 (polynomial), analytic",
+      "formal_optimum_branch_y": "79471*d**6/225000 - 683*d**5/1875 + 59*d**4/300 + d**3/75 - d**2/5",
+      "marginal_gap_f_m-h_m-g_m": "-(t - 1)**2*(t + 1)**2*(7*t**2 - 1)/3",
+      "marginal_gap_leading": {
+        "coefficient": "-8",
+        "order": 2
+      },
+      "y_leading": {
+        "coefficient": "-1/5",
+        "order": 2
+      }
+    },
+    "x_leading": {
+      "coefficient": "-1/3",
+      "order": 3
+    },
+    "x_series": "-11*d**7/72 + 5*d**6/24 - 5*d**5/12 + d**4/2 - d**3/3"
+  },
+  "b_cubic_triangle": {
+    "E'(1)": "31",
+    "E(1)": "13",
+    "E5_jump": "-360/19",
+    "E_minus_E0": {
+      "coefficient": "-3/19",
+      "order": 5,
+      "series": "268*d**7/6859 - d**6/361 - 3*d**5/19"
+    },
+    "active_side": "t>1",
+    "gap_f-g-h(0)": "(t - 1)**3",
+    "label": "exact",
+    "network": "A s->v: f=z^3+z^2+4z+1 direct or connector h=1+z+z^2 then g=4z^2+z+1; B u->v: g; demand t each",
+    "x_leading": {
+      "coefficient": "1/19",
+      "order": 3
+    },
+    "x_series": "27004*d**7/2476099 - 2291*d**6/130321 + 199*d**5/6859 - 16*d**4/361 + d**3/19"
+  },
+  "c_swapped_five_edge": {
+    "E'(1)_both_sides": "164/5",
+    "E(1)": "20",
+    "E5_jump_right_minus_left": "2032128/15625",
+    "E_class": "C^4 not C^5, equal first slopes",
+    "E_minus_E0_active_left_side": {
+      "coefficient": "-84672/78125",
+      "order": 5,
+      "series": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "-84672/78125",
+        "19022976/1953125",
+        "-517035456/9765625",
+        "55051645824/244140625"
+      ]
+    },
+    "V0(1)_Beckmann": "17",
+    "bank_delays_at_T=4": {
+      "direct": "3",
+      "shared": "2"
+    },
+    "connector_formal_branch_leading": {
+      "coefficient": "-84/125",
+      "order": 3,
+      "positive_for": "delta<0 (t<1)"
+    },
+    "connector_series": [
+      "0",
+      "0",
+      "0",
+      "-84/125",
+      "12516/3125",
+      "-1207584/78125",
+      "97415724/1953125",
+      "-1458473352/9765625",
+      "533023698564/1220703125"
+    ],
+    "edge_loads_at_t=1": {
+      "direct_w1_u4": "1",
+      "direct_w3_u2": "3",
+      "shared_w1_u1": "1",
+      "shared_w3_u3": "3"
+    },
+    "edges_direct_(a,b,ref_load)": [
+      [
+        "5/2",
+        "1/162",
+        "3"
+      ],
+      [
+        "11/4",
+        "1/4",
+        "1"
+      ]
+    ],
+    "edges_shared_(a,b,ref_load)": [
+      [
+        "1",
+        "1",
+        "1"
+      ],
+      [
+        "5/3",
+        "1/243",
+        "3"
+      ]
+    ],
+    "gap_D_leading": {
+      "coefficient": "-336/625",
+      "order": 3
+    },
+    "gap_series": [
+      "0",
+      "0",
+      "0",
+      "-336/625",
+      "4368/3125",
+      "-1182384/390625",
+      "54317088/9765625",
+      "-407509536/48828125",
+      "31230205776/6103515625"
+    ],
+    "label": "exact",
+    "relation_to_original": "E-E0 series identical to the original five-edge (-K delta^5 + ...) and the connector series is exactly the negative of the original; on the active side delta<0 so E-E0 = +K|delta|^5 > 0 (Braess-type cost increase)",
+    "t>1_inactivity": "sign lemma: q_direct(s)-q_shared(s) = Delta^3 g(0) > 0 for s>0, so s_d(T)<s_s(T) for all T>4: connector strictly off and all four bank edges loaded (s>0)"
+  },
+  "c_swapped_five_edge_numeric": {
+    "P(1)=20/S(1)": "1.01199401240614",
+    "P5_jump_right_minus_left=-120*c/S(1)": "6.58080437901717",
+    "S(1)": "19.762962779243649644",
+    "conclusion": "near t=1 the swapped optimum uses no connector (gamma t ~ 1.495 > 1 lies in the inactive equilibrium regime), S analytic at 1; the optimum's own transition is at t=1/gamma (connector on below), irrelevant near t=1",
+    "eq_connector_t=0.99": "7.13648322825e-7",
+    "eq_connector_t=1.01": "0.0",
+    "label": "numerical",
+    "mp_dps": 60,
+    "optimum_connector_at_1/gamma+0.001": "0.0",
+    "optimum_connector_at_1/gamma-0.001": "1.516107267e-9",
+    "rows": [
+      {
+        "S_direct": "19.109756822196549085",
+        "min_opt_edge_load": "0.8420275346",
+        "opt_connector": "0.0",
+        "t": "0.98"
+      },
+      {
+        "S_direct": "19.433099867813106018",
+        "min_opt_edge_load": "0.8487458155",
+        "opt_connector": "0.0",
+        "t": "0.99"
+      },
+      {
+        "S_direct": "19.762962779243649644",
+        "min_opt_edge_load": "0.8555102891",
+        "opt_connector": "0.0",
+        "t": "1"
+      },
+      {
+        "S_direct": "20.099546694235245486",
+        "min_opt_edge_load": "0.8623192152",
+        "opt_connector": "0.0",
+        "t": "1.01"
+      },
+      {
+        "S_direct": "20.443056750256412215",
+        "min_opt_edge_load": "0.8691709176",
+        "opt_connector": "0.0",
+        "t": "1.02"
+      }
+    ]
+  },
+  "failures": [],
+  "status": "PASS"
+}

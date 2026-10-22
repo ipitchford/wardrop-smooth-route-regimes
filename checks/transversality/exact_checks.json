@@ -1,0 +1,195 @@
+{
+  "method": "exact Fraction arithmetic from physical quartic edges",
+  "asymmetric_rays": [
+    {
+      "m": 3,
+      "demand_a": "2",
+      "demand_b": "7",
+      "gap_coefficient": "336/625",
+      "connector_coefficient": "196/375",
+      "cost_coefficient": "-65856/78125"
+    },
+    {
+      "m": 3,
+      "demand_a": "1/3",
+      "demand_b": "11/2",
+      "gap_coefficient": "336/625",
+      "connector_coefficient": "66/625",
+      "cost_coefficient": "-66528/390625"
+    },
+    {
+      "m": 3,
+      "demand_a": "3",
+      "demand_b": "5",
+      "gap_coefficient": "336/625",
+      "connector_coefficient": "63/100",
+      "cost_coefficient": "-15876/15625"
+    },
+    {
+      "m": 5,
+      "demand_a": "2",
+      "demand_b": "7",
+      "gap_coefficient": "7920/16807",
+      "connector_coefficient": "220/343",
+      "cost_coefficient": "-8712000/5764801"
+    }
+  ],
+  "physical_codimension": [
+    {
+      "m": 3,
+      "dimension_of_fixed_total_chart": 2,
+      "rank": 2,
+      "restricted_moment_determinant": "-1/2",
+      "matrix": [
+        [
+          "-1/2",
+          "1/2"
+        ],
+        [
+          "-2",
+          "3"
+        ]
+      ]
+    },
+    {
+      "m": 5,
+      "dimension_of_fixed_total_chart": 4,
+      "rank": 4,
+      "restricted_moment_determinant": "9/128",
+      "matrix": [
+        [
+          "-1/4",
+          "1/4",
+          "-1/8",
+          "1/8"
+        ],
+        [
+          "-3/2",
+          "2",
+          "-1",
+          "5/4"
+        ],
+        [
+          "-31/4",
+          "13",
+          "-49/8",
+          "19/2"
+        ],
+        [
+          "-39",
+          "80",
+          "-34",
+          "65"
+        ]
+      ]
+    },
+    {
+      "m": 7,
+      "dimension_of_fixed_total_chart": 6,
+      "rank": 6,
+      "restricted_moment_determinant": "-6075/262144",
+      "matrix": [
+        [
+          "-3/32",
+          "3/32",
+          "-1/16",
+          "1/16",
+          "-1/32",
+          "1/32"
+        ],
+        [
+          "-3/4",
+          "15/16",
+          "-5/8",
+          "3/4",
+          "-3/8",
+          "7/16"
+        ],
+        [
+          "-171/32",
+          "63/8",
+          "-79/16",
+          "7",
+          "-109/32",
+          "37/8"
+        ],
+        [
+          "-75/2",
+          "255/4",
+          "-145/4",
+          "60",
+          "-111/4",
+          "175/4"
+        ],
+        [
+          "-8403/32",
+          "1023/2",
+          "-4141/16",
+          "496",
+          "-6841/32",
+          "781/2"
+        ],
+        [
+          "-7353/4",
+          "4095",
+          "-14615/8",
+          "4032",
+          "-12753/8",
+          "3367"
+        ]
+      ]
+    }
+  ],
+  "transverse_paths": [
+    {
+      "m": 3,
+      "path_v": "1",
+      "path_w": "0",
+      "chi": "67/125",
+      "connector_active_derivative": "1/2",
+      "cost_active_minus_inactive_second_derivative": "-134/125",
+      "active_side": "right"
+    },
+    {
+      "m": 3,
+      "path_v": "2",
+      "path_w": "-3",
+      "chi": "67/125",
+      "connector_active_derivative": "5/2",
+      "cost_active_minus_inactive_second_derivative": "-134/5",
+      "active_side": "right"
+    },
+    {
+      "m": 3,
+      "path_v": "-1",
+      "path_w": "4",
+      "chi": "67/125",
+      "connector_active_derivative": "-5/2",
+      "cost_active_minus_inactive_second_derivative": "-134/5",
+      "active_side": "left"
+    },
+    {
+      "m": 5,
+      "path_v": "1",
+      "path_w": "0",
+      "chi": "65/686",
+      "connector_active_derivative": "1/2",
+      "cost_active_minus_inactive_second_derivative": "-65/343",
+      "active_side": "right"
+    },
+    {
+      "m": 7,
+      "path_v": "1",
+      "path_w": "0",
+      "chi": "71/3888",
+      "connector_active_derivative": "1/2",
+      "cost_active_minus_inactive_second_derivative": "-71/1944",
+      "active_side": "right"
+    }
+  ],
+  "demand_perturbation_m3_p4": {
+    "absolute_threshold_prefactor_cubed": "125/42",
+    "kink_prefactor_cubed": "5267275776/1953125",
+    "kink_prefactor_approximate": 13.91934094382655
+  }
+}

@@ -1,0 +1,33 @@
+{
+ "schemaVersion": "1.0",
+ "release": "wardrop-smooth-route-regimes",
+ "version": "1.0.0-candidate",
+ "doi": "10.5281/zenodo.23552630",
+ "conceptDoi": "10.5281/zenodo.23552629",
+ "creator": "Anonymous",
+ "status": "unrefereed-candidate",
+ "manuscript": "paper/wardrop_smooth_transitions.pdf",
+ "claimLedger": "evidence/claim_ledger.json",
+ "sources": [
+  {
+   "citation": "Cominetti, Dose and Scarsini, Phase transitions of the price-of-anarchy function in multi-commodity routing games, Transportation Research Part B 182, 102922 (2024)",
+   "doi": "10.1016/j.trb.2024.102922",
+   "openVersion": "arXiv:2305.03459v2",
+   "questions": "Question 1: paragraph after Remark 3.5; Question 2: immediately before Example 4.9"
+  }
+ ],
+ "boundary": "'proof' means a written proof in the manuscript, not formal verification; 'exact' means rational or symbolic computation confirming constants and instances; 'numerical' is high-precision floating point; 'exploratory' is an illustration without a claim of generality. Internal AI-assisted review is not peer review or independent reproduction.",
+ "claims": [
+  {"id": "fixed-regime-c1", "location": "Theorem 3.1", "status": "proof", "statement": "C1 costs with c'(z)>0 for z>0: equilibrium link flows are C1 on every open interval with a constant regime, along any C1 demand path, on any network; E is C1, and S and P are C1 when every z c_e(z) is strictly convex (as for BPR costs).", "evidence": ["paper/sections/fixed_regime.tex", "checks/small_networks/weighted_basis_verification.json"]},
+  {"id": "endpoint-fails", "location": "Proposition 3.3", "status": "proof; BPR endpoint open", "statement": "The one-sided extension at t0=0 fails for some costs with zero slope only at zero; whether it fails for BPR costs is open.", "evidence": ["paper/sections/fixed_regime.tex"]},
+  {"id": "weak-comparison-bpr", "location": "Theorem 4.1, Corollary 4.2", "status": "proof", "statement": "For costs a_e + b_e z^p_e with a_e>=0, b_e>0, p_e>1, the slope inequalities of CDS Theorem 4.4(i) hold weakly for E and P at every nested breakpoint of a proportional demand path.", "evidence": ["paper/sections/comparison.tex"]},
+  {"id": "genericity", "location": "Theorem 4.5", "status": "proof", "statement": "For almost every free-flow vector, every nondegenerate nested breakpoint has a strict slope jump for E and P.", "evidence": ["paper/sections/comparison.tex", "checks/transversality/exact_checks.json"]},
+  {"id": "five-link-quartic", "location": "Section 5.2", "status": "proof; exact", "statement": "Five-link common-quartic BPR network with a genuine expansion at t=1: E(t)=E0(t)-(84672/78125)(t-1)_+^5+O((t-1)_+^6); E,P in C4 but not C5; E'(1)=164/5.", "evidence": ["code/verify_exact.py", "evidence/exact_verification.json", "negative_controls.py"]},
+  {"id": "small-examples", "location": "Section 5.1", "status": "proof; exact", "statement": "Three links suffice for E,P in C4 but not C5 with strictly convex polynomial costs, and with mixed BPR exponents at a contraction.", "evidence": ["code/verify_small_examples.py", "evidence/small_examples.json"]},
+  {"id": "any-finite-order", "location": "Theorem 5.3", "status": "proof", "statement": "For every p>1 and odd m>=3, m+2 links give E,P in C^(2m-2) but not C^(2m-1).", "evidence": ["paper/sections/transitions.tex", "evidence/exact_verification.json"]},
+  {"id": "minimality", "location": "Theorem 6.1, Appendix B", "status": "proof; finite enumeration as a check", "statement": "Five links are minimal for equal-slope nested breakpoints (expansions and contractions) among costs a_e+b_e z^p, a_e,b_e>0, common p>1, all simple paths, proportional positive demands.", "evidence": ["paper/sections/app_minimality.tex", "checks/small_networks/verify_minimality.py", "evidence/minimality_checks.json"]},
+  {"id": "optimum-transition", "location": "Theorem 7.4", "status": "proof; exact interval check; numerical value", "statement": "At the optimum-side transition t=1/gamma, S in C^(2m-1) but not C^(2m); the same for P when E is C^(2m) there (checked exactly for the quartic example); the P jump value (about +89.7) is numerical.", "evidence": ["code/verify_optimum_transition.py", "evidence/optimum_transition.json"]},
+  {"id": "practice", "location": "Section 8", "status": "numerical", "statement": "After the five-link expansion the connector carries about 0.0088% of A's demand at t=1.1; link flows are C2 but not C3 at the switch.", "evidence": ["code/verify_practice.py", "evidence/practice.json"]},
+  {"id": "sioux-falls", "location": "Section 8.5", "status": "exploratory", "statement": "On the Sioux Falls test network, link activations along a demand scaling are transverse with visible slope drops of about 3.3-3.4%.", "evidence": ["code/sioux_falls.py", "evidence/sioux_falls_results.json", "tools/fetch_siouxfalls.py"]}
+ ]
+}

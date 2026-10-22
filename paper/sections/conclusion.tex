@@ -1,0 +1,14 @@
+\section{Conclusion and open problems}\label{sec:conclusion}
+
+Both questions of Cominetti, Dose and Scarsini have clear answers. For costs whose slope vanishes only at zero load, such as BPR costs, equilibrium link flows remain continuously differentiable while the set of cheapest routes is fixed, at every interior demand level and on every network. A change in that set, however, need not show up as a kink in total cost or the price of anarchy. Five links with standard quartic BPR costs suffice, five is the minimum for a common exponent, and larger networks hide any finite number of derivatives. The slope never jumps in the wrong direction, and for almost every vector of free-flow times it jumps strictly at every nondegenerate nested breakpoint, that is, one at which every edge on a route of the smaller regime is loaded. Exact invisibility is therefore exceptional at such breakpoints. Near-invisibility is robust, because near-matches restore only small kinks, and the new route then carries flows far below what ordinary assignment tolerances resolve.
+
+For practice, the lesson is that kinks in demand curves of total cost or of the price of anarchy are not a reliable detector of route-set changes. Link flows and commodity costs reveal such changes at lower derivative order, and the contact order can be estimated directly.
+
+Open problems:
+\begin{enumerate}[nosep]
+\item \emph{The endpoint for BPR costs.} Does CDS Theorem~3.2 extend to BPR costs at zero demand, $t_0=0$? Our endpoint counterexample uses oscillating costs.
+\item \emph{Degenerate breakpoints.} Is strictness generic at nested breakpoints whose smaller regime contains an unloaded edge?
+\item \emph{Mixed exponents.} Do four edges suffice for an equal-slope expansion when BPR exponents differ between edges?
+\item \emph{Non-nested breakpoints.} CDS Example~4.8 shows that all slope orders are possible when neither regime contains the other. How smooth can such breakpoints be?
+\item \emph{Prevalence.} How often do near-tangent activations occur in calibrated networks, and how small are their kinks? The Sioux Falls test is one data point, and it shows none near nominal demand.
+\end{enumerate}

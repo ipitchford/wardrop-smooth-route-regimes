@@ -1,0 +1,899 @@
+\section{Proof of the minimality theorem}\label{app:minimality}\label{sec:minimality}
+
+This appendix shows that no network with four or fewer physical edges can have
+equal one-sided slopes at a nested breakpoint, whether the minimum-route
+regime grows (an expansion) or shrinks (a contraction) as demand increases.
+Together with the five-edge examples this shows that five edges are the
+minimum for both kinds of breakpoint. The proof is a finite case analysis.
+Each case is closed by an explicit inequality, and Table~\ref{tab:minimality}
+lists them all.
+
+\subsection{Setting and statement}
+
+We first fix the class of networks and the kind of breakpoint we study.
+
+\begin{definition}[Standing class]\label{def:standing}
+A \emph{network in the standing class} consists of:
+\begin{enumerate}
+\item a finite directed multigraph $\Gamma$ with vertex set $V$ and edge set
+ $\mathcal E$ (parallel and antiparallel edges are allowed);
+\item for each edge $e$, a cost $c_e(z)=a_e+b_ez^p$ for $z\ge0$, with
+ $a_e,b_e>0$ and one real exponent $p>1$ common to all edges;
+\item finitely many commodities $k$, each with an origin $o_k$, a destination
+ $d_k\ne o_k$, and demand $tr_k$, where $r_k>0$ and $t>0$ is the scale
+ parameter.
+\end{enumerate}
+The routes of commodity $k$ are \emph{all} simple directed $o_k$--$d_k$
+paths in $\Gamma$; we assume there is at least one. We identify a route $P$
+with its edge-incidence vector $1_P\in\{0,1\}^{\mathcal E}$. A route is
+determined by its edge set, since it is simple.
+\end{definition}
+
+A Wardrop equilibrium at scale $t$ is a nonnegative route flow meeting the
+demands in which every route with positive flow has minimum cost among the
+routes of its commodity. Because every $c_e$ is strictly increasing, the
+aggregate edge load $z(t)\in\R^{\mathcal E}_{\ge0}$ of an equilibrium is
+unique. Its equilibrium total cost is
+\[
+ E(t)=\sum_{e}z_e(t)\,c_e(z_e(t)),
+\]
+and $S(t)$ denotes the minimum of the same total cost over all feasible
+route flows. The price of anarchy is $P(t)=E(t)/S(t)$.
+
+We need the set of cheapest routes, not merely the set of used routes.
+
+\begin{definition}[Regimes and nested breakpoints]\label{def:regimeB}
+For a load vector $z$, the \emph{complete minimum-route set} $R_k(z)$ of
+commodity $k$ is the set of all routes of $k$ whose cost under $c(z)$ is
+minimal. It depends only on $z$, not on any route decomposition of $z$. The
+\emph{regime} at scale $t$ is the family $R(t)=(R_k(z(t)))_k$. For families we
+write $R\subseteq R'$ if $R_k\subseteq R'_k$ for every $k$, and
+$R\subsetneq R'$ if moreover the inclusion is strict for some $k$.
+
+A scale $t_0>0$ is a \emph{nested breakpoint} if there is $\varepsilon>0$ such
+that $R(t)=R_-$ for $t\in(t_0-\varepsilon,t_0)$ and $R(t)=R_+$ for
+$t\in(t_0,t_0+\varepsilon)$, and either
+\begin{itemize}
+\item $R_-\subsetneq R_+$ (an \emph{expansion}), or
+\item $R_+\subsetneq R_-$ (a \emph{contraction}).
+\end{itemize}
+In either case $R_s$ denotes the smaller and $R_l$ the larger of the two
+regimes. The \emph{smaller side} is the punctured one-sided neighbourhood on
+which $R(t)=R_s$: it is the left side for an expansion and the right side for
+a contraction. The other side is the \emph{larger side}.
+\end{definition}
+
+For a family $R$ of route sets let
+\[
+ \mathcal K_R=\operatorname{span}\{1_P-1_Q:\ P,Q\in R_k\text{ for some }k\}.
+\]
+This is the set of aggregate edge images of signed route flows on $R$ that
+leave every commodity's total demand unchanged. Every element of
+$\mathcal K_R$ has zero net flow at every vertex, so $\mathcal K_R$ lies in
+the incidence kernel $\mathcal K(\Gamma)$ of $\Gamma$. For a weakly connected
+multigraph with $n$ vertices and $e$ edges, $\dim\mathcal K(\Gamma)=e-n+1$.
+
+\begin{theorem}[Four-edge lower bound]\label{thm:fouredge}
+Let a network in the standing class have at most four physical edges, and
+let $t_0>0$ be a nested breakpoint. Then both one-sided derivatives of $E$
+and of $P$ exist at $t_0$, and
+\begin{align*}
+ E'(t_0^-)&>E'(t_0^+),\quad P'(t_0^-)>P'(t_0^+)
+ &&\text{for an expansion},\\
+ E'(t_0^-)&<E'(t_0^+),\quad P'(t_0^-)<P'(t_0^+)
+ &&\text{for a contraction}.
+\end{align*}
+\end{theorem}
+
+\begin{corollary}[Minimality of five edges]\label{cor:fiveminimal}
+In the standing class, five is the minimum number of physical edges for
+which equal one-sided slopes of $E$ (equivalently of $P$) occur at a nested
+expansion, and five is also the minimum for a nested contraction.
+\end{corollary}
+
+\begin{proof}
+Theorem~\ref{thm:fouredge} excludes four or fewer edges. Five edges suffice
+for expansions by Theorem~\ref{thm:main}, and for contractions by the
+bank-swapped five-edge contraction of Section~\ref{sec:fiveedge}.
+\end{proof}
+
+\subsection{General tools}
+
+We use the weak slope comparison, Theorem~\ref{thm:weakcomparison}, and the tangency lemma, Lemma~\ref{lem:tangencycomparison}. Costs in the standing class satisfy their hypotheses: $c_e'(z)=pb_ez^{p-1}$ is continuous on $[0,\infty)$ and positive for $z>0$, and $c_e\ge a_e>0$. For an expansion the smaller side is the left one, so \eqref{eq:distancejump} reads $E'(t_0^-)\ge E'(t_0^+)$; for a contraction it reads $E'(t_0^+)\ge E'(t_0^-)$. Theorem~\ref{thm:fouredge} for $E$ is thus the assertion that the equality $Dv_s=Dv_l$ is impossible. We call this equality \emph{slope equality}. By Lemma~\ref{lem:tangencycomparison}, if $P\in R_{l,k}\setminus R_{s,k}$ and $Q\in R_{s,k}$, then $g(t)=c(z(t))^T(1_P-1_Q)$ is positive on the smaller side, vanishes at $t_0$, and under slope equality has zero one-sided derivative there from the smaller side.
+
+Two symmetries let us halve several case distinctions. The first reverses
+all traffic.
+
+\begin{lemma}[Reversal symmetry]\label{lem:reversal}
+Let $\Gamma^{\mathrm{rev}}$ be obtained by reversing every edge, with the same
+costs, and give each commodity the origin $d_k$ and destination $o_k$ and the
+same demand. Then $P\mapsto P^{\mathrm{rev}}$ (traverse in the opposite
+direction) is a cost-preserving bijection between the routes of $k$ in the
+two networks, with $1_{P^{\mathrm{rev}}}=1_P$. Consequently both networks
+have the same equilibrium edge loads at every scale, corresponding regimes,
+the same spaces $\mathcal K_R$, and the same functions $E$ and $S$. Nested
+breakpoints, their type (expansion or contraction) and their one-sided
+slopes correspond.
+\end{lemma}
+
+\begin{proof}
+A sequence of edges is a simple directed $o_k$--$d_k$ path in $\Gamma$
+exactly when the reversed sequence is a simple directed $d_k$--$o_k$ path in
+$\Gamma^{\mathrm{rev}}$, and both use the same edges. Hence the incidence
+vectors of the route sets agree, so the sets of feasible aggregate loads
+agree and route costs agree under every load vector. The Wardrop conditions
+and the complete minimum-route sets are statements about these costs, and
+$E$ and $S$ depend only on loads. All claims follow.
+\end{proof}
+
+The second symmetry is relabelling: renaming vertices and edges by an
+isomorphism of multigraphs, with costs and commodities carried along, changes
+nothing. We use the composite of reversal with a relabelling, which we call
+the \emph{exchange symmetry}; it is described in
+Lemma~\ref{lem:sides}\,(e).
+
+Next we reduce to connected graphs and to one commodity per endpoint pair.
+
+\begin{lemma}[Reductions]\label{lem:reductions}
+In proving Theorem~\ref{thm:fouredge} we may assume that $\Gamma$ has no
+loops, is weakly connected, and has at most one commodity for each ordered
+pair of endpoints.
+\end{lemma}
+
+\begin{proof}
+A loop lies on no simple path; it carries no load and can be deleted, which
+does not increase the edge count. If $\Gamma$ has several weak components,
+each commodity lives in one of them, and the equilibrium, the regime, $E$ and
+$\mathcal K_R$ split as direct sums over components. Every component inherits
+constant regimes on both punctured sides, nested in the same direction. On a
+component whose regime does not change, the weak comparison theorem with
+$R_s=R_l$ gives equal one-sided slopes. Every component whose regime changes
+has at most four edges and a nested breakpoint of the same type. If the
+inequality of Theorem~\ref{thm:fouredge} is strict for each such component,
+adding the components gives strictness for $E$. Finally, commodities with
+the same endpoints have the same routes and the same minimum cost; merging
+them into one commodity with the summed demand changes neither the
+equilibrium loads nor the regimes, nor $E$ or $S$.
+\end{proof}
+
+The dimension lemma disposes of every graph whose incidence kernel is at most
+one-dimensional.
+
+\begin{lemma}[Dimension lemma]\label{lem:dimension}
+At a nested breakpoint of either type, $\mathcal K_{R_s}\subsetneq
+\mathcal K_{R_l}$. If $\mathcal K_{R_s}=\{0\}$, slope equality fails, on any
+graph in the standing class.
+\end{lemma}
+
+\begin{proof}
+Choose $k$, $P\in R_{l,k}\setminus R_{s,k}$ and $Q\in R_{s,k}$, and put
+$\kappa=1_P-1_Q\in\mathcal K_{R_l}$. On the smaller side, all routes in
+$R_{s,k}$ have equal cost, so $c(z(t))$ is orthogonal to $\mathcal K_{R_s}$.
+If $\kappa\in\mathcal K_{R_s}$, then $P$ would cost the same as $Q$ there and
+would be cheapest, which is false. Hence $\kappa\notin\mathcal K_{R_s}$.
+
+Now let $\mathcal K_{R_s}=\{0\}$. Then all routes in $R_{s,k}$ have the same
+incidence vector, so each commodity has a single cheapest route $Q_k$ on the
+smaller side and carries its whole demand there. Thus $z(t)=tq$ on the
+smaller side, with $q=\sum_kr_k1_{Q_k}=z_0/t_0$, and $q+\mathcal K_{R_s}=\{q\}$
+gives $v_s=q$. Suppose slope equality holds. Lemma~\ref{lem:tangencycomparison} gives
+$(Dv_s)^T\kappa=(Dq)^T\kappa=0$, and $c_0^T\kappa=0$ because $g(t_0)=0$. For
+every edge, $c_e'(z)z=pb_ez^p=p(c_e(z)-a_e)$, also at $z=0$. Hence
+\[
+ Dq=\frac p{t_0}(c_0-a),
+\]
+so $(c_0-a)^T\kappa=0$ and then $a^T\kappa=0$. Since
+$c_e(tq_e)=a_e+(t/t_0)^p(c_{0,e}-a_e)$,
+\[
+ c(tq)^T\kappa=a^T\kappa+(t/t_0)^p(c_0-a)^T\kappa=0
+\]
+for all $t$. On the smaller side $P$ would therefore be cheapest, a
+contradiction.
+\end{proof}
+
+The parallel-bank lemmas treat a set of parallel edges carrying a fixed total
+flow.
+
+\begin{definition}[Banks]\label{def:bank}
+A \emph{bank} is a set of $m\ge1$ parallel edges with a common tail and head
+and costs $c_i=a_i+b_iz^p$. For a total flow $T\ge0$, the bank equilibrium
+assigns loads $x_i\ge0$ with $\sum_ix_i=T$ such that all loaded edges have a
+common cost $\ell(T)$, the \emph{effective latency}, and every unloaded edge
+has free-flow cost at least $\ell(T)$. The \emph{minimum set} is
+$M(T)=\{i:\ a_i\le\ell(T)\}$, the set of edges whose cost equals the minimum.
+\end{definition}
+
+The bank equilibrium is explicit: with
+$N(\lambda)=\sum_i\bigl((\lambda-a_i)_+/b_i\bigr)^{1/p}$, which is continuous,
+zero at $\lambda=\min_ia_i$ and strictly increasing for larger $\lambda$,
+$\ell(T)$ is the unique $\lambda\ge\min_ia_i$ with $N(\lambda)=T$, and
+$x_i=((\ell-a_i)_+/b_i)^{1/p}$. The next lemma records how the latency
+behaves near a given flow.
+
+\begin{lemma}[Single bank]\label{lem:bank}
+Let $T_0>0$, $\lambda_0=\ell(T_0)$, $I=\{i:a_i<\lambda_0\}$ (the positively
+loaded edges, nonempty) and $J=\{j:a_j=\lambda_0\}$. Put
+$d_i=c_i'(x_i)>0$ for $i\in I$ and $\eta=\sum_{i\in I}d_i^{-1}$.
+\begin{enumerate}
+\item[(a)] $\ell$ is continuous and strictly increasing, so $M(T)$ is
+ nondecreasing in $T$ for inclusion: branches only join as flow grows.
+\item[(b)] $\ell$ has left derivative $\ell'(T_0^-)=\eta^{-1}>0$.
+\item[(c)] If $J=\emptyset$, then $\ell$ is real-analytic near $T_0$ with
+ $\ell'(T_0)=\eta^{-1}$. If $J\ne\emptyset$, the right derivative is
+ $\ell'(T_0^+)=0$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(a) $N$ is a continuous strictly increasing bijection from
+$[\min_ia_i,\infty)$ onto $[0,\infty)$, so its inverse $\ell$ is continuous
+and strictly increasing, and $\{i:a_i\le\ell(T)\}$ grows with $T$.
+
+(b), (c) Near $\lambda_0$, $N(\lambda)=N_I(\lambda)+N_J(\lambda)$ with
+$N_I(\lambda)=\sum_{i\in I}((\lambda-a_i)/b_i)^{1/p}$ real-analytic near
+$\lambda_0$, $N_I'(\lambda_0)=\eta$ (because $dx_i/d\lambda=1/c_i'(x_i)$), and
+$N_J(\lambda)=\sum_{j\in J}((\lambda-\lambda_0)_+/b_j)^{1/p}$, which vanishes
+for $\lambda\le\lambda_0$. Hence $\ell=N_I^{-1}$ to the left of $T_0$, which
+gives (b), and also to the right when $J=\emptyset$, which gives the first
+part of (c). If $J\ne\emptyset$, put $C=\sum_{j\in J}b_j^{-1/p}>0$. For
+$T>T_0$ and $\lambda=\ell(T)>\lambda_0$, monotonicity of $N_I$ gives
+$T-T_0\ge C(\lambda-\lambda_0)^{1/p}$, so
+$0<\ell(T)-\lambda_0\le((T-T_0)/C)^p=o(T-T_0)$, since $p>1$.
+\end{proof}
+
+The curvature lemma compares the effective latency of a bank with a single
+common-power edge.
+
+\begin{lemma}[Parallel-bank curvature]\label{lem:curvature}
+Let $\ell$ be the effective latency of a bank and let $T>0$ be such that all
+$m$ edges are positively loaded, $x_i>0$. Put $d_i=c_i'(x_i)$ and
+$\eta=\sum_id_i^{-1}$. Then
+\begin{equation}\label{eq:min_curv}
+ \ell''(T)-\frac{p-1}{T}\ell'(T)
+ =\frac{p-1}{T\eta^3}\Bigl[T\sum_i\frac1{x_id_i^2}-\eta^2\Bigr]\ge0,
+\end{equation}
+with equality exactly when all offsets $a_i$ are equal. In that case
+$\ell(T)=a+\kappa T^p$ for all $T\ge0$, with $a$ the common offset and
+$\kappa=(\sum_ib_i^{-1/p})^{-p}$.
+\end{lemma}
+
+\begin{proof}
+With all edges loaded, $T=N(\lambda)$ with
+$N'(\lambda)=\sum_i1/c_i'(x_i)=\eta$ and
+$N''(\lambda)=-\sum_ic_i''(x_i)/c_i'(x_i)^3$. For common-power costs
+$c_i''(x)=(p-1)c_i'(x)/x$ when $x>0$, so
+$N''=-(p-1)\sum_i1/(x_id_i^2)$. Inverse differentiation gives
+$\ell'=1/N'=\eta^{-1}$ and
+\[
+ \ell''=-\frac{N''}{(N')^3}=\frac{p-1}{\eta^3}\sum_i\frac1{x_id_i^2}.
+\]
+Subtracting $(p-1)\ell'/T=(p-1)\eta^2/(T\eta^3)$ gives the identity in
+\eqref{eq:min_curv}. By the Cauchy--Schwarz inequality,
+\[
+ \eta^2=\Bigl(\sum_i\sqrt{x_i}\cdot\frac1{\sqrt{x_i}\,d_i}\Bigr)^2
+ \le\Bigl(\sum_ix_i\Bigr)\sum_i\frac1{x_id_i^2}=T\sum_i\frac1{x_id_i^2},
+\]
+with equality exactly when $x_i d_i$ is the same for all $i$. Since
+$x_id_i=pb_ix_i^p=p(\ell(T)-a_i)$, this means all $a_i$ are equal. If
+$a_i=a$ for all $i$, then $x_i=((\ell-a)/b_i)^{1/p}$ and summing gives
+$T=(\ell-a)^{1/p}\sum_ib_i^{-1/p}$, which is the stated formula.
+\end{proof}
+
+We use the lemma through the operator $\mathcal L[\varphi](t)=\varphi''(t)-
+(p-1)\varphi'(t)/t$ on functions of $t>0$. It annihilates $\alpha+\beta t^p$
+for all constants $\alpha,\beta$. If $Q>0$ and all bank edges are positively
+loaded at $T=Qt$, the function $\ell_Q(t)=\ell(Qt)$ satisfies
+\begin{equation}\label{eq:min_tcurv}
+ \mathcal L[\ell_Q](t)=Q^2\Bigl[\ell''(Qt)-\frac{p-1}{Qt}\ell'(Qt)\Bigr]>0
+ \quad\text{unless all offsets are equal.}
+\end{equation}
+If $\varphi(t_0)=\varphi'(t_0)=0$, then $\varphi''(t_0)=\mathcal L[\varphi](t_0)$.
+
+The next lemma disposes of every network whose underlying graph is a tree.
+
+\begin{lemma}[Trees of parallel banks]\label{lem:tree}
+Suppose that the underlying simple undirected graph of $\Gamma$ (obtained by
+merging parallel and antiparallel edges) is a tree. Then no nested
+contraction occurs, and at every nested expansion
+$E'(t_0^-)>E'(t_0^+)$.
+\end{lemma}
+
+\begin{proof}
+For an ordered pair $(x,y)$ of adjacent vertices, the edges from $x$ to $y$
+form a bank $\mathcal B_{xy}$. Every commodity $k$ has a unique vertex
+sequence, namely the tree path from $o_k$ to $d_k$, and its routes are
+exactly the choices of one edge from each bank along that sequence; all such
+choices are simple paths and hence available. The bank $\mathcal B_{xy}$
+therefore carries the total flow $Q_{xy}t$, where $Q_{xy}$ is the sum of the
+$r_k$ over commodities whose sequence traverses $x$ then $y$. The
+equilibrium splits each bank independently as a bank equilibrium, because a
+route's cost is the sum of the costs of its bank edges. A route is cheapest
+exactly when each of its edges lies in the minimum set of its bank. Thus
+$R_k(t)$ is the product of the sets $M_{xy}(Q_{xy}t)$ along the sequence of
+$k$, and the regime is nondecreasing in $t$ by Lemma~\ref{lem:bank}(a). This
+excludes $R_+\subsetneq R_-$.
+
+At an expansion, every bank with $Q_{xy}>0$ has minimum sets $M_-\subseteq
+M_+$ on the two sides (the product of nonempty sets is monotone in each
+factor), and at least one such bank has $M_-\subsetneq M_+$. Fix a bank with
+$Q=Q_{xy}>0$ and $M_-\subsetneq M_+$, and write $T_0=Qt_0$ and
+$\lambda_0=\ell(T_0)$. If $i\in M_-$ then $a_i\le\ell(Qt)<\lambda_0$ for
+$t<t_0$; if $j\in M_+\setminus M_-$ then $a_j>\ell(Qt)$ for $t<t_0$ and
+$a_j\le\ell(Qt)$ for $t>t_0$, so $a_j=\lambda_0$. In the notation of
+Lemma~\ref{lem:bank}, $I=M_-$ and $J=M_+\setminus M_-\ne\emptyset$. The bank
+contributes $E_{xy}(t)=Qt\,\ell(Qt)$ to $E$, so by Lemma~\ref{lem:bank}(b,c)
+\[
+ E_{xy}'(t_0^-)-E_{xy}'(t_0^+)=Q^2t_0\bigl[\ell'(T_0^-)-\ell'(T_0^+)\bigr]
+ =Q^2t_0\eta^{-1}>0.
+\]
+For a bank whose minimum set $M$ does not change, the same argument shows
+$a_i<\lambda_0$ for $i\in M$ and $a_i>\lambda_0$ otherwise, so $J=\emptyset$
+and its contribution has a continuous derivative by
+Lemma~\ref{lem:bank}(c). Summing over banks gives the claim.
+\end{proof}
+
+We also need that a single commodity's cost increases with its demand.
+
+\begin{lemma}[Monotone single-commodity cost]\label{lem:monotone}
+If all commodities share the same endpoints and are merged into one
+commodity of demand $Rt$, its equilibrium cost $\lambda(t)$ is strictly
+increasing in $t$.
+\end{lemma}
+
+\begin{proof}
+Let $t_1<t_2$, with loads $z_i=z(t_i)$ and costs $\lambda_i$. Every route
+costs at least $\lambda_i$ under $c(z_i)$, and the used routes cost exactly
+$\lambda_i$. Decomposing $z_j$ into routes therefore gives
+$c(z_i)^Tz_j\ge\lambda_iRt_j$ and $c(z_i)^Tz_i=\lambda_iRt_i$. Hence
+\[
+ 0\le(c(z_2)-c(z_1))^T(z_2-z_1)\le(\lambda_2-\lambda_1)R(t_2-t_1).
+\]
+If $\lambda_2\le\lambda_1$, the middle expression vanishes, so $z_1=z_2$ by
+strict monotonicity of the costs. This is impossible, because the total flow
+leaving the origin is $Rt_1$ for one load and $Rt_2$ for the other.
+\end{proof}
+
+\subsection{The transitive triangle with a duplicated side}
+
+After the general tools, only one family of graphs remains. The next lemma
+identifies it.
+
+\begin{lemma}[Graph reduction]\label{lem:graphs}
+Let $\Gamma$ be loopless and weakly connected with $n$ vertices and $e\le4$
+edges, and suppose its underlying simple graph is not a tree. If
+$\dim\mathcal K(\Gamma)\le1$, a nested breakpoint has
+$\mathcal K_{R_s}=\{0\}$. Otherwise $n=3$, $e=4$, and if
+$\dim\mathcal K_{R_s}\ge1$ then $\mathcal K_{R_l}=\mathcal K(\Gamma)$ and
+$\Gamma$ is a \emph{transitive triangle with one duplicated side}: up to
+relabelling, its vertices are $s,u,v$, it has one edge on each of the sides
+$s\to v$, $s\to u$, $u\to v$, and one further edge parallel to one of them.
+\end{lemma}
+
+\begin{proof}
+$\dim\mathcal K(\Gamma)=e-n+1$. If $n\ge4$, this is at most $1$. If $n=2$,
+the underlying simple graph is a single edge, a tree. If $n=3$ and $e\le3$, it
+is at most $1$. When it is at most one, the strict inclusion
+$\mathcal K_{R_s}\subsetneq\mathcal K_{R_l}\subseteq\mathcal K(\Gamma)$ of
+Lemma~\ref{lem:dimension} forces $\mathcal K_{R_s}=\{0\}$. Hence the only
+remaining case is $n=3$, $e=4$, $\dim\mathcal K(\Gamma)=2$. If
+$\dim\mathcal K_{R_s}\ge1$, the strict inclusion forces
+$\mathcal K_{R_l}=\mathcal K(\Gamma)$.
+
+The cost vector $c_0$ is orthogonal to $\mathcal K_{R_l}$, being the limit of
+cost vectors orthogonal to it on the larger side. The incidence vector of a
+directed cycle lies in $\mathcal K(\Gamma)=\mathcal K_{R_l}$, but its inner
+product with $c_0>0$ is positive. Hence $\Gamma$ has no directed cycle, and
+in particular no pair of antiparallel edges. An acyclic graph on three
+vertices has a topological order $s<u<v$ with every edge going forward. The
+underlying simple graph is not a tree, so all three pairs are joined; their
+multiplicities are positive and sum to four, so they are $2,1,1$ in some
+order.
+\end{proof}
+
+For the rest of this subsection $\Gamma$ is a transitive triangle with one
+duplicated side. Its \emph{sides} are $f$ ($s\to v$), $h$ ($s\to u$) and $g$
+($u\to v$). The duplicated side $\sigma^*$ has two edges $e_1,e_2$; each other
+side has one edge, also denoted $f$, $h$ or $g$. Only the endpoint pairs
+$(s,v)$, $(s,u)$, $(u,v)$ are joined by directed paths. By
+Lemma~\ref{lem:reductions} there is at most one commodity per pair; we write
+$R,A,B\ge0$ for the demand coefficients of $s\to v$, $s\to u$, $u\to v$,
+with a zero coefficient meaning that the commodity is absent. The routes are
+single edges of side $h$ (for $s\to u$) or $g$ (for $u\to v$); and for
+$s\to v$ the \emph{direct} routes (one edge of side $f$) and the
+\emph{indirect} routes (one edge of side $h$ followed by one edge of side
+$g$).
+
+The next lemma describes regimes through side minima; it is where
+availability of all simple paths is used.
+
+\begin{lemma}[Side structure and aggregation]\label{lem:sides}
+Fix a load vector $z$. For each side $\sigma$ let $m_\sigma$ be the least
+cost among its edges and $M_\sigma$ the set of edges attaining it. Put
+$\varpi=m_h+m_g-m_f$.
+\begin{enumerate}
+\item[(a)] $R_{su}=M_h$ and $R_{uv}=M_g$ (when present), and
+ $R_{sv}=M_f$ if $\varpi>0$, $R_{sv}=M_h\times M_g$ if $\varpi<0$, and
+ $R_{sv}=M_f\cup(M_h\times M_g)$ if $\varpi=0$.
+\item[(b)] An edge outside $M_\sigma$ carries zero load in any equilibrium.
+\item[(c)] If the sign of $\varpi$ is nonzero and fixed, the side loads
+ $y_\sigma=\sum_{e\in\sigma}z_e$ of an equilibrium at scale $t$ are
+ $(y_f,y_h,y_g)=(R,A,B)t$ when $\varpi>0$ and $(0,A+R,B+R)t$ when $\varpi<0$.
+\item[(d)] If a route of commodity $k$ is not cheapest, its excess cost over
+ the cheapest route of $k$ is $m_\sigma'-m_\sigma$ when it uses a
+ non-minimum edge of cost $m_\sigma'$ on a side $\sigma$ and otherwise
+ follows cheapest edges, and it is $|\varpi|$ when it is a direct (resp.\
+ indirect) route built from cheapest edges while $\varpi<0$ (resp.\
+ $\varpi>0$). In particular, all such routes of the same kind have the same
+ excess, whichever edge of a bank with equal costs they use.
+\item[(e)] (Exchange symmetry.) Reversal (Lemma~\ref{lem:reversal}) followed
+ by the relabelling $s\leftrightarrow v$ maps the network to a transitive
+ triangle with one duplicated side in which the roles of $(h,A)$ and $(g,B)$
+ are exchanged and $f$ and $R$ are unchanged; it preserves the type of
+ every breakpoint, the regimes' sign of $\varpi$, and the slopes of $E$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(a) Every combination of an $h$-edge and a $g$-edge is a simple
+$s\to v$ path and is available. The cheapest $s\to u$ and $u\to v$ routes are
+therefore the cheapest edges of the corresponding side, the cheapest
+indirect routes are the pairs in $M_h\times M_g$ with cost $m_h+m_g$, and the
+cheapest direct routes are $M_f$ with cost $m_f$. Comparing $m_f$ with
+$m_h+m_g$ gives (a).
+
+(b) If an edge $e$ of side $\sigma$ carries load, some used route contains
+it, and replacing $e$ by an edge of $M_\sigma$ gives an available route that
+is strictly cheaper unless $e\in M_\sigma$.
+
+(c) If $\varpi>0$, all $s\to v$ flow is direct, and if $\varpi<0$ it is all
+indirect; the other commodities have routes inside a single side.
+
+(d) This is the computation in (a).
+
+(e) Reversal turns $s\to u$, $u\to v$, $s\to v$ into $u\to s$, $v\to u$,
+$v\to s$. After renaming $s\leftrightarrow v$ these read $u\to v$, $s\to u$,
+$s\to v$: the old side $g$ becomes the new side $h$ and conversely, and the
+old $s\to u$ commodity becomes the new $u\to v$ commodity. Direct routes stay
+direct. Lemma~\ref{lem:reversal} gives the remaining assertions.
+\end{proof}
+
+Write $\pi=1_{e_2}-1_{e_1}$ and, for edges $\varphi,\chi,\psi$ of the sides
+$f,h,g$, let $\tau(\varphi,\chi,\psi)=1_\chi+1_\psi-1_\varphi$ be a
+\emph{triangle difference}. Two triangle differences are equal or differ by
+$\pm\pi$. We say that the duplicated side is \emph{active} in a regime if
+some route of the regime uses an edge of $\sigma^*$.
+
+The classification lemma lists the possible route-difference spaces.
+
+\begin{lemma}[Route-space classification]\label{lem:routespaces}
+$\mathcal K(\Gamma)$ is two-dimensional and is spanned by $\pi$ and any
+triangle difference. For any family $R$ of nonempty route sets,
+$\mathcal K_R$ is spanned by vectors each of which is $\pm\pi$ or a triangle
+difference; hence if $\dim\mathcal K_R=1$, either $\mathcal K_R=
+\operatorname{span}\{\pi\}$ or $\mathcal K_R=\operatorname{span}\{\tau\}$ for
+a single triangle difference $\tau$. For a complete regime with data
+$M_\sigma,\varpi$ as in Lemma~\ref{lem:sides}:
+\begin{enumerate}
+\item[(a)] $\pi\in\mathcal K_R$ if and only if $\sigma^*$ is active and
+ $M_{\sigma^*}=\{e_1,e_2\}$;
+\item[(b)] $\mathcal K_R$ contains a triangle difference if and only if
+ $R>0$ and $\varpi=0$;
+\item[(c)] $\dim\mathcal K_R$ is the number of conditions among (a), (b)
+ that hold, and when only (b) holds, $\mathcal K_R=\operatorname{span}\{\tau\}$
+ where $\tau$ is built from the unique cheapest edge of each side.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+$\dim\mathcal K(\Gamma)=4-3+1=2$, and $\pi$ and a triangle difference are
+independent elements of it, since a triangle difference has three nonzero
+entries on three different sides while $\pi$ is supported on one side.
+The generators $1_P-1_Q$ of $\mathcal K_R$ are differences of two routes of
+one commodity. For $s\to u$ or $u\to v$ they are $0$ or $\pm\pi$. For
+$s\to v$, two direct routes or two indirect routes differ by $0$ or $\pm\pi$,
+and a direct and an indirect route differ by a triangle difference. If
+$\dim\mathcal K_R=1$, either every nonzero generator is $\pm\pi$, or some
+generator is a triangle difference $\tau$; in the latter case no generator is
+$\pm\pi$ (which is not a multiple of $\tau$), and a second, different
+triangle difference would differ from $\tau$ by $\pm\pi$ and raise the
+dimension.
+
+For a complete regime, routes use only edges of the sets $M_\sigma$, and by
+Lemma~\ref{lem:sides}(a) every combination of such edges compatible with
+the sign of $\varpi$ is a route of the regime. If $\sigma^*$ is active and
+$|M_{\sigma^*}|=2$, a route through $e_1$ and the same route through $e_2$
+both lie in the regime, so $\pi\in\mathcal K_R$. Otherwise all routes of the
+regime use a fixed edge on each side, and $\mathcal K_R$ is contained in the
+span of the single triangle difference $\tau$ built from these edges, which
+does not contain $\pi$. This proves (a). A triangle difference is a
+generator exactly when $s\to v$ has both a cheapest direct and a cheapest
+indirect route, that is $R>0$ and $\varpi=0$; if this fails, every generator
+is $0$ or $\pm\pi$. This proves (b), and (c) follows.
+\end{proof}
+
+In the remaining two lemmas $\Gamma$ is a transitive triangle with one
+duplicated side, $t_0$ is a nested breakpoint of either type,
+$\dim\mathcal K_{R_s}=1$ and $\mathcal K_{R_l}=\mathcal K(\Gamma)$. By
+Lemma~\ref{lem:routespaces}, the larger regime has $R>0$, $\varpi=0$, both
+$e_1,e_2$ cheapest and $\sigma^*$ active. By the same lemma, the smaller
+regime has one of two types:
+\begin{description}
+\item[Type P] (old cycle is the parallel pair) $\mathcal K_{R_s}=
+ \operatorname{span}\{\pi\}$: on the smaller side $\sigma^*$ is active with
+ both edges cheapest, and $\varpi\ne0$.
+\item[Type T] (old cycle is the triangle) $\mathcal K_{R_s}=
+ \operatorname{span}\{\tau\}$: on the smaller side $\varpi=0$, and exactly one
+ edge of $\sigma^*$, say $e_1$, is cheapest.
+\end{description}
+In type~P the sign of $\varpi$ on the smaller side is constant, because
+$R_{sv}$ is either a set of direct routes or a set of indirect routes; we
+call the \emph{old long route} direct if $\varpi>0$ and indirect if
+$\varpi<0$ there.
+
+\begin{lemma}[Old cycle is the parallel pair]\label{lem:typeP}
+In type~P, slope equality fails, for expansions and for contractions.
+\end{lemma}
+
+\begin{proof}
+\emph{Set-up.} By Lemma~\ref{lem:sides}(c), on the smaller side the side
+loads are $y_\sigma(t)=Q_\sigma t$, with $(Q_f,Q_h,Q_g)=(R,A,B)$ for a direct
+old long route and $(0,A+R,B+R)$ for an indirect one. The bank
+$\sigma^*=\{e_1,e_2\}$ is active, so $Q:=Q_{\sigma^*}>0$; let $\ell$ be its
+effective latency, $T_0=Qt_0$ and $\lambda_0=\ell(T_0)$. If the old long
+route is indirect, side $f$ carries no load and is not on any route of
+$R_s$, so $\sigma^*\ne f$. Hence $\sigma^*=f$ forces a direct old long
+route. By the exchange symmetry (Lemma~\ref{lem:sides}(e)) we may assume
+$\sigma^*\in\{f,g\}$; for $\sigma^*=g$ with a direct old long route, activity
+means $B>0$.
+
+For $t$ near $t_0$ define the \emph{gap}
+\[
+ G(t)=
+ \begin{cases}
+ c_h(At)+c_g(Bt)-\ell(Rt), & \sigma^*=f\ \text{(direct)},\\
+ a_f-c_h((A+R)t)-\ell((B+R)t), & \sigma^*=g,\ \text{indirect},\\
+ c_h(At)+\ell(Bt)-c_f(Rt), & \sigma^*=g,\ \text{direct}.
+ \end{cases}
+\]
+On the smaller side, $G(t)$ is the cost of a new route (indirect, direct and
+indirect, respectively) minus the cost of an old one; both edges of the bank
+have cost $\ell$, so all new routes have this same gap
+(Lemma~\ref{lem:sides}(d)). Thus $G>0$ on the smaller side, $G(t_0)=0$, and
+under slope equality Lemma~\ref{lem:tangencycomparison} gives $G'(t_0)=0$ as a
+one-sided derivative from the smaller side.
+
+\emph{Both bank edges are loaded at $t_0$ for an expansion.} The bank load
+on the smaller side is $Qt$, so the bank's common cost there is $\ell(Qt)$,
+strictly increasing in $t$. For an expansion the smaller side is the left
+one; both edges are cheapest there, so $a_i\le\ell(Qt)<\lambda_0$ for
+$t<t_0$, whence $a_1,a_2<\lambda_0$ and both are loaded at $t_0$. For a
+contraction we only get $a_i\le\lambda_0$. Call the bank
+\emph{nondegenerate} if $a_1,a_2<\lambda_0$ and \emph{degenerate} otherwise;
+degeneracy can occur only for contractions, and then exactly one edge, say
+$e_2$, has $a_{e_2}=\lambda_0$ and zero load at $t_0$ (the bank load
+$T_0>0$ is carried by $e_1$).
+
+\emph{Nondegenerate bank.} By Lemma~\ref{lem:bank}(c), $\ell$ is analytic
+near $T_0$ with $\ell'>0$, so $G$ is $C^2$ near $t_0$ and its derivatives
+are two-sided.
+
+\smallskip\noindent
+\emph{(P1) $\sigma^*=f$.} $G(t)=\alpha+\beta t^p-\ell(Rt)$ with
+$\alpha=a_h+a_g$, $\beta=b_hA^p+b_gB^p$. If the offsets of the bank differ,
+\eqref{eq:min_tcurv} gives $G''(t_0)=\mathcal L[G](t_0)=-\mathcal
+L[\ell_R](t_0)<0$ under $G(t_0)=G'(t_0)=0$. Then $G<0$ on both punctured sides
+near $t_0$, contradicting $G>0$ on the smaller side.
+
+\smallskip\noindent
+\emph{(P2) $\sigma^*=g$, indirect.}
+$G'(t_0)=-pb_h(A+R)^pt_0^{p-1}-(B+R)\ell'((B+R)t_0)<0$, contradicting
+$G'(t_0)=0$.
+
+\smallskip\noindent
+\emph{(P3) $\sigma^*=g$, direct.} $G(t)=\ell(Bt)-\alpha-\beta t^p$ with
+$\alpha=a_f-a_h$ and $\beta=b_fR^p-b_hA^p$. If the offsets differ,
+$G''(t_0)=\mathcal L[\ell_B](t_0)>0$ under $G(t_0)=G'(t_0)=0$, so $G>0$ on both
+punctured sides of $t_0$ near $t_0$. On the larger side consider the
+\emph{old continuation}: $s\to v$ entirely on $f$, $s\to u$ on $h$, and
+$u\to v$ split over the bank as its bank equilibrium with total $Bt$, both
+edges loaded for $t$ near $t_0$. Every used route is cheapest: the $s\to u$
+route is the only one; the two $u\to v$ routes cost $\ell(Bt)$; and every
+indirect $s\to v$ route costs $c_h(At)+\ell(Bt)$, which exceeds the direct cost
+by $G(t)>0$. So the old continuation is an equilibrium; by uniqueness it is
+the equilibrium. Its complete minimum-route set is $R_s$, since the
+substituted indirect routes are not cheapest (their gap is $G(t)>0$), even
+though $R_l$ contains them. This contradicts $R(t)=R_l$ on the larger side.
+
+\smallskip\noindent
+\emph{Equal offsets in (P1) or (P3).} By Lemma~\ref{lem:curvature},
+$\ell(T)=a^*+\kappa T^p$, so $G(t)=\alpha'+\beta't^p$ for constants
+$\alpha',\beta'$. Then $G'(t_0)=p\beta't_0^{p-1}=0$ gives $\beta'=0$, and
+$G(t_0)=0$ gives $\alpha'=0$. Hence $G\equiv0$, contradicting $G>0$ on the
+smaller side.
+
+\smallskip\noindent
+\emph{Degenerate bank (contractions only; smaller side is the right side).}
+Here $\ell'(T_0^+)=0$ by Lemma~\ref{lem:bank}(c). On the larger (left) side
+both bank edges are cheapest, so the bank's common cost is at least
+$a_{e_2}=\lambda_0$; as the bank's loads form a bank equilibrium for its total
+$y_{\sigma^*}(t)$, this means $\ell(y_{\sigma^*}(t))\ge\lambda_0$, that is
+$y_{\sigma^*}(t)\ge T_0$ for $t<t_0$. Let $x(t)\ge0$ denote the indirect
+$s\to v$ flow on the left; the left side loads are $y_f=Rt-x$, $y_h=At+x$,
+$y_g=Bt+x$, and $\varpi=0$ there.
+
+\emph{(D1) $\sigma^*=f$.} $y_f(t)=Rt-x(t)\le Rt<Rt_0=T_0$ for $t<t_0$, a
+contradiction.
+
+\emph{(D2) $\sigma^*=g$, indirect.} The right derivative is
+$G'(t_0^+)=-pb_h(A+R)^pt_0^{p-1}-(B+R)\ell'(T_0^+)=-pb_h(A+R)^pt_0^{p-1}<0$,
+contradicting $G'(t_0^+)=0$.
+
+\emph{(D3) $\sigma^*=g$, direct.} The right derivative of
+$G=\ell(Bt)-\alpha-\beta t^p$ is $-p\beta t_0^{p-1}$, so slope equality gives
+$\beta=0$, i.e.\ $b_fR^p=b_hA^p$ (hence $A>0$), and then $G(t_0)=0$ gives
+$\alpha=\lambda_0$, i.e.\ $a_f=a_h+\lambda_0$. On the left, $\varpi=0$
+and the $g$-bank cost $\lambda_g(t)=\ell(y_g(t))\ge\lambda_0$ give
+\[
+ a_f+b_f(Rt-x)^p=a_h+b_h(At+x)^p+\lambda_g(t)
+ \ge a_h+b_hA^pt^p+\lambda_0=a_f+b_fR^pt^p .
+\]
+Since $0\le Rt-x\le Rt$, equality holds throughout: $x(t)=0$ and
+$\lambda_g(t)=\lambda_0$. But then $y_g(t)=Bt<T_0$, so
+$\lambda_g(t)=\ell(Bt)<\lambda_0$, a contradiction.
+
+The exchange symmetry transfers (P2), (P3), (D2), (D3) to $\sigma^*=h$, which
+completes type~P.
+\end{proof}
+
+For type T we parametrise the smaller side by the indirect flow and use the
+implicit-function theorem.
+
+\begin{lemma}[Old cycle is the triangle]\label{lem:typeT}
+In type~T, slope equality fails, for expansions and for contractions.
+\end{lemma}
+
+\begin{proof}
+\emph{Set-up.} On the smaller side $e_2$ is not cheapest, so it carries no
+load (Lemma~\ref{lem:sides}(b)); it is unused and, more strongly, not
+minimum. On the larger side it is cheapest. Since $\varpi=0$ on both sides,
+every side lies on some $s\to v$ route of both regimes. Let $Q$ be such a
+route through $e_1$ built from cheapest edges of the smaller side, and $P$ the
+same route with $e_1$ replaced by $e_2$. By Lemma~\ref{lem:sides}(a),
+$Q\in R_{s,sv}$ and $P\in R_{l,sv}\setminus R_{s,sv}$. Their gap is
+\[
+ \vartheta(t)=a_{e_2}-c_{e_1}(z_{e_1}(t)),
+\]
+which by Lemma~\ref{lem:tangencycomparison} is positive on the smaller side and zero at
+$t_0$. Write $c_\sigma$ for the cost of the single cheapest edge of side
+$\sigma$ on the smaller side ($c_{\sigma^*}=c_{e_1}$), and $y_\sigma$ for its
+load, so $y_{\sigma^*}=z_{e_1}$.
+
+\emph{The duplicated edge is loaded at $t_0$.} If $y_{\sigma^*}(t_0)=0$, then
+$\vartheta(t_0)=0$ gives $a_{e_2}=a_{e_1}$, and on the smaller side
+$c_{e_1}(z_{e_1})\ge a_{e_1}=a_{e_2}$, so $e_2$ would be cheapest there. Hence
+$y_{\sigma^*}(t_0)>0$, $c_{e_1}'(y_{\sigma^*}(t_0))>0$, and under slope
+equality the tangency $\vartheta'(t_0)=0$ (from the smaller side) is equivalent
+to
+\begin{equation}\label{eq:min_stationary}
+ y_{\sigma^*}'(t_0)=0\qquad\text{(one-sided, from the smaller side)}.
+\end{equation}
+
+\emph{The smaller-side branch.} On the smaller side $\varpi=0$, so with
+$x(t)\ge0$ the indirect $s\to v$ flow,
+\[
+ y_f=Rt-x,\quad y_h=At+x,\quad y_g=Bt+x,\qquad
+ \Psi(x,t):=c_f(y_f)-c_h(y_h)-c_g(y_g)=0 .
+\]
+Extend each cost to negative loads by $\tilde c(z)=a+b\operatorname{sgn}(z)
+|z|^p$, which is $C^1$ with $\tilde c'(z)=pb|z|^{p-1}\ge0$. At $t_0$ the loads
+$y_f,y_h$ sum to $(R+A)t_0>0$, so one of the three derivatives
+$d_\sigma=\tilde c_\sigma'(y_\sigma(t_0))$ is positive, and
+$\partial_x\Psi=-(d_f+d_h+d_g)=:-J<0$. By the implicit-function theorem there
+is a unique $C^1$ solution $\tilde x(t)$ of $\Psi=0$ near $(x(t_0),t_0)$;
+by continuity of $z$ the actual $x(t)$ on the smaller side coincides with
+it. Implicit differentiation gives, as one-sided derivatives from the
+smaller side,
+\begin{equation}\label{eq:min_velocities}
+ y_f'=\frac{(R+A)d_h+(R+B)d_g}J,\
+ y_h'=\frac{(R+A)d_f-(B-A)d_g}J,\
+ y_g'=\frac{(R+B)d_f-(A-B)d_h}J .
+\end{equation}
+Recall $d_\sigma>0$ exactly when $y_\sigma(t_0)>0$. By the exchange symmetry
+we may assume $\sigma^*\in\{f,h\}$.
+
+\smallskip\noindent
+\emph{(T1) $\sigma^*=f$.} By \eqref{eq:min_velocities},
+$y_f'(t_0)=0$ forces $d_h=d_g=0$, so $y_h(t_0)=At_0+x(t_0)=0$ and
+$y_g(t_0)=Bt_0+x(t_0)=0$, whence $A=B=0$ and $x(t_0)=0$. Then $s\to v$ is the
+only commodity, and its equilibrium cost at $t_0$ is the cost of the
+(cheapest) indirect route, $\lambda(t_0)=a_h+a_g$. On the left side of $t_0$,
+whichever regime holds there, $\varpi=0$, so the indirect route is cheapest
+and $\lambda(t)=c_h(y_h(t))+c_g(y_g(t))\ge a_h+a_g=\lambda(t_0)$ for $t<t_0$.
+This contradicts Lemma~\ref{lem:monotone}.
+
+\smallskip\noindent
+\emph{(T2) $\sigma^*=h$.} Here $y_h(t_0)>0$, so $d_h>0$, and the
+inequality $\vartheta>0$ on the smaller side says
+\begin{equation}\label{eq:min_hbelow}
+ y_h(t)<y_h(t_0)\qquad\text{on the smaller side.}
+\end{equation}
+We use $L=R+A>0$ and $M=B-A$, so $y_f=Lt-y_h$ and $y_g=Mt+y_h$, and
+\eqref{eq:min_velocities} reads $y_h'=(Ld_f-Md_g)/J$.
+
+\emph{(T2a) $y_f(t_0)>0$ and $y_g(t_0)=0$.} Then $y_h'(t_0)=Ld_f/J>0$,
+contradicting \eqref{eq:min_stationary}.
+
+\emph{(T2b) $y_f(t_0)=0$.} Then $x(t_0)=Rt_0$, so $y_g(t_0)=(B+R)t_0>0$ and
+$y_h'(t_0)=-Md_g/J$. By \eqref{eq:min_stationary}, $M=0$, so $y_g=y_h$ on the
+smaller side, and $\Psi=0$ reads $c_f(y_f)=\Theta(y_h)$ with
+$\Theta(y)=c_h(y)+c_g(y)$ strictly increasing. Since $y_f(t)\ge0$,
+\[
+ \Theta(y_h(t))=c_f(y_f(t))\ge a_f=c_f(y_f(t_0))=\Theta(y_h(t_0)),
+\]
+so $y_h(t)\ge y_h(t_0)$ on the smaller side, contradicting
+\eqref{eq:min_hbelow}. (For an expansion one may instead note that
+$y_f'(t_0)>0$ by \eqref{eq:min_velocities} would make $y_f$ negative just to
+the left; the argument given covers both types.)
+
+\emph{(T2c) $y_f(t_0)>0$ and $y_g(t_0)>0$.} All three loads are positive at
+$t_0$, so the costs are analytic near them and the branch $y_h(t)$ is
+analytic. Condition \eqref{eq:min_stationary} gives $U:=Ld_f=Md_g>0$, so
+$M>0$. Differentiating $c_f(Lt-y_h)=c_h(y_h)+c_g(Mt+y_h)$ twice at a point where
+$y_h'=0$ gives $Jy_h''=L^2c_f''-M^2c_g''$. With
+$c''(y)=(p-1)c'(y)/y$ for $y>0$,
+\[
+ y_h''(t_0)=\frac{(p-1)U}J\Bigl(\frac L{y_f}-\frac M{y_g}\Bigr)
+ =\frac{(p-1)U\,y_h(L+M)}{J\,y_fy_g}>0,
+\]
+using $Ly_g-My_f=y_h(L+M)$ and $L+M=R+B>0$. Thus $y_h$ has a strict local
+minimum at $t_0$, so $y_h(t)>y_h(t_0)$ on both punctured sides near $t_0$,
+contradicting \eqref{eq:min_hbelow} on the smaller side.
+
+The exchange symmetry transfers (T2) to $\sigma^*=g$. This completes type~T.
+\end{proof}
+
+\subsection{Proof of the four-edge lower bound}
+
+\begin{proof}[Proof of Theorem~\ref{thm:fouredge}]
+By Lemma~\ref{lem:reductions} we may assume that $\Gamma$ is loopless and
+weakly connected with one commodity per endpoint pair. The weak comparison
+theorem gives the existence of the one-sided derivatives of $E$ and the weak
+inequalities, so it suffices to exclude slope equality. If the underlying
+simple graph is a tree, Lemma~\ref{lem:tree} gives the strict inequality for
+expansions and shows that contractions do not occur. Otherwise
+Lemma~\ref{lem:graphs} applies. If $\mathcal K_{R_s}=\{0\}$,
+Lemma~\ref{lem:dimension} excludes slope equality. In the remaining case
+$\Gamma$ is a transitive triangle with one duplicated side,
+$\dim\mathcal K_{R_s}=1$ and $\mathcal K_{R_l}=\mathcal K(\Gamma)$, and the
+smaller regime has type~P or type~T by Lemma~\ref{lem:routespaces}.
+Lemmas~\ref{lem:typeP} and~\ref{lem:typeT} exclude slope equality. This proves
+the claims for $E$.
+
+For $P=E/S$: $S$ is $C^1$ by Proposition~\ref{prop:Sregular}, and $S(t)>0$
+for $t>0$ because every commodity has positive demand and every cost is at
+least $\min_ea_e>0$. The quotient rule gives
+$P'(t_0^\pm)=E'(t_0^\pm)/S(t_0)-E(t_0)S'(t_0)/S(t_0)^2$, so
+\[
+ P'(t_0^-)-P'(t_0^+)=\frac{E'(t_0^-)-E'(t_0^+)}{S(t_0)},
+\]
+which has the same strict sign as the jump of $E$.
+\end{proof}
+
+\begin{table}[ht]
+\centering\footnotesize
+\begin{tabular}{@{}p{3.1cm}p{1.2cm}p{0.5cm}p{1.3cm}p{3.6cm}p{3.6cm}@{}}
+\hline
+graph or type & $\dim\mathcal K_{R_s},$ $\dim\mathcal K_{R_l}$ & $\sigma^*$ & old long route & expansion & contraction\\
+\hline
+underlying tree (any $n,e$) & any & -- & -- & bank jump (L.~\ref{lem:tree}) & cannot occur (L.~\ref{lem:tree})\\
+$n\ge4$, $e\le4$, not a tree & 0, 1 & -- & -- & dimension lemma & dimension lemma\\
+$n=3$, $e\le3$, not a tree & 0, 1 & -- & -- & dimension lemma & dimension lemma\\
+$n=3$, $e=4$, not a tree & 0, 1--2 & -- & -- & dimension lemma & dimension lemma\\
+$n=3$, $e=4$, directed cycle & 1, 2 & -- & -- & excluded (L.~\ref{lem:graphs}) & excluded (L.~\ref{lem:graphs})\\
+\hline
+type P & 1, 2 & $f$ & direct & $G''<0$ (P1) & $G''<0$ (P1); degenerate: $y_f<T_0$ (D1)\\
+type P & 1, 2 & $f$ & indirect & impossible: bank inactive & impossible: bank inactive\\
+type P & 1, 2 & $g$ & indirect & $G'<0$ (P2) & $G'<0$ (P2); degenerate: $G'(t_0^+)<0$ (D2)\\
+type P & 1, 2 & $g$ & direct & $G''>0$ and old continuation (P3) & as for expansion (P3); degenerate: tangency and left-side bound (D3)\\
+type P & 1, 2 & $h$ & either & exchange symmetry & exchange symmetry\\
+type P, equal bank offsets & 1, 2 & $f,g$ & direct & $G\equiv0$ & $G\equiv0$\\
+\hline
+type T & 1, 2 & $f$ & both & $y_f'>0$, or $A=B=0$ and L.~\ref{lem:monotone} (T1) & same (T1)\\
+type T, $y_f,y_g>0$ & 1, 2 & $h$ & both & $y_h''>0$ (T2c) & same (T2c)\\
+type T, $y_g(t_0)=0$ & 1, 2 & $h$ & both & $y_h'>0$ (T2a) & same (T2a)\\
+type T, $y_f(t_0)=0$ & 1, 2 & $h$ & both & $M=0$, $\Theta$-monotonicity (T2b) & same (T2b)\\
+type T & 1, 2 & $g$ & both & exchange symmetry & exchange symmetry\\
+\hline
+\end{tabular}
+\caption{Closing argument for each case of Theorem~\ref{thm:fouredge}.
+In type~T the duplicated edge $e_1$ is always loaded at $t_0$; a degenerate
+bank in type~P (an edge entering exactly at $t_0$) occurs only for
+contractions.}
+\label{tab:minimality}
+\end{table}
+
+\subsection{Edge-specific exponents}
+
+We end with costs $c_e(z)=a_e+b_ez^{p_e}$, $a_e,b_e>0$, where the exponents
+$p_e>1$ may differ between edges. The dimension lemma then fails, because
+$Dq$ is no longer a multiple of $c_0-a$. A three-edge transitive triangle
+with $c_f=1+z^4$ on $s\to v$, $c_h=\tfrac13+z^2$ on $s\to u$,
+$c_g=\tfrac13+\tfrac13z^6$ on $u\to v$ and unit coefficients $R=A=B=1$ has an
+equal-slope contraction at $t=1$; along the old continuation, the excess cost
+of the indirect route over the direct one is $(t^2-1)^3/3$. For expansions the
+triangle is rigid. We use the following form of Descartes' rule of signs.
+
+\begin{lemma}[Descartes' rule for real exponents]\label{lem:descartes}
+Let $\varphi(t)=\sum_{i=1}^mc_it^{e_i}$ with real exponents
+$e_1<\dots<e_m$ and nonzero real coefficients, and let $V$ be the number of
+sign changes in $(c_1,\dots,c_m)$. Then $\varphi$ has at most $V$ zeros in
+$(0,\infty)$, counted with multiplicity.
+\end{lemma}
+
+\begin{proof}
+Induction on $V$. If $V=0$, all terms have one sign and $\varphi$ has no
+positive zero. If $V\ge1$, pick $j$ with $c_jc_{j+1}<0$ and
+$e^*\in(e_j,e_{j+1})$. The function $\psi=(t^{-e^*}\varphi)'=
+\sum_ic_i(e_i-e^*)t^{e_i-e^*-1}$ has coefficients whose signs are those of
+$c_i$ reversed for $i\le j$ and unchanged for $i>j$, so it has exactly
+$V-1$ sign changes. If $\varphi$ has $Z$ positive zeros with multiplicity,
+so has $t^{-e^*}\varphi$, and by Rolle's theorem $\psi$ has at least $Z-1$.
+By induction $Z-1\le V-1$.
+\end{proof}
+
+\begin{proposition}[Heterogeneous triangle expansions are strict]\label{prop:hetero}
+Let $\Gamma$ be the three-edge transitive triangle with costs
+$c_\sigma=a_\sigma+b_\sigma z^{p_\sigma}$, $a_\sigma,b_\sigma>0$,
+$p_\sigma>1$, and any commodities. At a nested expansion,
+$E'(t_0^-)>E'(t_0^+)$.
+\end{proposition}
+
+\begin{proof}
+Here $\dim\mathcal K(\Gamma)=1$, so $\mathcal K_{R_s}=\{0\}$ by the dimension
+lemma's first part, which does not use common exponents. As in its proof, on
+the left $z(t)=tq$ with one route per commodity, and the new route is an
+$s\to v$ route, so $R>0$. Suppose slope equality holds. Let $G(t)$ be the new
+$s\to v$ route's cost minus the old one's along $z=tq$, now for all $t>0$. By
+Lemma~\ref{lem:tangencycomparison}, $G>0$ on a left neighbourhood of $t_0$,
+$G(t_0)=0$ and $G'(t_0)=0$.
+
+If the old route is indirect,
+$G(t)=a_f-c_h((A+R)t)-c_g((B+R)t)$ is strictly decreasing, so $G'(t_0)<0$.
+If the old route is direct,
+\[
+ G(t)=\alpha+\nu_ht^{p_h}+\nu_gt^{p_g}-\beta t^{p_f},\qquad
+ \alpha=a_h+a_g-a_f,\ \nu_h=b_hA^{p_h},\ \nu_g=b_gB^{p_g},\
+ \beta=b_fR^{p_f}>0 .
+\]
+After merging equal exponents and dropping zero coefficients this is a
+generalised polynomial whose coefficient sequence has at most three sign
+changes, and $G\not\equiv0$ because $G>0$ to the left. Let $\mu\ge2$ be the
+multiplicity of the zero $t_0$, which is finite because $G$ is analytic on
+$(0,\infty)$. If $\mu$ is even, $G$ does not change sign at $t_0$, so $G>0$ on
+a punctured right neighbourhood. Then the load $tq$ with the old routes is an
+equilibrium to the right, since every unused route has positive excess cost
+$G(t)$; by uniqueness it is the equilibrium, and its complete minimum-route
+set is $R_s$, contradicting $R_+=R_l$. If $\mu$ is odd, then $\mu=3$ and
+Lemma~\ref{lem:descartes} forces exactly three sign changes and no other
+positive zero. Three sign changes among at most four terms with a single
+negative coefficient $-\beta$ require four distinct exponents and the
+pattern $(-,+,-,+)$, so $\alpha<0$ and $G(t)\to\alpha<0$ as $t\to0^+$. With no
+zero in $(0,t_0)$, $G<0$ on $(0,t_0)$, contradicting $G>0$ to the left.
+\end{proof}
+
+\begin{remark}[Edge counts for edge-specific exponents]\label{rem:hetero}
+With edge-specific exponents, Lemmas~\ref{lem:tangencycomparison}, \ref{lem:reversal},
+\ref{lem:reductions}, \ref{lem:bank}(a)--(c), \ref{lem:tree} and
+\ref{lem:monotone}, and the first part of Lemma~\ref{lem:dimension}, hold
+with the same proofs (in Lemma~\ref{lem:bank}(c) the exponent of the entering
+edges replaces $p$). With at most three edges, a loopless connected graph is
+either a tree of parallel banks, the transitive triangle, or the directed
+triangle. In the directed triangle every endpoint pair has a single route, so
+$\mathcal K_R=\{0\}$ always and no nested breakpoint exists. Together with
+Proposition~\ref{prop:hetero}, three edges never give equal slopes at an
+expansion. Since the common-power five-edge example belongs to the larger
+class, the minimum edge count for equal-slope expansions with edge-specific
+exponents is four or five; which of the two holds is open. For contractions
+the minimum is three: two-edge graphs are trees of banks, where contractions
+do not occur, and the triangle above gives an example.
+\end{remark}

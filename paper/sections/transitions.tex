@@ -1,0 +1,231 @@
+\section{Question 2: route-set changes without a kink}\label{sec:transitions}
+
+We answer Question~2 in increasing order of difficulty: first three-link examples, then the standard quartic BPR case, then arbitrary finite order. In every example the demand is proportional, $\mu(t)=tr$, and every simple directed path is a route, so the examples lie inside the scope of CDS Theorem~4.4.
+
+\subsection{Three-link examples}\label{sec:smallexamples}
+
+Both examples use a triangle: a direct edge $f:s\to v$, a connector $h:s\to u$ and a shared edge $g:u\to v$, with commodities $s\to v$, $s\to u$ and $u\to v$ as stated. The route $s\to u\to v$ is the \emph{indirect} route, and $x$ denotes its flow. Write $\delta=t-1$ and $\delta_+=\max(\delta,0)$.
+
+\begin{example}[Strictly convex costs]\label{ex:cubic}
+Take
+\begin{equation}\label{eq:polynomialtriangle}
+ f(z)=z^3+z^2+4z+1,\qquad g(z)=4z^2+z+1,\qquad h(z)=1+z+z^2,
+\end{equation}
+with demand $t$ from $s$ to $v$ and demand $t$ from $u$ to $v$. Every cost has $c'\ge1$ and $c''\ge2$ on $[0,\infty)$. The gap of the indirect route at $x=0$ is exactly $f(t)-g(t)-h(0)=(t-1)^3$, so the indirect route is not cheapest for $t<1$ and becomes cheapest at $t=1$. For $t>1$ the indirect flow solves
+\begin{equation}\label{eq:triangleflow}
+ (t-1)^3-(3t^2+10t+6)x+(3t-4)x^2-x^3=0,
+\end{equation}
+whose $x$-derivative at $(1,0)$ is $-19$, so $x=\delta_+^3/19+O(\delta_+^4)$. At equilibrium $E=t[f(t-x)+g(t+x)]$. Its analytic inactive continuation is $E_0=t^4+5t^3+5t^2+2t$, and exact substitution gives
+\[
+ E-E_0=t[-3\delta^2x+(3t+5)x^2-x^3]=-\tfrac3{19}\delta_+^5+O(\delta_+^6).
+\]
+Thus $E(1)=13$ and both one-sided slopes equal $31$. For the optimum, the physical social objective with indirect flow $y$ is
+\[
+ J(t,y)=E_0(t)-\delta^2(4t-1)y+(6t^2+15t+6)y^2-4\delta y^3+y^4,
+\]
+strictly convex in $y$ on $[0,t]$, with critical branch $y=\delta^2/18+O(\delta^3)\ge0$ on both sides. So $S$ is analytic and positive near $1$, and $E,P\in C^4\setminus C^5$ there. \status{proof; constants confirmed exactly}
+\end{example}
+
+This example satisfies the hypotheses of the O'Hare et al.\ conjecture (positive first and second derivatives) and so answers the ``convex costs'' half of Question~2 with three links.
+
+\begin{example}[BPR-type costs with different exponents: a contraction]\label{ex:hetero}
+Take $f(z)=1+z^4$, $h(z)=\tfrac13+z^2$ and $g(z)=\tfrac13+\tfrac13z^6$, with demand $t$ on each of $s\to v$, $s\to u$ and $u\to v$. Each cost has the BPR form $a_e+b_ez^{p_e}$ with $a_e,b_e>0$. The gap of the indirect route at $x=0$ is
+\[
+ f(t)-h(t)-g(t)=-\tfrac13(t^2-1)^3,
+\]
+positive for $t<1$ and negative for $t>1$. The indirect route is therefore used just below $1$ and not cheapest above $1$: a genuine contraction. On the active side ($\delta<0$) exact series give $x=-\delta^3/3+O(\delta^4)$ and $E-E_0=-\tfrac83\delta^5+O(\delta^6)$, where $E_0$ is the analytic cost without the indirect route. Both slopes equal $E_0'(1)=12$, and $E^{(5)}(1^+)-E^{(5)}(1^-)=320$. The optimum does not use the indirect route near $t=1$, because its formal branch is $-\delta^2/5+O(\delta^3)<0$ on both sides. So $S=E_0$ is analytic there, $S(1)=4$, and $P\in C^4\setminus C^5$ with fifth-derivative jump $80$. \status{proof; exact}
+\end{example}
+
+Different exponents are essential in Example~\ref{ex:hetero}. With a common exponent, three links never suffice (Theorem~\ref{thm:minimal}). With different exponents, a triangle cannot produce an equal-slope \emph{expansion} either: by Descartes' rule of signs for real exponents, a gap $\alpha+\beta t^{p_f}-\gamma_1t^{p_h}-\gamma_2t^{p_g}$ with $\beta,\gamma_i>0$ has at most three positive zeros counted with multiplicity, and when it has a triple zero it changes sign from $+$ to $-$ there (Appendix~\ref{app:minimality}, Proposition~\ref{prop:hetero}).
+
+\subsection{The five-link quartic example}\label{sec:fiveedge}
+
+This is the main answer for BPR costs: one common exponent $p=4$, positive free-flow times and an expansion. Commodity A travels from $s$ to $v$ and commodity B from $u$ to $v$, each with demand $4t$. The direct bank $F$ has two parallel edges $s\to v$, the shared bank $G$ has two parallel edges $u\to v$, and the connector is $h:s\to u$ (Figure~\ref{fig:network}).
+
+\begin{center}
+\begin{tabular}{llllll}
+\toprule
+Edge & Endpoints & Cost at load $z$ & Load at $t=1$ & Capacity $C_e$ & $z/C_e$ at $t=1$\\
+\midrule
+$F_0$ & $s\to v$ & $2+z^4$ & $1$ & $0.740$ & $1.35$\\
+$F_2$ & $s\to v$ & $8/3+z^4/243$ & $3$ & $3.140$ & $0.96$\\
+$G_1$ & $u\to v$ & $3/2+z^4/162$ & $3$ & $2.457$ & $1.22$\\
+$G_3$ & $u\to v$ & $7/4+z^4/4$ & $1$ & $1.012$ & $0.99$\\
+$h$ & $s\to u$ & $1+z^4$ & $0$ & $0.622$ & $0$\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[>=Stealth,thick,scale=0.93]
+\node[circle,draw,minimum size=8mm] (s) at (0,2.2) {$s$};
+\node[circle,draw,minimum size=8mm] (u) at (0,-1.3) {$u$};
+\node[circle,draw,minimum size=8mm] (v) at (6.4,0.45) {$v$};
+\draw[->,plum] (s) to[bend left=17] node[above,sloped] {$F_0$} (v);
+\draw[->,plum] (s) to[bend right=5] node[below,sloped] {$F_2$} (v);
+\draw[->,teal] (u) to[bend left=5] node[above,sloped] {$G_1$} (v);
+\draw[->,teal] (u) to[bend right=17] node[below,sloped] {$G_3$} (v);
+\draw[->,ochre,line width=1.3pt] (s) -- node[left] {$h$} (u);
+\node[anchor=east,align=right] at (-0.7,2.2) {A: $4t$};
+\node[anchor=east,align=right] at (-0.7,-1.3) {B: $4t$};
+\end{tikzpicture}
+\caption{The five-link example. Commodity A can use either direct edge, or the connector followed by either shared edge. Commodity B chooses between the shared edges. Every directed path is a route. Near $t=1$ the connector starts to carry flow at $t=1$.}
+\label{fig:network}
+\end{figure}
+
+Every edge has the conventional BPR form $a_e[1+0.15(z/C_e)^4]$ with $C_e=(0.15a_e/b_e)^{1/4}$. The table shows that at $t=1$ the volume-to-capacity ratios lie between $0.96$ and $1.35$ and congested times are $1.13$ to $1.5$ times free-flow times. These are ordinary peak-period values, so the example does not depend on extreme capacities.
+
+Let $F(T)$ and $G(T)$ be the bank delays at total bank load $T$. At $T=4$,
+\begin{equation}\label{eq:quinticjets}
+ F(4)=3,\quad G(4)=2,\quad F'(4)=G'(4)=\tfrac25,\quad
+ F''(4)=G''(4)=\tfrac{42}{125},\quad F'''(4)-G'''(4)=\tfrac{63}{1250}.
+\end{equation}
+The two bank delay curves agree to second order. The connector route is cheaper when $\Delta(t)=F(4t)-G(4t)-1>0$, and $\Delta(t)=\tfrac{336}{625}\delta^3+O(\delta^4)$. For $t>1$ the connector flow solves $F(4t-x)=G(4t+x)+1+x^4$. Theorem~\ref{thm:main} below, with $m=3$ and $p=4$, gives
+\begin{align}
+ x(t)&=\tfrac{84}{125}\delta_+^3+O(\delta_+^4),\label{eq:fivex}\\
+ E(t)&=E_0(t)-\tfrac{84672}{78125}\delta_+^5+O(\delta_+^6),\qquad E_0(t)=4t\bigl(F(4t)+G(4t)\bigr).\label{eq:fiveE}
+\end{align}
+Here $O(\delta_+^r)$ vanishes on the left and has derivative-controlled remainders on the right (Lemma~\ref{lem:remainder}), so these expansions are statements about derivatives, not only about values. In particular $E(1)=20$ and $E'(1^-)=E'(1^+)=164/5$. The first four derivatives of $E$ and $P$ are continuous at $t=1$, and their fifth derivatives jump: $E^{(5)}$ by $-2032128/15625\approx-130.06$ and $P^{(5)}$ by about $-6.581$. Just below $t=1$ the only cheapest routes of A are the two direct edges. Just above it the two connector routes are cheapest too. The set of cheapest routes itself expands; this is not an artefact of a choice of route decomposition. \status{proof; exact; the $P^{(5)}$ value uses $S(1)=19.762875963175$, computed numerically and agreeing with direct optimisation}
+
+The same construction with $p=2$ has congestion coefficients $(1,1/27,1/18,1/4,1)$ in table order and the same free-flow costs. There every cost has positive second derivative on $[0,\infty)$, and again $E,P\in C^4\setminus C^5$.
+
+\emph{A contraction.} Exchanging the two banks' edge sets gives a five-link contraction: direct edges $5/2+z^4/162$ and $11/4+z^4/4$, shared edges $1+z^4$ and $5/3+z^4/243$, connector $1+z^4$, demands $4t$. Now $\Delta(t)=-\tfrac{336}{625}\delta^3+O(\delta^4)$. The connector is used just below $t=1$ with every bank edge loaded, and it is not cheapest above $t=1$. Exact series give $E-E_0=-\tfrac{84672}{78125}\delta^5+O(\delta^6)$ on the active side $\delta<0$, so $E,P\in C^4\setminus C^5$ with equal slopes $164/5$. \status{proof via Proposition~\ref{prop:localcontact}; exact}
+
+\subsection{Any finite order}\label{sec:family}
+
+Fix $p>1$ and an odd integer $m\ge3$, and set
+\begin{equation}\label{eq:parameters}
+ N=2^{m-1},\qquad w_j=\binom mj,\qquad u_j=j+1\quad(0\le j\le m).
+\end{equation}
+The graph has vertices $s,u,v$. For each even $j$ the direct bank $F$ has an edge $s\to v$, and for each odd $j$ the shared bank $G$ has an edge $u\to v$. A connector runs from $s$ to $u$. The costs are
+\begin{align}
+ c_j^F(z)&=3-\frac1{u_j}+\frac{z^p}{u_jw_j^p}\quad(j\text{ even}),\qquad
+ c_j^G(z)=2-\frac1{u_j}+\frac{z^p}{u_jw_j^p}\quad(j\text{ odd}),\label{eq:FGcost}\\
+ h(z)&=1+z^p.\label{eq:hcost}
+\end{align}
+Commodity A travels from $s$ to $v$ and commodity B from $u$ to $v$, each with demand $Nt$, and every directed path is a route. The graph has $m+2$ edges, all of the form $a_e+b_ez^p$ with $a_e,b_e>0$. For $m=3$, $p=4$ this is the five-link example. Put
+\begin{equation}\label{eq:constants}
+ \Pi_{m,p}=\prod_{k=0}^{m-1}(1-kp),\qquad
+ a=\frac{4p\Pi_{m,p}}{(m+2)^{m+1}},\qquad
+ k_x=\frac{N\Pi_{m,p}}{(m+2)^m},\qquad k_E=m\,a\,k_x.
+\end{equation}
+All are positive, because $m-1$ of the factors of $\Pi_{m,p}$ are negative and $m-1$ is even.
+
+\begin{theorem}[Common-power transitions of arbitrary order]\label{thm:main}
+For the network \eqref{eq:FGcost}--\eqref{eq:hcost}:
+\begin{enumerate}[label=(\roman*),nosep]
+\item The regime strictly expands at $t=1$. Every bank edge has load $w_j>0$ there and the connector has load zero. The connector routes are not cheapest just below $1$, and every edge is loaded for every $t>1$.
+\item The connector flow $x$ is $C^{m-1}$ but not $C^m$ at $1$. Its first nonzero term on the right is $k_x\delta^m$, and its $m$-th derivative jumps by $m!\,k_x$.
+\item The optimal cost $S$ is positive and real analytic near $1$. There is a real-analytic $E_0$ with $E=E_0$ just below $1$, and the first nonzero term of $E-E_0$ on the right is $-k_E\delta^{2m-1}$.
+\item $E$ and $P$ belong to $C^{2m-2}\setminus C^{2m-1}$ at $1$, with
+\begin{equation}\label{eq:Ejump}
+\begin{gathered}
+ E^{(2m-1)}(1^+)-E^{(2m-1)}(1^-)=-(2m-1)!\,k_E,\\
+ P^{(2m-1)}(1^+)-P^{(2m-1)}(1^-)=-\frac{(2m-1)!\,k_E}{S(1)}.
+\end{gathered}
+\end{equation}
+In particular both first derivatives are continuous across the expansion.
+\end{enumerate}
+These conclusions hold for every real $p>1$. For integer $p$ the remainders in (ii) and (iii) are analytic multiples of $\delta^{m+1}$ and $\delta^{2m}$. For noninteger $p$ they are controlled by Lemma~\ref{lem:remainder}.
+\end{theorem}
+
+With $p=4$ fixed, the order of smoothness grows without bound across this family of finite networks. Positive cost coefficients therefore impose no fixed limit on how many derivatives can agree at an expansion. The affine case is different: there CDS Theorem~4.4(ii) gives strictness, and the construction degenerates at $p=1$.
+
+\subsubsection*{Proof of Theorem~\ref{thm:main}}
+
+\emph{Inverse bank curves.} Put $\alpha_p=1/p\in(0,1)$. At total bank load $N$, branch $j$ has load $w_j$, and the bank delays are $3$ and $2$. When the delay of bank $F$ is $3+s$ and that of bank $G$ is $2+s$, the total loads are
+\begin{equation}\label{eq:supply}
+ q_F(s)=\sum_{j\text{ even}}w_j(1+u_js)^{\alpha_p},\qquad q_G(s)=\sum_{j\text{ odd}}w_j(1+u_js)^{\alpha_p},
+\end{equation}
+for $s>-1/(m+1)$, where all branches are loaded. These curves are analytic and strictly increasing, and their inverses define $F$ and $G$ near $N$ and on $[N,\infty)$. The binomial identities
+\begin{equation}\label{eq:moments}
+ \sum_{j=0}^m(-1)^j\binom mj(j+1)^k=0\quad(0\le k<m),\qquad \sum_{j=0}^m(-1)^j\binom mj(j+1)^m=-m!
+\end{equation}
+follow by applying an $m$-th finite difference to polynomials of degree $k$; the sign of the last uses odd $m$. With
+\begin{equation}\label{eq:cA}
+ c_m=\alpha_p(\alpha_p-1)\cdots(\alpha_p-m+1)>0,\qquad \beta=q_F'(0)=q_G'(0)=\frac{N(m+2)}{2p},
+\end{equation}
+Taylor expansion of \eqref{eq:supply} gives $q_F(s)-q_G(s)=-c_ms^m+O(s^{m+1})$. The sign holds for all $s>0$. With $\varphi(r)=r^{\alpha_p}$, repeated use of the fundamental theorem of calculus gives
+\begin{equation}\label{eq:integraldifference}
+ q_F(s)-q_G(s)=-s^m\int_{[0,1]^m}\varphi^{(m)}\Bigl(1+s\bigl(1+\textstyle\sum_{i=1}^m\theta_i\bigr)\Bigr)\dd\theta,
+\end{equation}
+and $\varphi^{(m)}(r)=c_mr^{\alpha_p-m}>0$, so the difference is negative for $s>0$ and positive for small $s<0$.
+
+\emph{The route gap.} Put $\widehat\Delta(T)=F(T)-G(T)-1$. Analytic inversion gives $\widehat\Delta(T)=c_m\beta^{-m-1}(T-N)^m+O((T-N)^{m+1})$. To check the coefficient, set $s=G(T)-2$. Then $q_G(s)=T$ and $q_F(s)=T-c_ms^m+O(s^{m+1})$, so the increment of $s$ needed to make $q_F$ equal $T$ is $(c_m/\beta)s^m+O(s^{m+1})$, while $s=(T-N)/\beta+O((T-N)^2)$. For every $T>N$, \eqref{eq:integraldifference} gives $q_F(G(T)-2)<T$, hence
+\begin{equation}\label{eq:globalH}
+ \widehat\Delta(T)>0\quad(T>N),
+\end{equation}
+while $\widehat\Delta(T)<0$ for $T<N$ close to $N$. The route gap of the connector route without connector flow is therefore
+\begin{equation}\label{eq:D}
+ \Delta(t)=F(Nt)-G(Nt)-1=a\delta^m+O(\delta^{m+1}),\qquad a=\frac{c_mN^m}{\beta^{m+1}},
+\end{equation}
+and $c_m=\Pi_{m,p}/p^m$ with $N=2^{m-1}$ gives the constant in \eqref{eq:constants}.
+
+\emph{The equilibrium and its regime.} If $x$ units of A use the connector, bank $F$ carries $Nt-x$ and bank $G$ carries $Nt+x$, and each bank splits its load so as to equalise the delays of its used edges. The connector flow is positive exactly when
+\begin{equation}\label{eq:scalar}
+ F(Nt-x)-G(Nt+x)-1-x^p=0
+\end{equation}
+has a positive root. The left side strictly decreases in $x$. For $t<1$ near $1$ it is negative at $x=0$, so the connector is unused and its routes are strictly more expensive. For $t>1$ it is positive at $x=0$ by \eqref{eq:globalH}, and at $x=N(t-1)$ it equals $3-G(N(2t-1))-1-[N(t-1)]^p<0$. Hence there is a unique root with
+\begin{equation}\label{eq:rootbound}
+ 0<x(t)<N(t-1)\qquad(t>1).
+\end{equation}
+Both bank totals exceed $N$, so every bank edge is loaded, and so is the connector. All costs in \eqref{eq:scalar} are analytic at this root, with negative $x$-derivative, so the equilibrium loads are analytic for $t>1$. These loads come from route flows: in bank $G$ split both the $x$ units of A and the $Nt$ units of B across the branches in the common load proportions. Then every route used is cheapest, and \eqref{eq:scalar} makes the direct and connector routes of A equally cheap. Just below $1$ the connector routes are strictly more expensive. The complete regime therefore strictly expands at $t=1$, whatever route decomposition is chosen. This proves (i).
+
+\emph{The onset.} For integer $p$, the analytic implicit function theorem applied to \eqref{eq:scalar} at $(t,x)=(1,0)$ gives a signed analytic branch with $x$-derivative $-2/\beta$, and on the right
+\begin{equation}\label{eq:xasymptotic}
+ x(t)=k_x\delta^m+O(\delta^{m+1}),\qquad k_x=\frac{\beta a}2.
+\end{equation}
+The flow is zero on the left. For noninteger $p$ there is no analytic extension of $x^p$ across zero, and we argue as follows. Analyticity of the bank curves gives analytic $d,\ell_1,\rho$ with
+\begin{equation}\label{eq:implicitgeneral}
+ F(Nt-x)-G(Nt+x)-1=\delta^md(\delta)-\ell_1(\delta)x+x^2\rho(\delta,x),\qquad d(0)=a,\ \ell_1(0)=2/\beta.
+\end{equation}
+For $\delta>0$ put $x=\delta^mU$ and $y=\delta^{m(p-1)}$. Dividing by $\delta^m$ gives
+\begin{equation}\label{eq:Uequation}
+ d(\delta)-\ell_1(\delta)U+\delta^mU^2\rho(\delta,\delta^mU)-yU^p=0,
+\end{equation}
+which is analytic in $(\delta,y,U)$ near $(0,0,k_x)$, since $k_x>0$, with $U$-derivative $-2/\beta$ there. Hence there is an analytic $U(\delta,y)$ with $U(0,0)=k_x$ and
+\begin{equation}\label{eq:twovar}
+ x(t)=\delta^mU(\delta,\delta^{m(p-1)})\qquad(\delta>0).
+\end{equation}
+
+\begin{lemma}[Differentiating the remainder]\label{lem:remainder}
+Let $U(\delta,y)=\sum_{i,j\ge0}u_{ij}\delta^iy^j$ converge absolutely for $|\delta|,|y|\le\rho_0$, with $0<\rho_0\le1$. Let $\beta_0>0$, let $q\ge1$ be an integer, and put $\varrho=\min(1,\beta_0)$. For $0<\delta\le\delta_1:=\min\bigl(\rho_0/2,(\rho_0/2)^{1/\beta_0}\bigr)$ define $R_q(\delta)=\delta^q[U(\delta,\delta^{\beta_0})-U(0,0)]$. Then for $0\le r\le q$,
+\[
+ |R_q^{(r)}(\delta)|\le C_r\,\delta^{q-r+\varrho},\qquad
+ C_r=\delta_1^{-\varrho}\sum_{(i,j)\ne(0,0)}|u_{ij}|\,(q+i+\beta_0j)^r\,(\rho_0/2)^{i+j}<\infty.
+\]
+Consequently the function equal to $0$ for $\delta\le0$ and to $\delta^qU(\delta,\delta^{\beta_0})$ for $\delta>0$ is $C^{q-1}$ near $0$, and its $q$-th derivative jumps by $q!\,U(0,0)$ at $0$.
+\end{lemma}
+\begin{proof}
+For $0<\delta\le\delta_1$ we have $\delta\le\rho_0/2$ and $\delta^{\beta_0}\le\rho_0/2$. Each term $u_{ij}\delta^{q+i+\beta_0j}$ with $(i,j)\ne(0,0)$ has $r$-th derivative of absolute value at most $|u_{ij}|(q+i+\beta_0j)^r\delta^{q+i+\beta_0j-r}$. Since $i+\beta_0j\ge\varrho$, and the exponent $i+\beta_0j-\varrho$ is nonnegative, $\delta^{i+\beta_0j}=\delta^\varrho\delta^{i+\beta_0j-\varrho}\le\delta^\varrho\delta_1^{i+\beta_0j-\varrho}\le\delta^\varrho\delta_1^{-\varrho}(\rho_0/2)^{i+j}$. The constant $C_r$ is finite because $(q+i+\beta_0j)^r2^{-(i+j)}$ is bounded and $\sum|u_{ij}|\rho_0^{i+j}<\infty$. The differentiated series therefore converges uniformly on $(0,\delta_1]$, which justifies termwise differentiation and gives the bound. Since every $R_q^{(r)}$ with $r\le q$ tends to $0$ as $\delta\downarrow0$, the extension of $R_q$ by zero is $C^q$ with vanishing derivatives at $0$. Adding $U(0,0)\delta_+^q$, which is $C^{q-1}$ with $q$-th derivative jump $q!$, gives the last assertion.
+\end{proof}
+
+Applying Lemma~\ref{lem:remainder} to \eqref{eq:twovar} with $q=m$ and $\beta_0=m(p-1)$ proves (ii) for every real $p>1$.
+
+\emph{Why total cost hides more derivatives.} Every user of A pays $F(Nt-x)$ and every user of B pays $G(Nt+x)$, because the connector route costs the same as the direct route. Hence
+\begin{equation}\label{eq:Ephysical}
+ E(t)=Nt\bigl[F(Nt-x(t))+G(Nt+x(t))\bigr],\qquad E_0(t)=Nt\bigl[F(Nt)+G(Nt)\bigr],
+\end{equation}
+where $E_0$ is analytic near $1$ and equals $E$ on the left. Taylor expansion in $x$ gives
+\begin{equation}\label{eq:Ecancel}
+ E-E_0=Nt\bigl[G'(Nt)-F'(Nt)\bigr]x+O(x^2)=-t\Delta'(t)x+O(x^2).
+\end{equation}
+Since $\Delta'$ has order $m-1$ and $x$ has order $m$, the first term is $-ma\,k_x\delta^{2m-1}=-k_E\delta^{2m-1}$, and the quadratic term starts at order $2m$. For real $p>1$, \eqref{eq:twovar} gives $E-E_0=\delta^{2m-1}V_E(\delta,\delta^{m(p-1)})$ for $\delta>0$, with $V_E$ analytic and $V_E(0,0)=-k_E$. Lemma~\ref{lem:remainder} with $q=2m-1$ gives \eqref{eq:Ejump} for $E$. Also
+\begin{equation}\label{eq:allfirst}
+ E(1)=5N,\qquad E'(1)=5N+\frac{2N^2}{\beta}=N\Bigl(5+\frac{4p}{m+2}\Bigr).
+\end{equation}
+
+\emph{The optimum.} The common-power scaling of O'Hare et al.\ \cite[Theorem~3.5]{OCW2016} handles $S$. Put $\gamma=(p+1)^{1/p}>1$. The marginal social cost of edge $e$ is $a_e+(p+1)b_ez^p=c_e(\gamma z)$. Scaling a feasible flow by $\gamma$ scales every demand by $\gamma$, so the optimality conditions give
+\begin{equation}\label{eq:optflow}
+ z_e^\opt(t)=\gamma^{-1}z_e^\eq(\gamma t),
+\end{equation}
+and the optimal loads are unique by strict convexity. By \eqref{eq:rootbound} every equilibrium load at $\gamma t$ is positive and analytic for $t$ near $1$, so
+\begin{equation}\label{eq:optcost}
+ S(t)=\frac1\gamma\sum_e\Bigl[a_ez_e^\eq(\gamma t)+\frac{b_e}{p+1}\bigl(z_e^\eq(\gamma t)\bigr)^{p+1}\Bigr]=\frac{V(\gamma t)}{\gamma}
+\end{equation}
+is positive and analytic there, where $V$ is the Beckmann value. (In general $S(t)\ne E(\gamma t)/\gamma$, because the congestion terms carry different factors.) Dividing by $S$, the quotient $P_0=E_0/S$ is analytic, and the leading term of $P-P_0$ is $-k_E\delta^{2m-1}/S(1)$. Lemma~\ref{lem:remainder} gives the jump of $P$ in \eqref{eq:Ejump}. \qed
+
+\begin{remark}[Potential interpretation]\label{rem:potential}
+After the bank splits are optimised, the Beckmann objective as a function of the connector flow is $B(t,x)=\int_0^{Nt-x}F+\int_0^{Nt+x}G+\int_0^xh$. Its minimum over $x\ge0$ differs from $B(t,0)$ by $-\Delta(t)_+^2/(2L_0)$ to leading order, with $L_0=F'+G'+h'(0)$, so by order $2m$. Since $E=tV'$ (Proposition~\ref{prop:Sregular}), differentiation explains the order $2m-1$ of $E-E_0$. The same mechanism gives the optimum-side transition of Section~\ref{sec:optimumside}.
+\end{remark}

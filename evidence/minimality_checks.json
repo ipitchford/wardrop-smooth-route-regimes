@@ -1,0 +1,147 @@
+{
+  "curvature_and_triangle_algebra": [
+    {
+      "p": 2,
+      "random_bank_trials": 42,
+      "status": "ok"
+    },
+    {
+      "p": 3,
+      "random_bank_trials": 42,
+      "status": "ok"
+    },
+    {
+      "p": 4,
+      "random_bank_trials": 42,
+      "status": "ok"
+    }
+  ],
+  "failures": [],
+  "heterogeneous_triangle": {
+    "equals_(t^2-1)^3/3": true,
+    "gap_coefficients_by_exponent": {
+      "0": "-1/3",
+      "2": "1",
+      "4": "-1",
+      "6": "1/3"
+    },
+    "sign_changes": 3,
+    "sign_pattern": "-+-+"
+  },
+  "reversal_symmetry": {
+    "exchange_side_images": [
+      "f",
+      "g",
+      "h",
+      "g"
+    ],
+    "instances": 25
+  },
+  "route_space_classification": {
+    "duplicate_on_f": {
+      "complete_regimes_by_rank": {
+        "0": 1520,
+        "1": 248,
+        "2": 24
+      },
+      "complete_regimes_checked": 1792,
+      "families_by_rank": {
+        "0": 15,
+        "1": 12,
+        "2": 4
+      },
+      "rank_one_types": {
+        "pi": 4,
+        "tau": 8
+      },
+      "route_counts": {
+        "su": 1,
+        "sv": 3,
+        "uv": 1
+      },
+      "route_families_enumerated": 31
+    },
+    "duplicate_on_g": {
+      "complete_regimes_by_rank": {
+        "0": 1404,
+        "1": 364,
+        "2": 24
+      },
+      "complete_regimes_checked": 1792,
+      "families_by_rank": {
+        "0": 23,
+        "1": 28,
+        "2": 12
+      },
+      "rank_one_types": {
+        "pi": 16,
+        "tau": 12
+      },
+      "route_counts": {
+        "su": 1,
+        "sv": 3,
+        "uv": 2
+      },
+      "route_families_enumerated": 63
+    },
+    "duplicate_on_h": {
+      "complete_regimes_by_rank": {
+        "0": 1404,
+        "1": 364,
+        "2": 24
+      },
+      "complete_regimes_checked": 1792,
+      "families_by_rank": {
+        "0": 23,
+        "1": 28,
+        "2": 12
+      },
+      "rank_one_types": {
+        "pi": 16,
+        "tau": 12
+      },
+      "route_counts": {
+        "su": 2,
+        "sv": 3,
+        "uv": 1
+      },
+      "route_families_enumerated": 63
+    }
+  },
+  "status": "PASS",
+  "topology": {
+    "directed_triangle_unique_routes": true,
+    "n=2": {
+      "connected": 14,
+      "nontree": 0,
+      "nontree_kernel_2": 0,
+      "nontree_kernel_le_1": 0,
+      "tree": 14
+    },
+    "n=3": {
+      "connected": 167,
+      "nontree": 44,
+      "nontree_e4_isomorphism_classes": {
+        "acyclic": 3,
+        "with_directed_cycle": 4
+      },
+      "nontree_kernel_2": 36,
+      "nontree_kernel_le_1": 8,
+      "tree": 123
+    },
+    "n=4": {
+      "connected": 944,
+      "nontree": 240,
+      "nontree_kernel_2": 0,
+      "nontree_kernel_le_1": 240,
+      "tree": 704
+    },
+    "n=5": {
+      "connected": 2000,
+      "nontree": 0,
+      "nontree_kernel_2": 0,
+      "nontree_kernel_le_1": 0,
+      "tree": 2000
+    }
+  }
+}

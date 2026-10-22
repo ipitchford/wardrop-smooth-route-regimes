@@ -1,0 +1,125 @@
+\section{Introduction}\label{sec:intro}
+
+\subsection{Two questions}
+
+In a static traffic assignment every traveller uses a cheapest route, and as demand grows the set of cheapest routes changes from time to time. Cominetti, Dose and Scarsini \cite{CDS2024} (hereafter CDS) studied how total equilibrium travel time and the price of anarchy behave as demand is scaled. They proved that these quantities are continuously differentiable while the set of cheapest routes stays fixed, provided every link cost has a strictly positive slope. They also proved that at a change in the set of cheapest routes the slope moves in a predictable direction. Two questions remained open. We quote them from the arXiv version of their paper (v2), whose numbering we follow throughout.
+
+\textbf{Question 1.} Their Theorem~3.2 is the fixed-regime smoothness theorem. In the paragraph after their Remark~3.5, which introduces their Examples~3.6 and~3.7, they write:
+\begin{quote}
+``Whether Theorem 3.2 can be extended to cost functions that exhibit a zero derivative only at the origin remains an open problem.''
+\end{quote}
+BPR costs $a(1+0.15(z/C)^4)$ have exactly this feature: their slope is zero at zero load and positive elsewhere.
+
+\textbf{Question 2.} Their Theorem~4.4(ii) shows that for affine costs the slope of total cost and of the price of anarchy changes strictly at every breakpoint whose two regimes are nested. In the paragraph preceding their Example~4.9 they write:
+\begin{quote}
+``It is an open question whether this is also the case for convex costs or BPR costs.''
+\end{quote}
+Section~\ref{sec:background} restates the relevant results of CDS, so the reader need not have their paper at hand.
+
+\subsection{Answers in brief}
+
+\textbf{Answer to Question 1: yes, at interior points} (Theorem~\ref{fr:theorem}). If every link cost is continuously differentiable with positive slope at positive load, then along any continuously differentiable demand path the equilibrium link flows are continuously differentiable on every open interval on which the set of cheapest routes is constant. The slope may vanish at zero load, and the zero-load links may form cycles. Free-flow times may be zero, demands may vanish, route sets may be restricted, and different links may have different BPR exponents. CDS's theorem also allows the end point $t_0=0$. There the extension fails in general (Proposition~\ref{fr:endpoint}), although our counterexample does not use BPR costs. Whether it fails for BPR costs at zero demand is open.
+
+\textbf{Answer to Question 2: no.} Strictness can fail for BPR costs and for strictly convex costs.
+\begin{itemize}[nosep]
+\item Three links suffice: one example has strictly convex polynomial costs, and another has BPR-type costs with different exponents and a contraction (Section~\ref{sec:smallexamples}).
+\item With the standard common quartic exponent, a five-link network has a genuine expansion of the set of cheapest routes. Total cost $E$ and the price of anarchy $P$ have four continuous derivatives there, and their fifth derivatives jump (Section~\ref{sec:fiveedge}).
+\item Five links are the minimum in the common-exponent class, for expansions and for contractions (Theorem~\ref{thm:minimal}).
+\item More links allow any finite number of matching derivatives (Theorem~\ref{thm:main}).
+\end{itemize}
+
+Three further results put the negative answer in proportion.
+\begin{enumerate}[nosep]
+\item \emph{The slope never jumps in the wrong direction} (Theorem~\ref{thm:weakcomparison}). The weak inequalities of CDS Theorem~4.4(i) hold for BPR costs, both at expansions and at contractions, even with zero free-flow times. CDS Remark~4.6 names exactly this extension as the consequence an answer to Question~1 would bring.
+\item \emph{A missing jump is exceptional} (Theorem~\ref{thm:generic}). For almost every vector of free-flow times, every nested breakpoint at which the smaller regime uses only loaded links has a strict slope jump.
+\item \emph{The price of anarchy has a second hidden transition} (Theorem~\ref{thm:optimumtransition}). In the common-power examples the system optimum changes its route set earlier, at $t=1/\gamma$. There the price of anarchy is even smoother: five continuous derivatives in the quartic example.
+\end{enumerate}
+
+\subsection{The main idea}\label{sec:mainidea}
+
+Figure~\ref{fig:idea} shows the mechanism. Two groups of parallel links (``banks'') serve two commodities. A connector link lets commodity A switch from its own bank to the other bank. The connector is worth using when the \emph{route gap}
+\[
+\Delta(t)=\text{(cost of A's direct route)}-\text{(cost of the connector route)},
+\]
+computed without connector flow, becomes positive. Usually $\Delta$ crosses zero with nonzero slope. The connector flow then grows linearly in $t-1$, and the slope of total cost jumps. If instead the two bank delay curves touch to order $m$, then $\Delta(t)\approx a(t-1)^m$. Each extra link in a bank supplies one extra free coefficient, and $m+1$ bank links can make the first $m-1$ derivatives of the two delay curves agree.
+
+Two orders then add. The connector flow is $x\approx\Delta/L_0$, of order $m$, where $L_0$ is the curvature of the switching cost. To first order the change in total cost is the flow moved times the rate at which the gap opens:
+\[
+E-E_0\approx -t\,\Delta'(t)\,x,
+\]
+of order $(m-1)+m=2m-1$. Here $E_0$ is the cost the network would have without the connector. The connector itself is invisible to first order, because travellers switch only when the two routes cost the same. With the smallest odd order $m=3$, the cost difference is of order $(t-1)^5$, so $E$ has four continuous derivatives. In potential terms, the Beckmann potential changes by $-\Delta^2/(2L_0)$, of order $2m$, and $E=tV'$ loses one order (Remark~\ref{rem:potential}).
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[>=Stealth,thick,scale=0.95]
+\begin{scope}
+\node[circle,draw,minimum size=7mm] (s) at (0,1.9) {$s$};
+\node[circle,draw,minimum size=7mm] (u) at (0,-1.1) {$u$};
+\node[circle,draw,minimum size=7mm] (v) at (4.4,0.4) {$v$};
+\draw[->,plum] (s) to[bend left=18] (v);
+\draw[->,plum] (s) to[bend right=4] (v);
+\draw[->,teal] (u) to[bend left=4] (v);
+\draw[->,teal] (u) to[bend right=18] (v);
+\draw[->,ochre,line width=1.3pt] (s) -- node[left] {connector} (u);
+\node[plum] at (2.3,2.15) {bank $F$};
+\node[teal] at (2.3,-1.25) {bank $G$};
+\node[anchor=east] at (-0.5,1.9) {A};
+\node[anchor=east] at (-0.5,-1.1) {B};
+\end{scope}
+\begin{scope}[xshift=6.6cm,yshift=-1.2cm]
+\draw[->,thin] (0,1.6) -- (5.0,1.6) node[right] {$t$};
+\draw[->,thin] (0.1,0) -- (0.1,3.3) node[above] {$\Delta(t)$};
+\draw[dashed,gray] (2.5,0) -- (2.5,3.2);
+\node[below] at (2.5,0) {$t=1$};
+\draw[domain=1.0:4.0,smooth,variable=\x,ochre] plot ({\x},{1.6+0.9*(\x-2.5)});
+\draw[domain=0.6:4.4,smooth,variable=\x,plum,line width=1.2pt] plot ({\x},{1.6+0.17*(\x-2.5)^3});
+\node[ochre,anchor=east] at (4.6,3.3) {transverse: kink};
+\node[plum,anchor=west] at (3.65,0.5) {order $m$};
+\end{scope}
+\end{tikzpicture}
+\caption{The two-bank architecture (left) and the route gap $\Delta(t)$ of the connector route (right). With a transverse crossing the connector flow grows linearly and the slope of total cost jumps. If the bank delay curves touch to order $m$, the gap vanishes to order $m$, the connector flow grows like $(t-1)^m$ and total cost differs by order $(t-1)^{2m-1}$.}
+\label{fig:idea}
+\end{figure}
+
+\subsection{Results at a glance}
+
+Table~\ref{tab:glance} lists the main results, their status and where they are proved. Throughout, ``proof'' means a complete analytic proof in this paper. ``Exact'' means a computation in rational arithmetic, used only to confirm constants. ``Numerical'' means a floating-point computation, and ``exploratory'' means an illustration without a claim of generality.
+
+\begin{table}[htbp]
+\centering\small
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{3.6cm}>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}p{2.2cm}l@{}}
+\toprule
+Topic & Result & Status & Where\\
+\midrule
+Question 1 & Fixed-regime $C^1$ link flows for costs with $c'(z)>0$ for $z>0$; $S$ and $P$ are $C^1$ & proof & Thm~\ref{fr:theorem}\\
+Endpoint & General one-sided extension at $t_0=0$ fails; BPR endpoint case open & proof; open & Prop.~\ref{fr:endpoint}\\
+Weak comparison & CDS Thm~4.4(i) holds for BPR costs, expansions and contractions, zero free-flow allowed & proof & Thm~\ref{thm:weakcomparison}\\
+Genericity & Strict jumps for almost every free-flow vector at nondegenerate nested breakpoints & proof & Thm~\ref{thm:generic}\\
+Question 2, convex & Three-link polynomial triangle with $E,P\in C^4\setminus C^5$ & proof; exact & \S\ref{sec:smallexamples}\\
+Question 2, BPR & Five-link common-quartic expansion with $E,P\in C^4\setminus C^5$ & proof; exact & \S\ref{sec:fiveedge}\\
+Any finite order & $m+2$ links, $E,P\in C^{2m-2}\setminus C^{2m-1}$, every $p>1$ & proof & Thm~\ref{thm:main}\\
+Minimality & Common power: five links minimal for expansions and contractions; mixed powers: contractions need three, expansions four or five (open) & proof; open & Thm~\ref{thm:minimal}\\
+Optimum side & $S\in C^{2m-1}\setminus C^{2m}$ at $t=1/\gamma$; same for $P$ when $E$ is $C^{2m}$ there, checked for the quartic example; jump $\approx+89.7$ & proof; exact check; numerical value & Thm~\ref{thm:optimumtransition}\\
+Robustness & Kinks return under perturbation, at size $|\varepsilon|^{2-2/m}$; transverse demand directions give $C^1\setminus C^2$ & proof & \S\ref{sec:robustness}\\
+Practice & Hidden activation below assignment tolerance; link flows reveal it earlier & numerical & \S\ref{sec:practice}\\
+Sioux Falls & Link activations along a demand scaling are transverse with visible kinks & exploratory & \S\ref{sec:sioux}\\
+Several contacts & Sharp contact budget and synthesis of prescribed transitions in the two-bank architecture & proof; exact & App.~\ref{app:contacts}\\
+\bottomrule
+\end{tabularx}
+\caption{Results at a glance.}
+\label{tab:glance}
+\end{table}
+
+\subsection{Related work}
+
+\emph{Demand dependence of the price of anarchy.} O'Hare, Connors and Watling \cite{OCW2016} studied how the price of anarchy varies with demand and conjectured the slope inequalities that CDS proved in a restricted form. They also proved the flow scaling between equilibrium and optimum for common-power costs, which we use. Light- and heavy-traffic limits are studied in \cite{CB2020,CB2019,WuMohring2021}, demand sensitivity of the price of anarchy in \cite{WuMohring2023,Englert2010}, and empirical demand curves in \cite{Youn2008,Monnot2017}. CDS also treat the single-commodity case in \cite{CDSMP}. Dose \cite{Dose2026} studies efficient demand levels in two-link networks.
+
+\emph{Sensitivity of traffic equilibria.} Hall \cite{Hall1978} showed that equilibrium flows depend continuously on demand but need not be differentiable. Directional differentiability and sensitivity formulas under strict monotonicity or nondegeneracy were developed by Dafermos and Nagurney \cite{DafermosNagurney1984,Dafermos1988}, Tobin and Friesz \cite{TobinFriesz1988}, Qiu and Magnanti \cite{QiuMagnanti1989}, Patriksson \cite{Patriksson2004}, Josefsson and Patriksson \cite{JP2007} and Lu \cite{Lu2008}. These results describe directional derivatives at a given demand, typically under strictly increasing costs. They do not give continuity of the derivative along a path on which some links have zero load and zero cost slope and those links form cycles. That degenerate case is the content of Question~1, and CDS Remark~3.5(b) covers it only when the zero-slope links contain no undirected cycle. Our proof replaces the nondegeneracy assumption by a uniform bound for weighted least-squares problems \cite{Stewart1989,Forsgren1996}.
+
+\emph{Recent work.} Wang, Shao and Wu \cite{WSW2026} prove, for continuous nondecreasing costs, that the Beckmann value function is continuously differentiable on the open positive demand cone. They deduce that equilibrium total cost and the price of anarchy are continuously differentiable on the interior of every region of demand space with a fixed positive-flow support, with no condition on cost slopes. This overlaps our conclusion that $E$ and $P$ are $C^1$. Their cellwise smoothness of edge costs and loads (their Theorem~3) assumes costs with positive slope everywhere, or constant costs, and so excludes BPR costs, whose slope vanishes at zero load. Their results also concern full-dimensional interiors of demand regions, so they do not cover demand curves that run along the boundary between two regions (CDS Remark~3.5(a)) or demands that vanish. They also show that the set where the price of anarchy is not differentiable has measure zero in demand space. Our genericity theorem is of a different kind: it concerns the size of the slope jump at a breakpoint, for almost every free-flow vector. D'Ambrosio \cite{DAmbrosio2026} gives a quartic BPR network with an interior local maximum of the price of anarchy while the active network is constant. That concerns the shape of the price of anarchy, not slope equality at breakpoints.
+
+\emph{Classical ingredients.} We use the Beckmann potential \cite{BMW1956}, the envelope theorem in Danskin's form \cite{Danskin1966}, Sard's theorem \cite{Sard1942}, weighted least-squares bounds \cite{Stewart1989,Forsgren1996}, finite differences and Chebyshev systems \cite{GLT2012,Karlin1968,deBoor2005,BT2004}, and the log-oscillating construction of \cite{CB2020}. Loss of strict complementarity in one-parameter optimisation is studied by Jongen, Jonker and Twilt \cite{JongenJonkerTwilt1986}; there it generically produces a kink, which agrees with Theorem~\ref{thm:generic}.
+
+\subsection{Roadmap}
+
+Section~\ref{sec:background} sets up the model, restates the CDS results and gives a notation dictionary. Section~\ref{fr:section} answers Question~1. Section~\ref{sec:comparison} proves the weak slope comparison for BPR costs and the genericity theorem. Section~\ref{sec:transitions} answers Question~2 with the small examples, the five-link example and the general family. Section~\ref{sec:minimal} gives the minimum link counts. Section~\ref{sec:robustness} shows how kinks return under perturbation and studies the optimum-side transition. Section~\ref{sec:practice} discusses what the results mean for assignment practice, including a Sioux Falls illustration. Section~\ref{sec:conclusion} concludes with open problems. The appendices contain the theory of several contacts, the full proof of the minimality theorem, codimension and infinitely smooth examples, and a guide to the verification code.

@@ -1,0 +1,108 @@
+\section{Model, background and notation}\label{sec:background}
+
+\subsection{Routing games with variable demand}
+
+A \emph{network} is a finite directed multigraph with edge set $\mathcal E$. Each edge $e$ has a continuous nondecreasing cost $c_e:[0,\infty)\to[0,\infty)$. A \emph{commodity} $k$ has an origin, a destination and a finite nonempty set $\mathcal P_k$ of simple paths (its \emph{routes}). The route sets may be smaller than the set of all paths. For a demand vector $\mu=(\mu_k)\in[0,\infty)^K$, the \emph{feasible set} is
+\[
+ \Fs(\mu)=\Bigl\{f=(f_{P})\ge0:\ \sum_{P\in\mathcal P_k}f_{P}=\mu_k\ \text{for every }k\Bigr\},
+\]
+and $f$ induces the edge load $z_e(f)=\sum_k\sum_{P\in\mathcal P_k\colon e\in P}f_P$. Write $\mathcal Z(\mu)=\{z(f):f\in\Fs(\mu)\}$ for the compact convex set of feasible loads. The cost of a route is $c_P(z)=\sum_{e\in P}c_e(z_e)$.
+
+A feasible $f$ is a \emph{Wardrop equilibrium} if every route with $f_P>0$ has minimum cost among the routes of its commodity. Equilibrium loads are the minimisers over $\mathcal Z(\mu)$ of the Beckmann potential $\sum_e\int_0^{z_e}c_e$ \cite{BMW1956,Wardrop1952}. When every $c_e$ is strictly increasing, the equilibrium load $z^\eq(\mu)$ is unique, although the route flows need not be.
+
+\begin{definition}[Complete minimum-route regime]\label{def:regime}
+For a load vector $z$ and commodity $k$ put
+\[
+ R_k(z)=\Bigl\{P\in\mathcal P_k:\ c_P(z)=\min_{Q\in\mathcal P_k}c_Q(z)\Bigr\}.
+\]
+The \emph{regime} at demand $\mu$ is the family $R(\mu)=(R_k(z^\eq(\mu)))_k$. It depends only on the unique equilibrium load, not on any route decomposition, and it is defined also for commodities with $\mu_k=0$. It contains every cheapest route, used or not. This is the \emph{active regime} of CDS \cite[Definition~2.2]{CDS2024}.
+\end{definition}
+
+For a regime $R$, let $\Kc_R$ be the span of the vectors $1_P-1_Q$ with $P,Q\in R_k$ for some $k$, where $1_P$ is the edge-incidence vector of $P$. Equivalently, $\Kc_R$ is the set of edge-load changes produced by signed route flows on $R$ that leave every commodity demand unchanged. At an equilibrium with regime $R$, all routes in $R_k$ have the same cost, so the edge-cost vector satisfies $c(z)\perp\Kc_R$.
+
+Along a demand path $t\mapsto\mu(t)$ we study
+\begin{equation}\label{eq:objectives}
+ E(t)=\sum_e z^\eq_e c_e(z^\eq_e),\qquad
+ S(t)=\min_{z\in\mathcal Z(\mu(t))}\sum_e z_e c_e(z_e),\qquad
+ P(t)=\frac{E(t)}{S(t)}.
+\end{equation}
+These are the equilibrium total cost, the optimal total cost and the price of anarchy. The equilibrium and the optimum are taken over the \emph{same} feasible set $\mathcal Z(\mu(t))$, with the same route sets. In the explicit constructions every simple path is a route, so this set is the set of all loads of the physical network. The examples use the proportional path $\mu(t)=tr$ with a fixed $r$, and $t$ is a dimensionless demand multiplier.
+
+\begin{definition}[Breakpoints]\label{def:breakpoint}
+A point $t_0>0$ is a \emph{breakpoint} if the regime is constant, equal to $R_-$, on $(t_0-\varepsilon,t_0)$, constant, equal to $R_+$, on $(t_0,t_0+\varepsilon)$, and $R_-\ne R_+$ (CDS Definition~4.1). These two open intervals are the \emph{punctured sides} of $t_0$. The breakpoint is an \emph{expansion} if $R_-\subsetneq R_+$ and a \emph{contraction} if $R_+\subsetneq R_-$. We write $R_s$ and $R_l$ for the smaller and the larger of the two regimes.
+\end{definition}
+
+\subsection{The results of Cominetti, Dose and Scarsini}
+
+We restate the results that the two questions concern, in the present notation.
+
+\emph{CDS Theorem 3.2 (fixed-regime smoothness).} Let the demand $\mu(\cdot)$ be continuously differentiable and let every $c_e$ be $C^1$ with $c_e'>0$ everywhere. If the regime is constant on a neighbourhood of $t_0\ge0$, then (a) the equilibrium loads are $C^1$ near $t_0$, and so are the commodity costs and $E$; (b) if moreover every $z\mapsto zc_e(z)$ is convex, then $S$ and $P$ are $C^1$ near $t_0$. CDS Remark~3.5(b) weakens $c_e'>0$ to strictly increasing costs provided the edges with $c_e'(z_e)=0$ contain no undirected cycle.
+
+\emph{The O'Hare et al.\ conjecture} (CDS Conjecture~4.2, summarising \cite[Conjectures 4.5, 4.6, 4.9]{OCW2016}). Let costs be differentiable and strictly increasing with positive second derivative, let the demand be piecewise affine and nondecreasing, and let $t_0$ be a breakpoint. (a) If $R_-\subset R_+$, then $E'(t_0^-)>E'(t_0^+)$ and $P'(t_0^-)>P'(t_0^+)$. (b) If $R_-\supset R_+$, then $E'(t_0^-)<E'(t_0^+)$ and $P'(t_0^-)<P'(t_0^+)$. CDS Example~4.3 shows that the conjecture fails in this generality.
+
+\emph{CDS Theorem 4.4.} Let $\mu(t)=tr$. (i) If the costs are $C^1$ with $c_e'>0$, the inequalities (a) and (b) hold weakly at every breakpoint. (ii) If the costs are nondecreasing and affine, they hold strictly. CDS Remark~4.6 notes that part (i) excludes BPR costs. It adds that part~(i) would extend to BPR costs given an extension of Theorem~3.2(a) of the kind asked for in Question~1.
+
+So Question~2 asks whether Theorem~4.4(ii) extends from affine to convex or BPR costs.
+
+\subsection{Two value-function facts}
+
+The next proposition handles the optimum for any demand path, with zero demands and restricted route sets. It replaces the appeal to CDS Lemma~3.4 and makes the price-of-anarchy conclusions self-contained. It is an instance of Danskin's envelope theorem \cite{Danskin1966}, and we include the short proof.
+
+\begin{proposition}[Envelope formula for value functions]\label{prop:Sregular}
+Let each $g_e:[0,\infty)\to\R$ be convex and $C^1$ with $g_e'$ strictly increasing. Let $\mu:I\to[0,\infty)^K$ be $C^1$ on an open interval $I$, and put
+\[
+ W(t)=\min_{z\in\mathcal Z(\mu(t))}\sum_eg_e(z_e).
+\]
+Then the minimising load $z^*(t)$ is unique and continuous, and $W$ is $C^1$ on $I$ with
+\begin{equation}\label{eq:envelope}
+ W'(t)=\sum_k\mu_k'(t)\,m_k(t),\qquad m_k(t)=\min_{P\in\mathcal P_k}\sum_{e\in P}g_e'(z^*_e(t)).
+\end{equation}
+In particular $S$ is $C^1$ when every $c_e$ is $C^1$ and every $zc_e(z)$ is \emph{strictly} convex, that is, $c_e+zc_e'$ is strictly increasing. Convexity alone is not enough for uniqueness of the optimal load: with $c(z)=z$ on $[0,1]$ and $c(z)=2-1/z$ for $z\ge1$, two identical parallel links and demand $3$, every split with link loads in $[1,2]$ is optimal. BPR costs $a+bz^p$ with $b>0$, $p\ge1$ satisfy the strict condition. Taking $g_e=\int_0^zc_e$, the Beckmann value $V(t)$ is $C^1$ with $V'=\sum_k\mu_k'\pi_k$, where $\pi_k$ is the equilibrium cost of commodity $k$. On a proportional path $\mu=tr$ this gives $E(t)=tV'(t)$.
+\end{proposition}
+\begin{proof}
+Strict convexity of $\sum_eg_e$ gives a unique minimiser, and compactness gives its continuity in $t$. Write every feasible route flow as $f_P=\mu_k\lambda_P$ with $\lambda_k=(\lambda_P)_{P\in\mathcal P_k}$ in the probability simplex $\Lambda_k$. Put $\Lambda=\prod_k\Lambda_k$ and $\Phi(t,\lambda)=\sum_eg_e(z_e(t,\lambda))$, where $z_e(t,\lambda)=\sum_k\mu_k(t)\sum_{P\ni e}\lambda_P$. Then $W(t)=\min_{\lambda\in\Lambda}\Phi(t,\lambda)$, and
+\[
+ \partial_t\Phi(t,\lambda)=\sum_k\mu_k'(t)\sum_{P\in\mathcal P_k}\lambda_P\,\sum_{e\in P}g_e'(z_e(t,\lambda)),
+\]
+which is jointly continuous. Let $\Lambda^*(t)$ be the set of minimisers. For $\lambda\in\Lambda^*(t)$ the load is $z^*(t)$. If $\mu_k(t)>0$, optimality forces $\lambda_P=0$ unless $P$ has minimum marginal cost, so the $k$-th inner sum equals $m_k(t)$. If $\mu_k(t)=0$, then $\mu_k'(t)=0$ because $\mu_k\ge0$ is $C^1$ and $t$ is interior. Hence $\partial_t\Phi(t,\lambda)$ equals the right side of \eqref{eq:envelope} for every $\lambda\in\Lambda^*(t)$.
+
+For $h\ne0$ small, $W(t+h)\le\Phi(t+h,\lambda^*)$ for any $\lambda^*\in\Lambda^*(t)$. If $\lambda_h\in\Lambda^*(t+h)$, then $W(t)\le\Phi(t,\lambda_h)$. The mean value theorem gives
+\[
+ \partial_t\Phi(t+\theta_hh,\lambda_h)\le\frac{W(t+h)-W(t)}{h}\le\partial_t\Phi(t+\theta'_hh,\lambda^*)\qquad(h>0),
+\]
+with the inequalities reversed for $h<0$ and $\theta_h,\theta'_h\in(0,1)$. Every limit point of $\lambda_h$ lies in $\Lambda^*(t)$, by continuity. Both bounds therefore tend to the common value \eqref{eq:envelope}. This proves differentiability. The derivative is continuous because $z^*$, $\mu'$ and finite minima of continuous functions are continuous. For the Beckmann case, $g_e'=c_e$, so $m_k=\pi_k$. Then $E=\sum_kt r_k\pi_k=tV'$.
+\end{proof}
+
+\subsection{Notation dictionary and terms}
+
+Table~\ref{tab:dictionary} relates our symbols to those of CDS and fixes symbols that recur. The following terms are used informally before their formal definitions.
+\begin{itemize}[nosep]
+\item A \emph{bank} is a set of parallel links between two vertices. At equilibrium its used links have one common delay, the \emph{bank delay} $F(T)$ or $G(T)$ at total bank load $T$.
+\item The \emph{two-bank architecture} consists of a direct bank $F$ from $s$ to $v$, a shared bank $G$ from $u$ to $v$ and a connector $s\to u$ (Figure~\ref{fig:idea}).
+\item The \emph{contact order} $m$ of a breakpoint is the order to which the route gap vanishes: $\Delta(t)\sim a(t-t_0)^m$ with $a\ne0$.
+\item An \emph{inverse-delay node} of a link with cost $\ell-1/u+z^p/(uw^p)$ is the number $u>0$. Branch $j$ supplies the load $w_j(1+u_js)^{1/p}$ when its bank delay exceeds the reference delay $\ell$ by $s$. Banks with the same delay curve share nodes, and only the nodes that survive cancellation in the difference of the two inverse delay curves matter (Appendix~\ref{app:contacts}).
+\end{itemize}
+
+\begin{table}[htbp]
+\centering\small
+\begin{tabularx}{\linewidth}{@{}l>{\raggedright\arraybackslash}X l@{}}
+\toprule
+Here & Meaning & CDS\\
+\midrule
+$t$, $\mu(t)$, $r$ & demand multiplier, demand vector, fixed direction & $t$, $\boldsymbol\mu(t)$, $\boldsymbol r$\\
+$E$, $S$, $P$ & equilibrium total cost, optimal total cost, price of anarchy & $\mathrm{SC}^*$, $\widetilde{\mathrm{SC}}$, $\PoA$\\
+$R(t)$, $R_k(z)$ & complete minimum-route regime & active regime $\widehat{\mathcal P}$\\
+breakpoint, $R_\pm$ & regime change with constant regimes on punctured sides & $\widehat{\mathcal P}$-breakpoint\\
+$\Fs(\mu)$, $\mathcal Z(\mu)$ & feasible route flows, feasible loads & $\mathcal F_\mu$, $\mathcal X_\mu$\\
+$\Kc_R$ & demand-preserving load changes on $R$ & ---\\
+$D=\diag(c_e'(z_{0,e}))$ & cost slopes at the reference load & ---\\
+$\Delta(t)$ & route gap of the inactive route, computed without its flow & ---\\
+$x(t)$ & connector flow & ---\\
+$\gamma=(p+1)^{1/p}$ & equilibrium--optimum scaling factor & ---\\
+$k_x$, $k_E$ & leading coefficients of $x$ and of $E-E_0$ & ---\\
+$\beta$ & slope $q_F'(0)=q_G'(0)$ of the inverse bank curves & ---\\
+\bottomrule
+\end{tabularx}
+\caption{Notation dictionary. ``CDS'' gives the corresponding notation of \cite{CDS2024}, where one exists.}
+\label{tab:dictionary}
+\end{table}

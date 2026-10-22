@@ -1,0 +1,87 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=27mm]{geometry}
+\usepackage{microtype,booktabs,array,graphicx,xcolor,tabularx}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,bending}
+\usepackage{enumitem}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+\definecolor{plum}{HTML}{6C3569}
+\definecolor{teal}{HTML}{367E78}
+\definecolor{ochre}{HTML}{AE8238}
+\hypersetup{colorlinks=true,linkcolor=plum,citecolor=plum,urlcolor=teal,
+ pdftitle={Smoothness within and across Wardrop route regimes},pdfauthor={Anonymous}}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small Smoothness within and across Wardrop route regimes}
+\fancyhead[R]{\small Anonymous}
+\fancyfoot[C]{\thepage}
+\setlength{\headheight}{14pt}
+\setlength{\parskip}{3pt}
+\setlength{\emergencystretch}{2em}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\R}{\mathbb R}
+\newcommand{\PoA}{\operatorname{PoA}}
+\newcommand{\eq}{\mathrm{eq}}
+\newcommand{\opt}{\mathrm{opt}}
+\newcommand{\dd}{\,\mathrm d}
+\newcommand{\Kc}{\mathcal K}
+\newcommand{\Fs}{\mathcal F}
+\newcommand{\status}[1]{\textsf{\small[#1]}}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\sgn}{sgn}
+
+\title{Smoothness within and across\\Wardrop route regimes}
+\author{Anonymous}
+\date{22 October 2026}
+
+\begin{document}
+\maketitle
+\vspace{-1.5em}
+\begin{abstract}
+Cominetti, Dose and Scarsini (2024) left two questions open about how Wardrop equilibria respond to demand. First, does equilibrium remain continuously differentiable along a demand path, while the set of cheapest routes stays fixed, when link costs have zero slope at zero load, as Bureau of Public Roads (BPR) costs do? We prove that it does at every interior demand level, with no restriction on the network. Second, when a new route becomes cheapest, must the slope of total travel cost or of the price of anarchy jump? We show that it need not. A five-link network with standard quartic BPR costs has a genuine route expansion at which total cost and the price of anarchy have four continuous derivatives. Five links are the fewest possible for common-exponent BPR costs, for route expansions and contractions alike. The slope can never jump in the wrong direction, even with zero free-flow times. For almost every choice of free-flow times it does jump, at least wherever the smaller set of cheapest routes uses only loaded links. So a regime change with no kink is possible but exceptional. In practice, a route that becomes active this way carries too little flow for an assignment run at ordinary convergence tolerances to resolve.
+\end{abstract}
+\noindent\textbf{Keywords:} Wardrop equilibrium; traffic assignment; BPR cost functions; price of anarchy; sensitivity analysis; route-set changes.\\
+\textbf{2020 Mathematics Subject Classification:} 90B20, 91A14, 91A43, 90C31.\quad
+\textbf{JEL:} C61, C72, R41.
+
+\input{sections/intro}
+\input{sections/model}
+\input{sections/fixed_regime}
+\input{sections/comparison}
+\input{sections/transitions}
+\input{sections/minimal_summary}
+\input{sections/robustness}
+\input{sections/practice}
+\input{sections/conclusion}
+
+\section*{Declarations}
+\addcontentsline{toc}{section}{Declarations}
+\textbf{Use of AI tools.} The author used AI tools (large language models) to help develop and check proofs, write and run the verification code, search and check the literature, and draft and edit the text. The author reviewed the results and takes full responsibility for the content.
+
+\textbf{Data and code availability.} No empirical data were collected. The exact verifiers, numerical scripts, generated records and figure sources are in the accompanying reproducibility package, whose \texttt{verify\_all.py} replays every check. The package is archived at Zenodo, doi:\href{https://doi.org/10.5281/zenodo.23552630}{10.5281/zenodo.23552630}, with source at \url{https://github.com/ipitchford/wardrop-smooth-route-regimes}. The Sioux Falls illustration uses the public Transportation Networks for Research data \cite{TNTP,LeBlanc1975}, which are fetched by a script and checked by SHA-256 rather than redistributed.
+
+\textbf{Funding and competing interests.} No specific funding was received. The author declares no competing interests.
+
+\appendix
+\input{sections/app_contacts}
+\input{sections/app_minimality}
+\input{sections/app_geometry}
+\input{sections/app_verification}
+
+\small
+\input{bibliography}
+\end{document}

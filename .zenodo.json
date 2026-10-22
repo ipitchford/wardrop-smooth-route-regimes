@@ -1,0 +1,49 @@
+{
+  "title": "Smoothness within and across Wardrop route regimes",
+  "upload_type": "publication",
+  "publication_type": "preprint",
+  "description": "<p><strong>Unrefereed research candidate.</strong> In a static traffic assignment every traveller uses a cheapest route (Wardrop equilibrium); the price of anarchy compares total travel time at equilibrium with the best achievable. Cominetti, Dose and Scarsini (Transportation Research Part B 182, 102922, 2024; arXiv:2305.03459) studied how these quantities change as demand grows and left two questions open.</p><p>Question 1: while the set of cheapest routes is fixed, are equilibrium link flows continuously differentiable when link costs have zero slope at zero load, as BPR costs do? Yes, at every interior demand level on any network (proof); a general extension to zero demand fails, and the BPR case there is open. Question 2: must the slope of total cost and of the price of anarchy jump when a new route becomes cheapest, for convex or BPR costs? No. A five-link network with common quartic BPR costs has a genuine expansion at which total cost and the price of anarchy are C^4 but not C^5 (proof; exact); five links are the minimum for a common exponent (proof), and m+2 links hide 2m-2 derivatives. For BPR costs the slope never jumps the wrong way, even with zero free-flow times, and it jumps strictly for almost every free-flow vector at nondegenerate breakpoints (proof). After a hidden switch the new route carries flow far below ordinary assignment tolerance (numerical); an exploratory Sioux Falls scan finds only transverse activations with visible kinks.</p><p>The archive contains the manuscript (PDF and LaTeX), exact and numerical check programs with committed deterministic outputs, a replay script that compares every output byte for byte, semantic negative controls, a claim ledger and SHA-256 sums. The third-party Sioux Falls data are not redistributed; a script fetches them from a pinned commit and checks their SHA-256. Assurance: written proofs; exact checks; producer-side replay, including a clean full replay in a separate copy; internal AI-assisted review, AI-assisted adversarial review (OpenAI gpt-5.6-sol) and a verification re-review. This is not peer review, independent reproduction or formal verification. Creator: Anonymous. Prose, manuscript and original data CC0-1.0; code MIT.</p>",
+  "creators": [
+    {
+      "name": "Anonymous"
+    }
+  ],
+  "version": "1.0.0-candidate",
+  "doi": "10.5281/zenodo.23552630",
+  "publication_date": "2026-10-22",
+  "access_right": "open",
+  "license": "cc-zero",
+  "keywords": [
+    "Wardrop equilibrium",
+    "price of anarchy",
+    "traffic assignment",
+    "BPR cost functions",
+    "selfish routing",
+    "sensitivity analysis",
+    "phase transitions",
+    "nonatomic congestion games"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/ipitchford/wardrop-smooth-route-regimes/tree/v1.0.0-candidate",
+      "relation": "isSupplementTo",
+      "scheme": "url"
+    },
+    {
+      "identifier": "https://evidencepress.org/releases/wardrop-smooth-route-regimes/",
+      "relation": "isDocumentedBy",
+      "scheme": "url"
+    },
+    {
+      "identifier": "10.1016/j.trb.2024.102922",
+      "relation": "references",
+      "scheme": "doi"
+    },
+    {
+      "identifier": "arXiv:2610.16185",
+      "relation": "references",
+      "scheme": "arxiv"
+    }
+  ],
+  "notes": "Original code (Python scripts, CI workflow) is released under the MIT licence; see LICENSES.md in the archive. Short quotations of the source remain the source authors' text. The Sioux Falls test-network data are not redistributed (source: Transportation Networks for Research, academic research use with citation)."
+}
